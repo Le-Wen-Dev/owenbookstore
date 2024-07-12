@@ -22,14 +22,15 @@ use App\Models\Favorites;
 */
 Route::get('/',[HomeController::class,'index'])->name('home');
 Route::prefix('/')->group(function () {
-    Route::get('/favorites', [FavouriteController::class, 'index'])->name('favorites.index');
-    Route::post('/favorites', [FavouriteController::class, 'addToFavorites'])->name('favorites.add');
+    Route::get('/favorites', [FavouriteController::class, 'index'])->name('favorites');
+    Route::post('/addToFavorites', [FavouriteController::class, 'addToFavorites']);
+    Route::get('/cart', [CartController::class, 'index'])->name('cart');
+    Route::post('/addtocart', [CartController::class, 'addToCart']);
+    Route::post('/removecart', [CartController::class, 'removeCart'])->name('remove.cart');//xóa
+    Route::post('/removefavorites', [FavouriteController::class, 'removeFavarites'])->name('removefavorites');//xóa
+    Route::post('/remove-all-cart', [CartController::class, 'removeAllCart'])->name('remove.all.cart');
+    Route::post('/remove-all-favorites', [FavouriteController::class, 'removeAllFavarites'])->name('remove.all.favorites');
 
-    // Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-    // Route::post('/addtocart', [CartController::class, 'addToCart'])->name('cart.add');
-    // Route::patch('/cart/decrease', [CartController::class, 'decreaseCart'])->name('cart.decrease');
-    // Route::patch('/cart/increase', [CartController::class, 'increaseCart'])->name('cart.increase');
-    // Route::delete('/cart', [CartController::class, 'removeCart'])->name('cart.remove');
 });
 
 

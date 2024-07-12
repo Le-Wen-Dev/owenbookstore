@@ -64,7 +64,41 @@ class FavouriteController extends Controller
     $favorites = Favorites::where('id_user', $id_user)->get();
 
     // Trả về view danh sách yêu thích cùng với các sản phẩm yêu thích và thông tin sản phẩm
-    return view('compoments.favorites', compact('favorites', 'product'));
+    return redirect()->route('favorites');
+}
+public function removeFavarites(Request $request){
+    $id = $request->input('id');
+    $id_user = $request->input('id_user');
+
+    // Lấy thông tin sản phẩm từ giỏ hàng
+    $cartItem = Favorites::where('id', $id)
+        ->where('id_user', $id_user)
+        ->first();
+
+    // Kiểm tra xem sản phẩm có tồn tại trong giỏ hàng không
+    if ($cartItem) {
+        // Xóa sản phẩm khỏi giỏ hàng
+        $cartItem->delete();
+
+        // Trả về thông báo thành công và quay lại trang giỏ hàng
+        return redirect()->route('favorites')->with('success', 'Sản phẩm đã được xóa khỏi yêu thích!');
+    }
+
+    // Nếu không tìm thấy sản phẩm trong giỏ hàng
+    return redirect()->route('favorites')->with('error', 'Không tìm thấy sản phẩm trong yêu thích.');
+}
+public function removeAllFavarites(Request $request)
+{
+    $id_user = $request->input('id_user');
+
+    // Xóa tất cả các sản phẩm trong giỏ hàng của người dùng
+    $deleted = Favorites::where('id_user', $id_user)->delete();
+
+    if ($deleted) {
+        return redirect()->route('favorites')->with('success', 'Đã xóa tất cả sản phẩm khỏi yêu thích!');
+    } else {
+        return redirect()->route('favorites')->with('error', 'Không thể xóa sản phẩm khỏi giỏ hàng. Vui lòng thử lại sau.');
+    }
 }
 
 }

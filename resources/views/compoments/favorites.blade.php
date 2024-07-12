@@ -1,5 +1,6 @@
 @extends('layout')
 @section('content')
+@include('compoments.header1')
     
    <!-- main-area-start -->
    <main>
@@ -40,6 +41,10 @@
                                </tr>
                             </thead>
                             <tbody>
+                              @php
+                              $totalPrice = 0;
+                              $user = Session::get('user');
+                              @endphp
                                 @foreach($favorites as $item)
                                <tr>
                                   <td class="product-thumbnail">
@@ -56,7 +61,17 @@
                                      <button class="tp-btn tp-color-btn  tp-wish-cart banner-animation">Add To Cart</button>
                                   </td>
                                   <td class="product-remove">
-                                     <a href="#"><i class="fa fa-times"></i></a>
+                                    <form action="{{asset('removefavorites')}}" method="POST">
+                                       @csrf
+                                       @if(Session::has('user'))
+                                       <input type="hidden" name="id_user" value="{{ $user->id }}">
+                                       <input type="hidden" name="id" value="{{ $item->id }}">
+                                       <button type="submit" class="btn btn-light">
+                                         <i class="fa fa-times"></i>
+                                       </button>
+                                       @endif
+                                   </form>
+                                     
                                   </td>
                                </tr>
                                @endforeach
@@ -64,6 +79,17 @@
                       </table>
                    </div>
                 </form>
+                <div class="p-2 mb-3">
+                  <form action="{{ route('remove.all.favorites') }}" method="POST">
+                      @csrf
+                      @if(Session::has('user'))
+                      <input type="hidden" name="id_user" value="{{ $user->id }}">
+                      <button type="submit" class="btn btn-danger">
+                          Xóa tất cả sản phẩm
+                      </button>
+                      @endif
+                  </form>
+              </div>
           </div>
        </div>
        </div>
