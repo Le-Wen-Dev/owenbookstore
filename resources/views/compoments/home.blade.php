@@ -1349,5 +1349,11 @@
   <!-- shop-area-end -->
 
 </main>
+<a class="dropdown-item p-5" href="#" onclick="event.preventDefault();
+document.getElementById('logout-form').submit();">Đăng xuất </a>
+
+<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+@csrf
+</form>
 
 @endsection 

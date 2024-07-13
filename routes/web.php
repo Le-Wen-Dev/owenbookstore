@@ -35,7 +35,7 @@ Route::prefix('/')->group(function () {
 
 
 ////----------------------------------------------------------------Admin------------------------------------------------------------
-Route::get('dashboard',[DashboardController::class,'dashboard'])->name('dashboard');
+Route::get('dashboard',[DashboardController::class,'dashboard'])->name('dashboard')->middleware('admin');;
 Route::get('admin/users',[UserController::class,'users'])->name('admin/users');
 Route::get('admin/categories',[ProductController::class,'categories'])->name('admin/categories');
 Route::get('admin/products',[ProductController::class,'products'])->name('admin/products');

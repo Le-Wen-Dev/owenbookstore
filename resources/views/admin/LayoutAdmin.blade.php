@@ -34,6 +34,7 @@
   <script>
     var ctx1 = document.getElementById("chart-line").getContext("2d");
 
+
     var gradientStroke1 = ctx1.createLinearGradient(0, 230, 0, 50);
 
     gradientStroke1.addColorStop(1, 'rgba(94, 114, 228, 0.2)');
@@ -42,9 +43,9 @@
     new Chart(ctx1, {
       type: "line",
       data: {
-        labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        labels: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9","Tháng 10", "Tháng 11", "Tháng 12"],
         datasets: [{
-          label: "Mobile apps",
+          label: "Đơn hàng",
           tension: 0.4,
           borderWidth: 0,
           pointRadius: 0,
@@ -52,7 +53,7 @@
           backgroundColor: gradientStroke1,
           borderWidth: 3,
           fill: true,
-          data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
+          data: [0, 0, 0, 0, 0, 0, billsCount, 0, 0,0,0,0],
           maxBarThickness: 6
 
         }],

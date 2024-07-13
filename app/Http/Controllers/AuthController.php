@@ -51,8 +51,17 @@ class AuthController extends Controller
     
             // Store the authenticated user in the session
             Session::put('user', $user);
+            if(Auth::attempt($crenden)){
+                $user=Auth::user();
+                if($user->role==1){
+                 return redirect()->route("dashboard")->with('success','Thành công ');;
+                }
+                else{
+                 return redirect()->route("home")->with('success','Bạn đã đăng nhập thành công');   
+             }
+         }
            
-            return redirect()->route('home')->withSuccess('Bạn đã đăng nhập thành công ');
+            // return redirect()->route('home')->withSuccess('Bạn đã đăng nhập thành công ');
         }
         return back()->withErrors([
             'email' => 'email của bạn đã sai ',
