@@ -32,7 +32,7 @@
               <div class="row align-items-center">
                  <div class="col-xl-2 col-lg-3">
                     <div class="logo">
-                       <a href="index.html"><img src="assets/img/logo/logo.png" alt="logo"></a>
+                       <a href="{{route('home')}}"><img src="assets/img/logo/logo.png" alt="logo"></a>
                     </div>
                  </div>
                  <div class="col-xl-10 col-lg-9">
@@ -79,7 +79,7 @@
                                 <i class="fal fa-shopping-cart"></i>
                                 <span class="tp-product-count">2</span>
                              </button>
-                             <a href="sign-in.html"><i class="fal fa-user"></i></a>
+                             <a href="{{route('login')}}"><i class="fal fa-user"></i></a>
                              <a href="wishlist.html"><i class="fal fa-heart"></i></a>
                           </div>
                        </div>
@@ -96,24 +96,13 @@
                        <div class="cat-menu__category p-relative">
                           <a class="tp-cat-toggle" href="#" role="button"><i class="fal fa-bars"></i>Categories</a>
                           <div class="category-menu category-menu-off">
-                             <ul class="cat-menu__list">
-                                <li><a href="shop.html"><i class="fal fa-user"></i> Candles</a></li>
-                                <li class="menu-item-has-children"><a href="shop.html"><i class="fal fa-flower-tulip"></i> Handmade</a>
-                                   <ul class="submenu">
-                                      <li><a href="shop-2.html">Chair</a></li>
-                                      <li><a href="shop-2.html">Table</a></li>
-                                      <li><a href="shop.html">Wooden</a></li>
-                                      <li><a href="shop.html">furniture</a></li>
-                                      <li><a href="shop.html">Clock</a></li>
-                                      <li><a href="shop.html">Gifts</a></li>
-                                      <li><a href="shop.html">Crafts</a></li>
-                                   </ul>
-                                </li>
-                                <li><a href="shop.html"><i class="fal fa-shoe-prints"></i> Gift Sets</a></li>
-                                <li><a href="shop.html"><i class="fal fa-smile"></i> Plastic Gifts</a></li>
-                                <li><a href="shop.html"><i class="fal fa-futbol"></i> Handy Cream</a></li>
-                                <li><a href="shop.html"><i class="fal fa-crown"></i> Cosmetics</a></li>
-                                <li><a href="shop.html"><i class="fal fa-gift"></i> Silk Accessories</a></li>
+                           <!-- category-menuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu -->
+                             <ul class="cat-menu__list">    
+                                    @if(isset($category) && is_object($category))
+                                        @foreach($category as $category)
+                                      <li><a href="{{ route('products.by.category', $category->id) }}"><i class="fal fa-smile"></i>{{ $category->name }}</a></li>
+                                      @endforeach
+                                      @endif  
                              </ul>
                              <div class="daily-offer">
                                 <ul>
@@ -236,7 +225,7 @@
            <div class="row align-items-center">
               <div class="col-xl-2 col-lg-3">
                  <div class="logo">
-                    <a href="index.html"><img src="assets/img/logo/logo.png" alt="logo"></a>
+                    <a href="{{route('home')}}"><img src="assets/img/logo/logo.png" alt="logo"></a>
                  </div>
               </div>
               <div class="col-xl-6 col-lg-6">
@@ -244,7 +233,7 @@
                     <nav>
                        <ul>
                           <li class="has-dropdown">
-                             <a href="index.html">Home</a>
+                             <a href="{{route('home')}}">Home</a>
                              <ul class="submenu">
                                 <li><a href="index.html">Wooden  Home</a></li>
                                 <li><a href="index-2.html">Fashion Home</a></li>
@@ -444,7 +433,7 @@
             </div>
         </div>
         <div class="tpsideinfo__account-link">							
-           <a href="sign-in.html"><i class="fal fa-user"></i> Login / Register</a>
+           <a href="{{route('login')}}"><i class="fal fa-user"></i> Login / Register</a>
         </div>
         <div class="tpsideinfo__wishlist-link">
            <a href="wishlist.html" target="_parent"><i class="fal fa-heart"></i> Wishlist</a>

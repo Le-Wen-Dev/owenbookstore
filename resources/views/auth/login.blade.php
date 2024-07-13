@@ -120,6 +120,7 @@
                 </button>
               </div>
             </form>
+            <p>Bạn chưa có tài khoản?-><a href="{{route('register')}}">Đăng kí</a></p>
           </div>
         </div>
       </div>

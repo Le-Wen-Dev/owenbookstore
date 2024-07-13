@@ -202,18 +202,22 @@
            </div>
         </div>
         <div class="custom-row category-border pb-45 justify-content-xl-between">
+         @if(isset($categories) && is_object($categories))
+         @foreach($categories as $categories)
            <div class="tpcategory mb-40">
               <div class="tpcategory__icon p-relative">
                  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="33" height="50" viewBox="0 0 33 50">
                  <image id="cat-icon-01.svg" width="33" height="50" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAyCAYAAADSprJaAAAEt0lEQVRYhcWYa2jVZRzHP5tzF9c0dFZr62Kz5VZ2p1AqhWgh2M3oSkG+CHwjVBK96F12gcJ3RfUmiIggKsoiipakZaQk64YutQvq1DJrzplzWzvxjM9/PDs7O2eX89cf/DnnOef/e37f53f/PYyDFgPrgB3AMaAf6Bvj6ffpAjYDjwPzC4koyfPfbOApYBXQA3wM/Ab8O449ZwKXAa3AAWAt8PJ4ThzTXGAjkAGeBuonugFQDiwE3nOfdRNhLgPWA0eBWychPBetFcgj42V4QIZVRQKAJnpbs15Y6OUKYBuwVY0Uk5qAE8ALhfa8GvgHWFNkAAm1AVuA6vjH0qyXQjidbnilQRuARuDsfCCCvQYMxTQo5Jo5QEM+EAHlHuDvlEB0APsN35w0QzOsTwkAUSIbQbEmqjXHjhRBhNCvNZsOUwxirk9HiiACPQa8GaeAGESSRHanDCL4W4u1aRSIZl/4M2UQ2/WNC3KBuBTYCxxKGUSQ0e2hR4FoNny6UgbRCRzJBWIWcB7wKzCYMoj92ZpIPPR8v2/Pw3yWKf00oMpiN137lphpQ1d13A6sxzoUBP4X7RM6sF2WiJC0+mIQyHAVcAVwMXAYeAa40c6oWsYyn2nylShoMKv9C4B6gX1qeacF7A9lhJTQmYAIHVAN8IYbddvUfKeg3+2Qjhk93ZGATKTVSoHONimdabFqUP33afoyeQOQznCCa4APgYPAu8DP1o8DnmCgCH5Q5qnr9b1LgIfU3lI84d7IJCeLFqmNZxHAhDvhIlAw8xeh0SmNPPtkU6nmKElAZE4BCJQ7BCJ4fN0pAFCpsx4psxV/EnjQKOkvMJlNlTICWG29eq5ENK8DywzPQ4KoiEzVqw0rJmC6hKc82ue4DpmE6kvAo8mJQwK525xxu6n5fR12ur8ddR6dVkA4Cr/XxNYmgJAMb7NpanPM/EDNj6LNvpRQs4ls9QTN8BrQ7gExYYV9Xsx+MXvKmmOq3RD9dj1whvZ7RZ58Jil1cp9pOQh8X6rVPXZwpXG1zgbRoNp2Rhsu0aYrLWgDBRw3ox/Uul4iCDTF5daWv8baYJnOs9x1nRXvB38r96nM85RbxFaajbdGfcsTCr8ozyF42JO0uL7F9c35mPLQGtWeCF3henHMkj2BNZm89rm+0z6gfZIgNur9d7nend3kZoMI388FfjEcQ/d0k+qcbPP7kzNG0rcmvciIe6zYMWf4Z4cmuNZo+XwKtaXXy5Y+1z0ecoRPZI+BjdEY2GokxDljMjSoQ16pqQOIBTlcYYgWeuL7tdsm4JspAsDsGzTyquvnNXdNLk00CiJoYp7I3ykCiB6LZKvyOgQ2fEcRg2iyRT9s6xXM81kRQAT6yPaxxab5xFhjYIuh2WNofl/E4XibEbbCCaw7ds4YxAJBZFTdJzpSMSjUjG893EFDdhSIKtWzywuM0Dd8VSQAmLA2KaPWcWL4PjMBUW8tCE3NHWpkSxFBBPrUXmSpzl+XXCUmIOYZRl3m9fYUrgh+1B9u0DmrnG+HQcwXRI2hmsbl2YA97CKvBoLmz4lfCDf5oYR/7edkbvXHQ6G3CI4fhp7weU/MdJ12CgCGxrKUKJz+LbUSHLUR4H/WLynTfCxBKgAAAABJRU5ErkJggg=="/>
                  </svg>
-                 <span>20</span>
+                 <span>{{ $categories->products_count }}</span>
               </div>
               <div class="tpcategory__content">
-                 <h5 class="tpcategory__title"><a href="shop.html">Driftwood <br> Table Decor</a></h5>
+                 <h5 class="tpcategory__title"><a href="{{ route('products.by.category', $categories->id) }}">{{ $categories->name }}</a></h5>
               </div>
            </div>
-           <div class="tpcategory mb-40">
+           @endforeach
+                                      @endif  
+           {{-- <div class="tpcategory mb-40">
               <div class="tpcategory__icon">
                  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="50" viewBox="0 0 50 50">
                  <image id="cat-icon-02.svg" width="50" height="50" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAE5ElEQVRoge2ae4hVVRTGfzON0zRN0mg1Y8oUDZXRA0rTHkZGBSGURi+noD8Sw6IXmBVGET2hHItKoQkkMDIT0nDK6DG9obI0wqLsbZlpZaWmjeXcWPKd2J3Ouffs87jdP+aDw3DPfq1v77XX/vY6QwY0AG8B07J0EsJ04BX17YX6DIPuCRwLHJ0jkYOA8UCjb8MsREpAP/Bnhj7C+Et9eiMLkZrCIJFawyCRWsMgkVpDrRHp1/m03behtxTICR3AxIgT/CSgGbgS2Om8HwC+BvqKMMYG/AW4L0XbBZr5qGdnzPvfgNa4DrOsyHZHpviiCfgdmAD8AdQ57Uuh37YaM4Aryo2RhMjxcgN3P5XkFi3AqcANocHrNIMLgW0Rfb4HdAFbgS8S2DAGWA9sSVA3EkOAT8q4wQ5gV5nyuFncF9gAvAHsUcGGqRX6SgST6huBxcAhHs9orchtZQa5SAb2AkdFlLfKeHOtFaEV94a501fAC54N2yTJL61Qb7rIWN1VwHJgKfCSJtDK3szrmOiRn+/v0eZWGTE6pnw4cJWML8k9vwFWAu/KnbeozP7OV2jOhMPV4VMJZ+YYEV8eU38KsE592rV2JnBExJlyADBZoXqr6s8F9stC5mp1tAw4WeHThfnvSLmKucRn2k9h3Kt+3gEmeYx/IDBPbT8CxmYhM8OJRt8Da4HPnSc4Vz7WwC4sTD+p8rsUDdPAjoEvNSHeOBR4SLNshmwG3perPaw9tEKEdugO36fVCdxlrKLPNVlmUtgb2AsYmjRJYZXmyDAj8JhO4rhNb/U7gYuBNWpj5M9Q+cE5kHBh0e3VSvvWos1qGfOoDPSBKYaz5M/Wx505k8AJ3V1xFcYBPwM/OrOZFo1yvyDqpd0bcehTcGkJl3dK0X4bE3XSYqbI9ORMZIr6Pd192apN/J3iet64XoPOyrHfennOE+7LuRpoYgEkAjyt4HGY886i0D4pH2v7umTUbnSKxCMFkjCMAH4CntHvqXLlbTq9fZ6N8h6ze1OgKBdIDhwJ/FAwmeuA+xVUzKDzU4hCM/48yaE7gA+QtChJAlQDwyUEs443TxPxDyaLyAlVImJYIoXwn7DpgUW6Ne4O6fVaok3A21Uk0qsomeW0N+n0YfBZo0Gyw2bmAV1wmrLexmJQp0H7HaUwSnLGFzYBxwE3Be0apKHOAS5TCFwfkdnIAwNSxc1KOLwmJZsGF8i+F6PaXqu9MqqA1Qhwo/JWwzL00S4JtcR96Ya9Af0tZRgkCXbJhdOiR55zcxyRIGc0okAS7ToQvXO7goXcs6Xd1sZVOk2rcWEWSytgpZO/9VHCbdJTZt89lSrbcv2q22ARaJchc9S3ZVCeUyYzLklniYbZkjHW9vKkdj2o07KtACLTZMwY/Z4tNysp026kuoG7gcclO4I8QK/kSGKMU8NbcibRLKPD4dK84BLgeYXizdqrG0SkO6SUvbBYUSV1BxHo1gRNKFPHAk+zDmfv/3yIQocU8GplKrKiSyTm52GcLyZp8Jc9U6VRsPTps//j1zHO1SFp+aozPds2KqHXUZBt3jgF+FSrs1CJ5HIzO0zRaU0Vrs3/QhJhOFQfJ2/XIbZOEWWVrptNUrPjlbRoUdksJdAGEoxRVZhytSyihUr7BGD3bBOAppRNxNkq2GF6YoKvUPkC+Btn9Uhf8hiAbQAAAABJRU5ErkJggg=="/>
@@ -274,7 +278,7 @@
               <div class="tpcategory__content">
                  <h5 class="tpcategory__title"><a href="shop.html">Appetizer <br> Plate Set </a></h5>
               </div>
-           </div>
+           </div> --}}
         </div>
      </div>
   </section>
@@ -376,6 +380,8 @@
          </div>
          <div class="tab-pane fade" id="nav-popular" role="tabpanel" aria-labelledby="nav-popular-tab">
             <div class="row row-cols-xxl-5 row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-2 row-cols-1">
+               @if(isset($product_popular) && is_object($product_popular))
+              @foreach($product_popular as $pro)
                <div class="col">
                   <div class="tpproduct pb-15 mb-30">
                      <div class="tpproduct__thumb p-relative">
@@ -391,281 +397,38 @@
                         </div>
                      </div>
                      <div class="tpproduct__content">
-                        <h3 class="tpproduct__title"><a href="shop-details.html">CLCo. Incredible Paper Car</a></h3>
+                        <h3 class="tpproduct__title"><a href="shop-details.html">{{ $pro->name }}</a></h3>
                         <div class="tpproduct__priceinfo p-relative">
                            <div class="tpproduct__priceinfo-list">
-                              <span>$31.00</span>
+                              <span>{{ $pro->price }}</span>
                            </div>
                            <div class="tpproduct__cart">
-                              <a href="cart.html"><i class="fal fa-shopping-cart"></i>Add To Cart</a>
+                              <form action="{{asset('addtocart')}}" method="POST">
+                                 @csrf
+                          
+                              @if(Session::has('users'))
+                              @php
+                              $users = Session::get('users');
+                              @endphp
+                              <input type="hidden" name="id_user" value="{{ $users->id }}">
+                              @endif
+                              <input type="hidden" name="id" value="{{ $pro->id }}">
+                              <input type="hidden" name="name" value="{{ $pro->name }}">
+                              <input type="hidden" name="img" value="{{ $pro->img }}">
+                              <input type="hidden" name="price" value="{{ $pro->price }}">
+                              <input type="hidden" name="description" value="{{ $pro->description }}">
+                               <button class="add-to-cart-btn" type="submit">
+                                   <i class="fal fa-shopping-cart"></i>
+                                   Add To Cart
+                               </button>
+                              </form>
                            </div>
                         </div>
                      </div>
                   </div>
                </div>
-               <div class="col">
-                  <div class="tpproduct pb-15 mb-30">
-                     <div class="tpproduct__thumb p-relative">
-                        <a href="shop-details-2.html">
-                           <img src="assets/img/product/home-one/product-13.jpg" alt="product-thumb">
-                           <img class="product-thumb-secondary" src="assets/img/product/home-one/product-14.jpg" alt="">
-                        </a>
-                        <div class="tpproduct__thumb-action">
-                           <a class="comphare" href="#"><i class="fal fa-exchange"></i></a>
-                           <a class="quckview" href="#"><i class="fal fa-eye"></i></a>
-                           <a class="wishlist" href="wishlist.html"><i class="fal fa-heart"></i></a>
-                        </div>
-                     </div>
-                     <div class="tpproduct__content">
-                        <h3 class="tpproduct__title"><a href="shop-details-2.html">Progash Durable Granite Hat</a></h3>
-                        <div class="tpproduct__priceinfo p-relative">
-                           <div class="tpproduct__priceinfo-list">
-                              <span>$31.00</span>
-                           </div>
-                           <div class="tpproduct__cart">
-                              <a href="cart.html"><i class="fal fa-shopping-cart"></i>Add To Cart</a>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="col">
-                  <div class="tpproduct pb-15 mb-30">
-                     <div class="tpproduct__thumb p-relative">
-                        <a href="shop-details-2.html">
-                           <img src="assets/img/product/home-one/product-15.jpg" alt="product-thumb">
-                           <img class="product-thumb-secondary" src="assets/img/product/home-one/product-16.jpg" alt="">
-                        </a>
-                        <div class="tpproduct__thumb-action">
-                           <a class="comphare" href="#"><i class="fal fa-exchange"></i></a>
-                           <a class="quckview" href="#"><i class="fal fa-eye"></i></a>
-                           <a class="wishlist" href="wishlist.html"><i class="fal fa-heart"></i></a>
-                        </div>
-                        <div class="tpproduct__variation">
-                           <a class="tpproduct__variationitem" href="#">
-                              <div class="tpproduct__termshape">
-                                 <span class="tpproduct__termshape-bg"></span>
-                                 <span class="tpproduct__termshape-border"></span>
-                              </div>
-                           </a>
-                           <a class="tpproduct__variationitem" href="#">
-                              <div class="tpproduct__termshape">
-                                 <span class="tpproduct__termshape-bg red-product-bg"></span>
-                                 <span class="tpproduct__termshape-border red-product-border"></span>
-                              </div>
-                           </a>
-                           <a class="tpproduct__variationitem" href="#">
-                              <div class="tpproduct__termshape">
-                                 <span class="tpproduct__termshape-bg yellow-product-bg"></span>
-                                 <span class="tpproduct__termshape-border yellow-product-border"></span>
-                              </div>
-                           </a>
-                           <a class="tpproduct__variationitem" href="#">
-                              <div class="tpproduct__termshape">
-                                 <span class="tpproduct__termshape-bg green-product-bg"></span>
-                                 <span class="tpproduct__termshape-border green-product-border"></span>
-                              </div>
-                           </a>
-                        </div>
-                     </div>
-                     <div class="tpproduct__content">
-                        <h3 class="tpproduct__title"><a href="shop-details.html">Purab Enormous Miranda Bottle</a></h3>
-                        <div class="tpproduct__priceinfo p-relative">
-                           <div class="tpproduct__priceinfo-list">
-                              <span>$31.00</span>
-                           </div>
-                           <div class="tpproduct__cart">
-                              <a href="cart.html"><i class="fal fa-shopping-cart"></i>Add To Cart</a>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="col">
-                  <div class="tpproduct pb-15 mb-30">
-                     <div class="tpproduct__thumb p-relative">
-                        <a href="shop-details-2.html">
-                           <img src="assets/img/product/home-one/product-17.jpg" alt="product-thumb">
-                           <img class="product-thumb-secondary" src="assets/img/product/home-one/product-18.jpg" alt="">
-                        </a>
-                        <div class="tpproduct__thumb-action">
-                           <a class="comphare" href="#"><i class="fal fa-exchange"></i></a>
-                           <a class="quckview" href="#"><i class="fal fa-eye"></i></a>
-                           <a class="wishlist" href="wishlist.html"><i class="fal fa-heart"></i></a>
-                        </div>
-                     </div>
-                     <div class="tpproduct__content">
-                        <h3 class="tpproduct__title"><a href="shop-details-2.html">Miklonda Co. Crafted Candles</a></h3>
-                        <div class="tpproduct__priceinfo p-relative">
-                           <div class="tpproduct__priceinfo-list">
-                              <span>$31.00</span>
-                              <span class="tpproduct__priceinfo-list-oldprice">$39.00</span>
-                           </div>
-                           <div class="tpproduct__cart">
-                              <a href="cart.html"><i class="fal fa-shopping-cart"></i>Add To Cart</a>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="col">
-                  <div class="tpproduct pb-15 mb-30">
-                     <div class="tpproduct__thumb p-relative">
-                        <a href="shop-details-2.html">
-                           <img src="assets/img/product/home-one/product-19.jpg" alt="product-thumb">
-                           <img class="product-thumb-secondary" src="assets/img/product/home-one/product-20.jpg" alt="">
-                        </a>
-                        <div class="tpproduct__thumb-action">
-                           <a class="comphare" href="#"><i class="fal fa-exchange"></i></a>
-                           <a class="quckview" href="#"><i class="fal fa-eye"></i></a>
-                           <a class="wishlist" href="wishlist.html"><i class="fal fa-heart"></i></a>
-                        </div>
-                     </div>
-                     <div class="tpproduct__content">
-                        <h3 class="tpproduct__title"><a href="shop-details.html">Pinkol Enormous Granite Bottle</a></h3>
-                        <div class="tpproduct__priceinfo p-relative">
-                           <div class="tpproduct__priceinfo-list">
-                              <span>$31.00</span>
-                           </div>
-                           <div class="tpproduct__cart">
-                              <a href="cart.html"><i class="fal fa-shopping-cart"></i>Add To Cart</a>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="col">
-                  <div class="tpproduct pb-15 mb-30">
-                     <div class="tpproduct__thumb p-relative">
-                        <a href="shop-details-2.html">
-                           <img src="assets/img/product/home-one/product-1.jpg" alt="product-thumb">
-                           <img class="product-thumb-secondary" src="assets/img/product/home-one/product-2.jpg" alt="">
-                        </a>
-                        <div class="tpproduct__thumb-action">
-                           <a class="comphare" href="#"><i class="fal fa-exchange"></i></a>
-                           <a class="quckview" href="#"><i class="fal fa-eye"></i></a>
-                           <a class="wishlist" href="wishlist.html"><i class="fal fa-heart"></i></a>
-                        </div>
-                     </div>
-                     <div class="tpproduct__content">
-                        <h3 class="tpproduct__title"><a href="shop-details.html">Miko Wooden Bluetooth Speaker</a></h3>
-                        <div class="tpproduct__priceinfo p-relative">
-                           <div class="tpproduct__priceinfo-list">
-                              <span>$31.00</span>
-                           </div>
-                           <div class="tpproduct__cart">
-                              <a href="cart.html"><i class="fal fa-shopping-cart"></i>Add To Cart</a>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="col">
-                  <div class="tpproduct pb-15 mb-30">
-                     <div class="tpproduct__thumb p-relative">
-                        <a href="shop-details.html">
-                           <img src="assets/img/product/home-one/product-3.jpg" alt="product-thumb">
-                           <img class="product-thumb-secondary" src="assets/img/product/home-one/product-4.jpg" alt="">
-                        </a>
-                        <div class="tpproduct__thumb-action">
-                           <a class="comphare" href="#"><i class="fal fa-exchange"></i></a>
-                           <a class="quckview" href="#"><i class="fal fa-eye"></i></a>
-                           <a class="wishlist" href="wishlist.html"><i class="fal fa-heart"></i></a>
-                        </div>
-                     </div>
-                     <div class="tpproduct__content">
-                        <h3 class="tpproduct__title"><a href="shop-details-2.html">Gorgeous Wooden Gloves</a></h3>
-                        <div class="tpproduct__priceinfo p-relative">
-                           <div class="tpproduct__priceinfo-list">
-                              <span>$31.00</span>
-                           </div>
-                           <div class="tpproduct__cart">
-                              <a href="cart.html"><i class="fal fa-shopping-cart"></i>Add To Cart</a>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="col">
-                  <div class="tpproduct pb-15 mb-30">
-                     <div class="tpproduct__thumb p-relative">
-                        <a href="shop-details-2.html">
-                           <img src="assets/img/product/home-one/product-5.jpg" alt="product-thumb">
-                           <img class="product-thumb-secondary" src="assets/img/product/home-one/product-6.jpg" alt="">
-                        </a>
-                        <div class="tpproduct__thumb-action">
-                           <a class="comphare" href="#"><i class="fal fa-exchange"></i></a>
-                           <a class="quckview" href="#"><i class="fal fa-eye"></i></a>
-                           <a class="wishlist" href="wishlist.html"><i class="fal fa-heart"></i></a>
-                        </div>
-                     </div>
-                     <div class="tpproduct__content">
-                        <h3 class="tpproduct__title"><a href="shop-details.html">Pinkol Enormous Granite Bottle</a></h3>
-                        <div class="tpproduct__priceinfo p-relative">
-                           <div class="tpproduct__priceinfo-list">
-                              <span>$31.00</span>
-                           </div>
-                           <div class="tpproduct__cart">
-                              <a href="cart.html"><i class="fal fa-shopping-cart"></i>Add To Cart</a>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="col">
-                  <div class="tpproduct pb-15 mb-30">
-                     <div class="tpproduct__thumb p-relative">
-                        <span class="tpproduct__thumb-topsall">On Sale</span>
-                        <a href="shop-details-2.html">
-                           <img src="assets/img/product/home-one/product-7.jpg" alt="product-thumb">
-                           <img class="product-thumb-secondary" src="assets/img/product/home-one/product-8.jpg" alt="">
-                        </a>
-                        <div class="tpproduct__thumb-action">
-                           <a class="comphare" href="#"><i class="fal fa-exchange"></i></a>
-                           <a class="quckview" href="#"><i class="fal fa-eye"></i></a>
-                           <a class="wishlist" href="wishlist.html"><i class="fal fa-heart"></i></a>
-                        </div>
-                     </div>
-                     <div class="tpproduct__content">
-                        <h3 class="tpproduct__title"><a href="shop-details-2.html">Gorgeous Aluminum Table</a></h3>
-                        <div class="tpproduct__priceinfo p-relative">
-                           <div class="tpproduct__priceinfo-list">
-                              <span>$31.00</span>
-                           </div>
-                           <div class="tpproduct__cart">
-                              <a href="cart.html"><i class="fal fa-shopping-cart"></i>Add To Cart</a>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="col">
-                  <div class="tpproduct pb-15 mb-30">
-                     <div class="tpproduct__thumb p-relative">
-                        <a href="shop-details-2.html">
-                           <img src="assets/img/product/home-one/product-9.jpg" alt="product-thumb">
-                           <img class="product-thumb-secondary" src="assets/img/product/home-one/product-10.jpg" alt="">
-                        </a>
-                        <div class="tpproduct__thumb-action">
-                           <a class="comphare" href="#"><i class="fal fa-exchange"></i></a>
-                           <a class="quckview" href="#"><i class="fal fa-eye"></i></a>
-                           <a class="wishlist" href="wishlist.html"><i class="fal fa-heart"></i></a>
-                        </div>
-                     </div>
-                     <div class="tpproduct__content">
-                        <h3 class="tpproduct__title"><a href="shop-details.html">Evo Lightweight Granite Shirt</a></h3>
-                        <div class="tpproduct__priceinfo p-relative">
-                           <div class="tpproduct__priceinfo-list">
-                              <span>$31.00</span>
-                              <span class="tpproduct__priceinfo-list-oldprice">$39.00</span>
-                           </div>
-                           <div class="tpproduct__cart">
-                              <a href="cart.html"><i class="fal fa-shopping-cart"></i>Add To Cart</a>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
+               @endforeach
+               @endif  
             </div>
          </div>
          <div class="tab-pane fade" id="nav-sale" role="tabpanel" aria-labelledby="nav-sale-tab">
