@@ -21,7 +21,7 @@ use App\Models\Favorites;
 |
 */
 Route::get('/',[HomeController::class,'index'])->name('home');
-Route::get('/products/category/{category_id}', [HomeController::class, 'get_products_by_idcategory'])->name('products.by.category');
+Route::get('/{category_id}', [HomeController::class, 'get_products_by_idcategory'])->name('products.by.category');
 Route::prefix('/')->group(function () {
     Route::get('/favorites', [FavouriteController::class, 'index'])->name('favorites');
     Route::post('/addToFavorites', [FavouriteController::class, 'addToFavorites']);
