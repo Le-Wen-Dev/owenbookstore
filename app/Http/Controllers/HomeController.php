@@ -48,14 +48,14 @@ class HomeController extends Controller
               return view('compoments.products_by_category', compact('categories', 'products', 'categoryProduct'));
               }
               public function get_product_detail($id)
-    {
+              {
               $product = Products::findOrFail($id);
               // Lấy danh mục của sản phẩm
               $related_products = Products::where('categories_id', $product->categories_id)->where('id', '!=', $id)->get();
               return view('compoments.detail', compact('product', 'related_products'));
-    }
-    public function allproduct(){
-       $products = Products::orderBy('id', 'desc')->paginate(15);
-       return view('compoments.allproduct',compact('products'));
-    }
+              }
+       public function allproduct(){
+              $products = Products::orderBy('id', 'desc')->paginate(15);
+              return view('compoments.allproduct',compact('products'));
+              }
 }
