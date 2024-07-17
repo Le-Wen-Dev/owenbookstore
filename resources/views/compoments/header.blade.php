@@ -1,19 +1,13 @@
-      <!-- preloader -->
+
       <div id="preloader">
         <div class="preloader">
             <span></span>
             <span></span>
         </div>
     </div>
-    <!-- preloader end  -->
-
-     <!-- Scroll-top -->
         <button class="scroll-top scroll-to-target" data-target="html">
            <i class="fas fa-angle-up"></i>
         </button>
-     <!-- Scroll-top-end-->
-
-     <!-- header-area-start -->
      <header>
         <div class="header-top space-bg">
            <div class="container">
@@ -75,12 +69,45 @@
                              </select>
                           </div>
                           <div class="header-meta__social d-flex align-items-center ml-25">
-                             <button class="header-cart p-relative tp-cart-toggle">
+                             {{-- <button class="header-cart p-relative tp-cart-toggle">
                                 <i class="fal fa-shopping-cart"></i>
                                 <span class="tp-product-count">2</span>
-                             </button>
-                             <a href="{{route('login')}}"><i class="fal fa-user"></i></a>
-                             <a href="wishlist.html"><i class="fal fa-heart"></i></a>
+                             </button> --}}
+                          
+                             @if(Auth::check())
+                              {{-- <p>{{ Auth::user()->name }}</p> --}}
+                              <div class="main-menu mt-3">
+                              <nav id="mobile-menu">
+                                 <ul>
+                                    <li class="has-dropdown">
+                                       <a href="index.html">
+                                          <img src="asset/shop/reviewer-01.png" alt=""  width="40px" height="40px" style="border-radius: 50%">
+                                       </a>
+                                       <ul class="submenu">
+                                          <li><a href="index.html">Xin chào : {{ Auth::user()->name }}</a></li>
+                                          <li><a href="index-2.html">Thông tin tài khoản</a></li>
+                                          <li><a href="index-3.html">Đổi mật khẩu</a></li>
+                                          {{-- <li><a href="index-4.html">Cosmetics Home</a></li>
+                                          <li><a href="index-5.html">Food Grocery</a></li> --}}
+                                          <li><a  href="#" onclick="event.preventDefault();
+                                           document.getElementById('logout-form').submit();">Đăng xuất </a></li>
+                                          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                          @csrf
+                                       </form>
+                                       </ul>
+                                    </li>
+                                 </ul>
+                              </nav>
+                              </div>
+                              @else 
+                              <a href="{{route('login')}}"><i class="fal fa-user p-3"></i></a>
+                              @endif
+                              <button class="header-cart p-relative tp-cart-toggle">
+                                 <i class="fal fa-shopping-cart"></i>
+                                 <span class="tp-product-count">2</span>
+                              </button>
+                            
+                              <a href="wishlist.html"><i class="fal fa-heart"></i></a>
                           </div>
                        </div>
                     </div>

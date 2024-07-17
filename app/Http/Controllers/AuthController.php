@@ -154,23 +154,34 @@ class AuthController extends Controller
         $request->validate([
             'otp' => 'required|digits:6',
         ]);
+        
         $otp = $request->otp;
         $email = $request->session()->get('email'); // Lấy email từ session
         $user = User::where('email', $email)->first();
+    
         if (!$user) {
             return back()->withErrors(['otp' => 'User not found.']);
         }
+    
         // Kiểm tra OTP từ session
         $savedOtp = $request->session()->get('otp');
         if ($savedOtp == $otp) {
             // Xác nhận OTP thành công
             $user->otp = null; // Xóa OTP trong cơ sở dữ liệu sau khi xác nhận thành công
             $user->save();
-            return redirect()->route('dashboard')->with('success', 'OTP verified successfully.');
+    
+            // Đăng nhập người dùng
+            Auth::loginUsingId($user->id);
+    
+            // Lưu thông tin người dùng vào session
+            $request->session()->put('user', $user);
+    
+            return redirect()->route('home')->with('success', 'OTP verified successfully.');
         } else {
             // Xác nhận OTP không thành công
             return back()->withErrors(['otp' => 'Invalid OTP. Please try again.']);
         }
     }
+    
     
 }

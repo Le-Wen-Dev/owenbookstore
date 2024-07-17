@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\FavouriteController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\InventoryController;
 use App\Models\Favorites;
 
 /*
@@ -67,6 +68,6 @@ Route::get('/verify-otp', [AuthController::class, 'showVerifyOtpForm'])->name('v
 // Route để xử lý việc xác nhận OTP
 Route::post('/verify-otp', [AuthController::class, 'verifyOtp'])->name('verify.otp');
 
+////----------------------------------------------------------------Kho hàng ------------------------------------------------------------
 
-
-
+Route::get('/inventory',[InventoryController::class,'getInventory'])->name('inventory');
