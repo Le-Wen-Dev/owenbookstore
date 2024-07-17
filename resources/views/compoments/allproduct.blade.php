@@ -153,35 +153,9 @@
               <div class="row">
                  <div class="col-xxl-12">
                     <div class="basic-pagination text-center">
-                       <nav>
-                          <ul>
-                             <li>
-                                <a href="shop.html">
-                                   <i class="fal fa-long-arrow-left"></i>
-                                </a>
-                             </li>
-                             <li>
-                                <a href="shop.html">01</a>
-                             </li>
-                             <li>
-                                <span class="current">02</span>
-                             </li>
-                             <li>
-                                <a href="shop.html">- - -</a>
-                             </li>
-                             <li>
-                                <a href="shop.html">07</a>
-                             </li>
-                             <li>
-                                <a href="shop.html">08</a>
-                             </li>
-                             <li>
-                                <a href="shop.html">
-                                   <i class="fal fa-long-arrow-right"></i>
-                                </a>
-                             </li>
-                          </ul>
-                        </nav>
+        <div class="d-flex justify-content-center">
+                        {{$products->links('pagination::bootstrap-4')}}
+                    </div>
                     </div>
                  </div>
               </div>

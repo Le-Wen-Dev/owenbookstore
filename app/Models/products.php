@@ -18,4 +18,13 @@ class products extends Model
     // public function products(){
         
     // }
+    public function category()
+    {
+        return $this->belongsTo(Categories::class);
+    }
+    public function getDiscountedPriceAttribute()
+{
+    return $this->price * (1 - $this->sale / 100);
+}
+
 }

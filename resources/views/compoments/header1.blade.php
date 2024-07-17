@@ -76,7 +76,7 @@
                          <nav id="mobile-menu">
                             <ul>
                                <li class="has-dropdown">
-                                  <a href="index.html">Home</a>
+                                  <a href="{{route('home')}}">Home</a>
                                   <ul class="submenu">
                                      <li><a href="index.html">Wooden  Home</a></li>
                                      <li><a href="index-2.html">Fashion Home</a></li>

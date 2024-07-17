@@ -156,8 +156,8 @@
                                    </ul>
                                 </li>
                                 <li class="has-dropdown">
-                                   <a href="shop.html">Shop</a>
-                                   <ul class="submenu">
+                                   <a href="{{route('allproduct')}}">Shop</a>
+                                   {{-- <ul class="submenu">
                                       <li><a href="shop.html">Shop</a></li>
                                       <li><a href="shop-2.html">Shop 2</a></li>
                                       <li><a href="shop-details.html">Shop Details </a></li>
@@ -168,7 +168,7 @@
                                       <li><a href="checkout.html">Checkout</a></li>
                                       <li><a href="wishlist.html">Wishlist</a></li>
                                       <li><a href="track.html">Product Track</a></li>
-                                   </ul>
+                                   </ul> --}}
                                 </li>
                                 <li class="has-dropdown has-megamenu">
                                    <a href="about.html">Pages</a>
