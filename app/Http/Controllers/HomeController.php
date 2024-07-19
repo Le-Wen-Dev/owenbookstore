@@ -4,11 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\Products;
 use App\Models\categories;
+use App\Models\Carts;
 use Illuminate\Http\Request;
 
 
 class HomeController extends Controller
 {
+       // protected $cat;
+
+       // public function __construct()
+       // {
+       //     $this->cat = new categories();
+       // }
        public function index(){
               //sản phẩm mới nhất
               $products = Products::orderBy('created_at', 'desc')->paginate(10);
@@ -24,13 +31,19 @@ class HomeController extends Controller
                $saleProducts = Products::where('sale', '>', 0)
                ->orderBy('sale', 'desc')
                ->paginate(10);
-       
-              // Tính toán giá giảm cho mỗi sản phẩm
+               $id_user = auth()->id();
+               $cart = Carts::where('id_user', $id_user)->get();
+             $total = 0;
+             foreach ($cart as $item) {
+                 $item->total = $item->price * $item->quantity;
+                 $total += $item->total;
+             }
+             $count = count($cart);
               $saleProducts->transform(function($product) {
                      $product->sale = $product->price * ( $product->sale /100);
                      return $product;
               });
-              return view('compoments.home',compact('products','category','categories','product_popular','saleProducts'));
+              return view('compoments.home',compact('products','category','categories','product_popular','saleProducts','cart','total','count',));
               }
        public function get_products_by_idcategory($category_id)
               {
@@ -58,4 +71,6 @@ class HomeController extends Controller
               $products = Products::orderBy('id', 'desc')->paginate(15);
               return view('compoments.allproduct',compact('products'));
               }
+      
 }
+

@@ -163,7 +163,7 @@
                    <div class="header-meta__social d-flex align-items-center ml-25">
                       <button class="header-cart p-relative tp-cart-toggle">
                          <i class="fal fa-shopping-cart"></i>
-                         <span class="tp-product-count">2</span>
+                         <span class="tp-product-count">{{$count}}</span>
                       </button>
                       <a href="sign-in.html"><i class="fal fa-user"></i></a>
                       <a href="wishlist.html"><i class="fal fa-heart"></i></a>
@@ -174,3 +174,56 @@
        </div>
     </div>
  </header>
+ <div class="tpcartinfo tp-cart-info-area p-relative">
+   <button class="tpcart__close"><i class="fal fa-times"></i></button>
+   <div class="tpcart">
+      <h4 class="tpcart__title">Your Cart</h4>
+      <div class="tpcart__product">
+         <div class="tpcart__product-list">
+            <ul>
+             @foreach($cart as $item)
+               <li>
+                  <div class="tpcart__item">
+                     <div class="tpcart__img">
+                        <img src="assets/img/product/home-one/product-1.jpg" alt="">
+                        <div class="tpcart__del">
+                         <a href="#" onclick="event.preventDefault();
+                             document.getElementById('remove_{{ $item->id }}').submit();">
+                             <i class="far fa-times-circle"></i>
+                         </a>
+                         <form id="remove_{{ $item->id }}" action="{{ route('remove.cart.header') }}" method="POST" style="display: none;">
+                             @csrf
+                             <input type="hidden" name="id" value="{{ $item->id }}">
+                         </form>
+                     </div>
+                     </div>
+                     <div class="tpcart__content">
+                        <span class="tpcart__content-title"><a href="shop-details.html">{{$item->name_product}}</a>
+                        </span>
+                        <div class="tpcart__cart-price">
+                           <span class="quantity">{{$item->quantity}}x</span>
+                           <span class="new-price">{{$item->price}}</span>
+                        </div>
+                     </div>
+                  </div>
+                  @endforeach
+               </li>
+            </ul>
+         </div>
+         <div class="tpcart__checkout">
+            <div class="tpcart__total-price d-flex justify-content-between align-items-center">
+               <span> Subtotal:</span>
+               <span class="heilight-price">{{$total}}</span>
+            </div>
+            <div class="tpcart__checkout-btn">
+               <a class="tpcart-btn mb-10" href="{{route('cart')}}">View Cart</a>
+               <a class="tpcheck-btn" href="checkout.html">Checkout</a>
+            </div>
+         </div>
+      </div>
+      <div class="tpcart__free-shipping text-center">
+         <span>Free shipping for orders <b>under 10km</b></span>
+      </div>
+   </div>
+   </div>
+   <div class="cartbody-overlay"></div>

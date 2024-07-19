@@ -31,6 +31,7 @@ Route::prefix('/')->group(function () {
     Route::get('/cart', [CartController::class, 'index'])->name('cart');
     Route::post('/addtocart', [CartController::class, 'addToCart']);
     Route::post('/removecart', [CartController::class, 'removeCart'])->name('remove.cart');//xóa
+    Route::post('/removecart/header', [CartController::class, 'removeCartheader'])->name('remove.cart.header');//xóa
     Route::post('/removefavorites', [FavouriteController::class, 'removeFavarites'])->name('removefavorites');//xóa
     Route::post('/remove-all-cart', [CartController::class, 'removeAllCart'])->name('remove.all.cart');
     Route::post('/remove-all-favorites', [FavouriteController::class, 'removeAllFavarites'])->name('remove.all.favorites');
@@ -73,3 +74,5 @@ Route::post('/verify-otp', [AuthController::class, 'verifyOtp'])->name('verify.o
 ////----------------------------------------------------------------Kho hàng ------------------------------------------------------------
 
 Route::get('/inventory',[InventoryController::class,'getInventory'])->name('inventory');
+Route::get('/import_pro/{id}',[InventoryController::class,'importInventory'])->name('import_pro');
+Route::put('/import_pro/import/{id}',[InventoryController::class,'import_Inventory'])->name('import.product');

@@ -22,7 +22,7 @@
   <link id="pagestyle" href="{{asset('argon-dashboard-master/assets/css/argon-dashboard.css?v=2.0.4')}}" rel="stylesheet" />
 </head>
 
-@include('admin.header')
+@include('admin.compoments.header')
 @yield('content')
 
 

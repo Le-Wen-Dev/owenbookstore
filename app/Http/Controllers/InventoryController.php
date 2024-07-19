@@ -52,4 +52,19 @@ class InventoryController extends Controller
         }
     }
 }
+    public function importInventory(Request $request,$id){
+        $importpro = products::findOrFail($id);
+        return view('admin.inventory.import_product',compact('importpro'));
+    }
+    public function import_Inventory(Request $request, $id)
+    {
+        $request->validate([
+            'quantity' => 'required|integer|min:1|max:50',
+        ]);
+        $importpro = products::findOrFail($id);
+        $importpro->quantity = $request->quantity;
+        $importpro->save();
+        return redirect()->route('inventory')->with('success', 'Cập nhật số lượng thành công.');
+    }
+    
 }

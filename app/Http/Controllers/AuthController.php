@@ -31,7 +31,7 @@ class AuthController extends Controller
             'email'=>$request->email,
             'password'=>Hash::make($request->password),
         ]);
-        return redirect()->route('register')->with('success','Operation completed successfully.');
+        return redirect()->route('login')->with('success','Bạn đã đăng kí thành công !');
 
     }
 // Đange Nhập 
@@ -54,18 +54,24 @@ class AuthController extends Controller
             if(Auth::attempt($crenden)){
                 $user=Auth::user();
                 if($user->role==1){
-                 return redirect()->route("dashboard")->with('success','Thành công ');;
+                 return redirect()->route("dashboard")->with('success','Bạn đã đăng nhập vào trang quản trị  ');;
                 }
                 else{
                  return redirect()->route("home")->with('success','Bạn đã đăng nhập thành công');   
              }
          }
-           
-            // return redirect()->route('home')->withSuccess('Bạn đã đăng nhập thành công ');
+        }else{
+            $existingUser =User::where('email', $crenden['email'])->first();
+        if ($existingUser) {
+            return back()->withErrors([
+                'password' => 'Mật khẩu của bạn đã sai',
+            ])->withInput($request->only('email'));
+        } else {
+            return back()->withErrors([
+                'email' => 'Email của bạn không đúng',
+            ])->withInput($request->only('email'));
+            }
         }
-        return back()->withErrors([
-            'email' => 'email của bạn đã sai ',
-        ])->onlyInput('email');
     }
     // Đăng xuất
     public function logout(Request $request){
@@ -143,7 +149,7 @@ class AuthController extends Controller
 
         // Send email with OTP
         Mail::to($request->email)->send(new OtpEmail($otp));
-        return redirect()->route('send.otp.form')->with('message', 'OTP sent successfully to ' . $request->email);
+        return redirect()->route('send.otp.form')->with('message', 'OTP đã gửi về gmail của bạn ' . $request->email);
     }
     public function showVerifyOtpForm()
     {
@@ -160,7 +166,7 @@ class AuthController extends Controller
         $user = User::where('email', $email)->first();
     
         if (!$user) {
-            return back()->withErrors(['otp' => 'User not found.']);
+            return back()->withErrors(['otp' => 'Email của bạn chưa được đăng kí .']);
         }
     
         // Kiểm tra OTP từ session
@@ -176,10 +182,10 @@ class AuthController extends Controller
             // Lưu thông tin người dùng vào session
             $request->session()->put('user', $user);
     
-            return redirect()->route('home')->with('success', 'OTP verified successfully.');
+            return redirect()->route('home')->with('success', 'Đăng nhập thành công.');
         } else {
             // Xác nhận OTP không thành công
-            return back()->withErrors(['otp' => 'Invalid OTP. Please try again.']);
+            return back()->withErrors(['otp' => 'Sai OTP vui lòng thử lại.']);
         }
     }
     
