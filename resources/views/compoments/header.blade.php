@@ -1,4 +1,13 @@
-
+@php
+$id_user = auth()->id();
+$cart = \App\Models\Carts::where('id_user', $id_user)->get();
+$count = count($cart);
+$total = 0;
+foreach ($cart as $item) {
+    $item->total = $item->price * $item->quantity;
+    $total += $item->total;
+}
+@endphp
       <div id="preloader">
         <div class="preloader">
             <span></span>
@@ -333,11 +342,40 @@
               <div class="col-xl-4 col-lg-9">
                  <div class="header-meta-info d-flex align-items-center justify-content-end">
                     <div class="header-meta__social  d-flex align-items-center"> 
+                     
+                       @if(Auth::check())
+                              {{-- <p>{{ Auth::user()->name }}</p> --}}
+                              <div class="main-menu mt-3">
+                              <nav id="mobile-menu">
+                                 <ul>
+                                    <li class="has-dropdown">
+                                       <a href="index.html">
+                                          <img src="asset/shop/reviewer-01.png" alt=""  width="40px" height="40px" style="border-radius: 50%">
+                                       </a>
+                                       <ul class="submenu">
+                                          <li><a href="index.html">Xin chào : {{ Auth::user()->name }}</a></li>
+                                          <li><a href="index-2.html">Thông tin tài khoản</a></li>
+                                          <li><a href="index-3.html">Đổi mật khẩu</a></li>
+                                          {{-- <li><a href="index-4.html">Cosmetics Home</a></li>
+                                          <li><a href="index-5.html">Food Grocery</a></li> --}}
+                                          <li><a  href="#" onclick="event.preventDefault();
+                                           document.getElementById('logout-form').submit();">Đăng xuất </a></li>
+                                          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                          @csrf
+                                       </form>
+                                       </ul>
+                                    </li>
+                                 </ul>
+                              </nav>
+                              </div>
+                              @else 
+                              <a href="{{route('login')}}"><i class="fal fa-user p-3"></i></a>
+                              @endif
+
                        <button class="header-cart p-relative tp-cart-toggle">
-                          <i class="fal fa-shopping-cart"></i>
-                          <span class="tp-product-count">{{$count}}</span>
-                       </button>
-                       <a href="sign-in.html"><i class="fal fa-user"></i></a>
+                        <i class="fal fa-shopping-cart"></i>
+                        <span class="tp-product-count">{{$count}}</span>
+                     </button>
                        <a href="wishlist.html"><i class="fal fa-heart"></i></a>
                     </div>
                     <div class="header-meta__search-5 ml-25">

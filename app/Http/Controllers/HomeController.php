@@ -31,19 +31,11 @@ class HomeController extends Controller
                $saleProducts = Products::where('sale', '>', 0)
                ->orderBy('sale', 'desc')
                ->paginate(10);
-               $id_user = auth()->id();
-               $cart = Carts::where('id_user', $id_user)->get();
-             $total = 0;
-             foreach ($cart as $item) {
-                 $item->total = $item->price * $item->quantity;
-                 $total += $item->total;
-             }
-             $count = count($cart);
               $saleProducts->transform(function($product) {
                      $product->sale = $product->price * ( $product->sale /100);
                      return $product;
               });
-              return view('compoments.home',compact('products','category','categories','product_popular','saleProducts','cart','total','count',));
+              return view('compoments.home',compact('products','category','categories','product_popular','saleProducts',));
               }
        public function get_products_by_idcategory($category_id)
               {
@@ -57,8 +49,16 @@ class HomeController extends Controller
               $products = Products::where('categories_id', $category_id)
                                    ->orderBy('name', 'asc')
                                    ->get();
+                                   $id_user = auth()->id();
+                                   $cart = Carts::where('id_user', $id_user)->get();
+                                 $total = 0;
+                                 foreach ($cart as $item) {
+                                     $item->total = $item->price * $item->quantity;
+                                     $total += $item->total;
+                                 }
+                                 $count = count($cart);
 
-              return view('compoments.products_by_category', compact('categories', 'products', 'categoryProduct'));
+              return view('compoments.products_by_category', compact('categories', 'products', 'categoryProduct','cart','total'));
               }
               public function get_product_detail($id)
               {
