@@ -48,9 +48,9 @@ Route::get('admin/products', [ProductController::class, 'products'])->name('admi
 // manager product
 Route::get('admin/formaddproduct', [ProductController::class, 'formAddpro'])->name('admin/formaddproduct');
 Route::post('admin/addproduct', [ProductController::class, 'create'])->name('admin/addproduct');
-Route::get('admin/formeditproduct', [ProductController::class, 'formedit'])->name('admin/formeditproduct');
-Route::put('admin/editproduct', [ProductController::class, 'edit'])->name('admin/editproduct');
-Route::delete('remove/{id}', [ProductController::class, 'remove'])->name('remove');
+Route::get('admin/formeditproduct/{id}', [ProductController::class, 'formedit']);
+Route::post('admin/editproduct/{id}', [ProductController::class, 'edit'])->name('admin/editproduct');
+Route::get('admin/remove/{id}', [ProductController::class, 'remove'])->name('remove');
 
 
 ////----------------------------------------------------------------Auth  ------------------------------------------------------------

@@ -138,93 +138,7 @@
                     <div class="card-header pb-0">
                         <h6>@yield('titlepage')</h6>
                     </div>
-                    <div class="card-body px-0 pt-0 pb-2">
-                        <div class="table-responsive p-0">
-                            <table class="table align-items-center mb-0">
-                                <thead>
-                                    <tr>
-                                        <th
-                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-10">
-                                            Sản Phẩm</th>
-                                        <th
-                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-10 ps-2">
-                                            Lượt bán</th>
-                                        <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-10">
-                                            Trạng thái</th>
-                                        <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-10">
-                                            Ngày đăng</th>
-                                        <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-10">
-                                            Thao tác</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($allitem as $value)
-                                    <tr>
 
-                                        <td>
-                                            <p class="text-xs font-weight-bold mb-0">{{($allitem->currentPage() - 1) *
-                                                $allitem->perPage() + $loop->index + 1 }}</p>
-                                            <div class="d-flex px-2 py-1">
-
-                                                <div>
-                                                    <img src="{{asset('uploads/'.$value->img)}}"
-                                                        class="avatar avatar-sm me-3" alt="user1">
-                                                </div>
-                                                <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">{{$value->name}}</h6>
-                                                    <p class="text-xs text-secondary mb-0">{{$value->price}}</p>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            {{$value->sold}}
-                                        </td>
-                                        <td class="align-middle text-center text-sm">
-                                            @if ($value->status == 0)
-
-                                            <form action="" method="POST">
-                                                @csrf
-                                                @method('PATCH')
-                                                <button type="submit" class="btn btn-success btn-sm">
-                                                    Đang bán
-                                                </button>
-                                            </form>
-                                            @elseif ($value->status == 1)
-                                            <form action="" method="POST">
-                                                @csrf
-                                                @method('PATCH')
-                                                <button type="submit" class="btn btn-warning btn-sm">
-                                                    Ngưng bán
-                                                </button>
-                                            </form>
-                                            @endif
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
-                                        </td>
-                                        <td class="align-middle">
-                                            <a class="btn btn-link text-danger text-gradient px-3 mb-0"
-                                                href="remove/{{$value->id}}"><i class="far fa-trash-alt me-2"></i>Xóa
-                                                sản phẩm</a>
-                                            <a class="btn btn-link text-dark px-3 mb-0"
-                                                href="formeditproduct/{{$value->id}}"><i
-                                                    class="fas fa-pencil-alt text-dark me-2"
-                                                    aria-hidden="true"></i>Chỉnh sửa</a>
-                                        </td>
-
-                                    </tr>
-                                    @endforeach
-
-                                </tbody>
-                            </table>
-                            <div class="mt-3 container d-flex justify-content-center align-items-center">
-                                {{$allitem->links('pagination::bootstrap-4')}}
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -232,23 +146,23 @@
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header pb-0">
-                        <h6>Thêm Sản Phẩm</h6>
+                        <h6>Chỉnh Sửa Sản Phẩm</h6>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-2">
-                            <form class="align-items-center mb-0" action="{{route('admin/addproduct')}}" method="POST"
-                                enctype="multipart/form-data">
+                            <form class="align-items-center mb-0" action="/admin/editproduct/{{$product->id}}"
+                                method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
                                     <div class="col-md-6 mb-3  ">
                                         <label for="name" class="form-label">Tên sách</label>
                                         <input type="text" class="form-control " id="name" name="name"
-                                            placeholder="Nhập tên sách" required>
+                                            value="{{$product->name}}" placeholder="Nhập tên sách" required>
                                     </div>
                                     <div class="col-md-6 mb-3  ">
                                         <label for="author" class="form-label">Tên tác giả</label>
                                         <input type="text" class="form-control " id="name" name="author"
-                                            placeholder="Nhập tên tác giả" required>
+                                            value="{{$product->author}}" placeholder="Nhập tên tác giả" required>
                                     </div>
                                 </div>
 
@@ -257,7 +171,7 @@
                                         <label for="id_category">Tên Danh Mục <span class="text-danger">*</span></label>
 
                                         <select class="form-control" name="categories_id" id="categories_id">
-                                            <option value="1">Chọn Danh Mục</option>
+                                            <option value="{{$product->categories_id}}">Chọn Danh Mục</option>
                                             @foreach($optioncat as $item)
                                             <option value="{{$item->id}}">{{$item->name}}</option>
                                             @endforeach
@@ -270,7 +184,6 @@
                                         <select class="form-control" name="status" id="status">
                                             <option value="0">Đang bán</option>
                                             <option value="1">Ngưng kinh doanh</option>
-
                                         </select>
                                     </div>
                                 </div>
@@ -279,13 +192,17 @@
                                     <div class="col-md-6 mb-3">
                                         <label for="img" class="form-label">Hình ảnh</label>
                                         <input type="file" class="form-control" id="img" name="img"
-                                            placeholder="Chọn ảnh" required>
+                                            placeholder="Chọn ảnh">
+                                        <img src="{{asset('uploads/'.$product->img)}}" width="70px">
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label for="gallery" class="form-label">Hình ảnh khác <span
                                                 class="text-danger">(* 4 ảnh)</span> </label>
                                         <input type="file" class="form-control" id="gallery" name="gallery[]" multiple
-                                            placeholder="Chọn 4 ảnh khác" required>
+                                            placeholder="Chọn 4 ảnh khác">
+                                        @foreach(json_decode($product->gallery) as $image)
+                                        <img src="{{ asset('img/' . $image) }}" width="70px" alt="Gallery Image">
+                                        @endforeach
                                     </div>
                                 </div>
                                 <div class="row">
@@ -293,13 +210,13 @@
                                         <label for="body" class="form-label">Ngoại hình <span class="text-danger">(*
                                                 %)</span> </label>
                                         <input type="text" class="form-control" id="body" name="body"
-                                            placeholder="Nhập % ngoại hình" required>
+                                            value="{{$product->body}}" placeholder="Nhập % ngoại hình" required>
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label for="price" class="form-label">Giá <span class="text-danger">(*
                                                 VND)</span> </label>
                                         <input type="text" class="form-control" id="price" name="price"
-                                            placeholder="Nhập giá VND" required>
+                                            value="{{$product->price}}" placeholder="Nhập giá VND" required>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -307,13 +224,13 @@
                                         <label for="sale" class="form-label">Giảm giá <span class="text-danger">(*
                                                 %)</span> </label>
                                         <input type="text" class="form-control" id="sale" name="sale"
-                                            placeholder="Nhập % giảm giá" required>
+                                            value="{{$product->sale}}" placeholder="Nhập % giảm giá" required>
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label for="quantity" class="form-label">Số lượng <span class="text-danger">(*
                                                 )</span> </label>
                                         <input type="text" class="form-control" id="quantity" name="quantity"
-                                            placeholder="Nhập số lượng" required>
+                                            value="{{$product->quantity}}" placeholder="Nhập số lượng" required>
                                     </div>
                                 </div>
                                 <div class="mb-3">
@@ -321,7 +238,7 @@
                                             class="text-danger">(*
                                             )</span> </label>
                                     <textarea class="form-control" id="description" name="description"
-                                        placeholder="Viết mô tả" required></textarea>
+                                        placeholder="Viết mô tả" required>{{$product->description}}</textarea>
                                 </div>
 
                                 <button type="submit" class="btn btn-primary">Thêm</button>
