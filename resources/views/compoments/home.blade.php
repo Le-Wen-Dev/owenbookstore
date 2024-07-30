@@ -114,41 +114,43 @@
                     <div class="swiper-wrapper">
                        <div class="swiper-slide">
                           <div class="tp-slide-item">
-                             <div class="tp-slide-item__content">
-                                <h4 class="tp-slide-item__sub-title">Accessories</h4>
-                                <h3 class="tp-slide-item__title mb-25">Up To 
+                             {{-- <div class="tp-slide-item__content ">
+                                <h4 class="tp-slide-item__sub-title text-light">Accessories</h4>
+                                <h3 class="tp-slide-item__title mb-25 text-light ">Up To 
                                    <i>40% Off 
-                                      <img src="assets/img/icon/title-shape-02.jpg" alt="">
+                                      <img src="{{asset('uploads/banner1.png')}}" alt="">
                                    </i> 
                                    latest Creations</h3>
                                 <a class="tp-slide-item__slide-btn tp-btn" href="shop.html">Shop Now <i class="fal fa-long-arrow-right"></i></a>
-                             </div>
+                             </div> --}}
                              <div class="tp-slide-item__img">
-                                <img src="assets/img/slider/banner-1.jpg" alt="">
+                              <img src="{{asset('uploads/banner1.png')}}" alt="" height="400px" width="100%">
                              </div>
                           </div>
                        </div>
                        <div class="swiper-slide">
                           <div class="tp-slide-item">
-                             <div class="tp-slide-item__content">
-                                <h4 class="tp-slide-item__sub-title">Accessories</h4>
-                                <h3 class="tp-slide-item__title mb-25">Up To <i>35% Off <img src="assets/img/icon/title-shape-02.jpg" alt=""></i> latest Creations</h3>
+                             {{-- <div class="tp-slide-item__content text-light">
+                                <h4 class="tp-slide-item__sub-title text-light" >Accessories</h4>
+                                <h3 class="tp-slide-item__title mb-25 text-light">Up To <i>35% Off 
+                           
+                              </i> latest Creations</h3>
                                 <a class="tp-slide-item__slide-btn tp-btn" href="shop.html">Shop Now <i class="fal fa-long-arrow-right"></i></a>
-                             </div>
+                             </div> --}}
                              <div class="tp-slide-item__img">
-                                <img src="assets/img/slider/banner-2.jpg" alt="">
+                                <img src="{{asset('uploads/banner2.png')}}" alt=""  height="400px" width="100%">
                              </div>
                           </div>
                        </div>
                        <div class="swiper-slide">
                           <div class="tp-slide-item">
-                             <div class="tp-slide-item__content">
-                                <h4 class="tp-slide-item__sub-title">Accessories</h4>
-                                <h3 class="tp-slide-item__title mb-25">Up To <i>45% Off <img src="assets/img/icon/title-shape-02.jpg" alt=""></i> latest Creations</h3>
+                             {{-- <div class="tp-slide-item__content text-light" >
+                                <h4 class="tp-slide-item__sub-title text-light">Accessories</h4>
+                                <h3 class="tp-slide-item__title mb-25 text-light">Up To <i>45% Off <img src="" alt=""></i> latest Creations</h3>
                                 <a class="tp-slide-item__slide-btn tp-btn" href="shop.html">Shop Now <i class="fal fa-long-arrow-right"></i></a>
-                             </div>
+                             </div> --}}
                              <div class="tp-slide-item__img">
-                                <img src="assets/img/slider/banner-3.jpg" alt="">
+                              <img src="{{asset('uploads/banner3.png')}}" alt=""  height="400px" width="100%">
                              </div>
                           </div>
                        </div>
@@ -163,11 +165,11 @@
                     <div class="tpslider-banner tp-slider-sm-banner mb-30">
                        <a href="shop-details.html">
                           <div class="tpslider-banner__img">
-                             <img src="assets/img/slider/banner-slider-01.jpg" alt="">
-                             <div class="tpslider-banner__content">
+                             <img src="{{asset('uploads/banner4.png')}}" alt="" >
+                             {{-- <div class="tpslider-banner__content">
                                 <span class="tpslider-banner__sub-title">Hand made</span>
                                 <h4 class="tpslider-banner__title">New Modern & Stylist <br> Crafts</h4>
-                             </div>
+                             </div> --}}
                           </div>
                        </a>
                     </div>
@@ -176,11 +178,11 @@
                     <div class="tpslider-banner">
                        <a href="shop-details.html">
                           <div class="tpslider-banner__img">
-                             <img src="assets/img/slider/banner-slider-02.jpg" alt="">
-                             <div class="tpslider-banner__content">
+                             <img src="{{asset('uploads/banner5.png')}}" alt="" width="100%" height="170px">
+                             {{-- <div class="tpslider-banner__content">
                                 <span class="tpslider-banner__sub-title">Popular</span>
                                 <h4 class="tpslider-banner__title">Energy with our <br> newest collection</h4>
-                             </div>
+                             </div> --}}
                           </div>
                        </a>
                     </div>

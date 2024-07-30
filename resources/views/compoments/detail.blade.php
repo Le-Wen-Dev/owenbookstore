@@ -12,10 +12,10 @@
              <div class="col-xl-7 col-lg-12 col-md-12 col-12">
                 <div class="tp-breadcrumb">
                    <div class="tp-breadcrumb__link mb-10">
-                      <span class="breadcrumb-item-active"><a href="index.html">Home</a></span>
-                      <span>Shop Details</span>
+                      <span class="breadcrumb-item-active"><a href="index.html">Trang chủ</a></span>
+                      <span>Chi tiết sản phẩm</span>
                    </div>
-                   <h2 class="tp-breadcrumb__title">Shop Details</h2>
+                   <h2 class="tp-breadcrumb__title">{{$product->name}}</h2>
                 </div>
              </div>
           </div>
@@ -32,25 +32,28 @@
                    <div class="d-flex align-items-start">
                       <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                         <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">
-                            <img src="assets/img/product/home-one/product-1.jpg" alt="">
+                            {{-- <img src="{{asset($product->img)}}" alt=""> --}}
                          </button>
-                        <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">
-                            <img src="assets/img/product/home-one/product-2.jpg" alt="">
-                         </button>
-                        <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">
-                         <img src="assets/img/product/home-one/product-3.jpg" alt="">
-                         </button>
+                         @if($product->gallery)
+                         @foreach(json_decode($product->gallery) as $index => $image)
+                             <button class="nav-link" id="v-pills-tab-{{$index}}" data-bs-toggle="pill" data-bs-target="#v-pills-pane-{{$index}}" type="button" role="tab" aria-controls="v-pills-pane-{{$index}}" aria-selected="false">
+                                 <img src="{{asset($image)}}" alt="">
+                             </button>
+                         @endforeach
+                     @endif
                       </div>
                       <div class="tab-content" id="v-pills-tabContent">
                         <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                         <img src="assets/img/product/home-one/product-1.jpg" alt="">
+                           <img src="{{asset($product->img)}}" alt="">
                         </div>
-                        <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                         <img src="assets/img/product/home-one/product-2.jpg" alt="">
-                        </div>
-                        <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-                         <img src="assets/img/product/home-one/product-3.jpg" alt="">
-                        </div>
+                      
+                        @if($product->gallery)
+                        @foreach(json_decode($product->gallery) as $index => $image)
+                           <div class="tab-pane fade" id="v-pills-pane-{{$index}}" role="tabpanel" aria-labelledby="v-pills-tab-{{$index}}">
+                                 <img src="{{asset($image)}}" alt="">
+                           </div>
+                        @endforeach
+                     @endif
                       </div>
                     </div>
                 </div>
@@ -58,25 +61,25 @@
              <div class="col-lg-5 col-md-7">
                 <div class="tpproduct-details__content">
                    <div class="tpproduct-details__tag-area d-flex align-items-center mb-5">
-                      <span class="tpproduct-details__tag">Dress</span>
+                      <span class="tpproduct-details__tag">Tên sản phẩm</span>
                       <div class="tpproduct-details__rating">
                          <a href="#"><i class="fas fa-star"></i></a>
                          <a href="#"><i class="fas fa-star"></i></a>
                          <a href="#"><i class="fas fa-star"></i></a>
                       </div>
-                      <a class="tpproduct-details__reviewers">10 Reviews</a>
+                      <a class="tpproduct-details__reviewers">{{$product->view}} Người xem</a>
                    </div>
                    <div class="tpproduct-details__title-area d-flex align-items-center flex-wrap mb-5">
                       <h3 class="tpproduct-details__title">{{$product->name}}</h3>
-                      <span class="tpproduct-details__stock">In Stock</span>
+                      <span class="tpproduct-details__stock">Giá</span>
                    </div>
                    <div class="tpproduct-details__price mb-30">
                       {{-- <del>$9.35</del> --}}
                       <span>{{$product->price}}</span>
                    </div>
-                   <div class="tpproduct-details__pera">
+                   {{-- <div class="tpproduct-details__pera">
                       <p>Priyoshop has brought to you the Hijab 3 Pieces Combo Pack PS23. It is a <br>completely modern design and you feel comfortable to put on this hijab. <br>Buy it at the best price.</p>
-                   </div>
+                   </div> --}}
                    <div class="tpproduct-details__count d-flex align-items-center flex-wrap mb-25">
                       <div class="tpproduct-details__quantity">
                          <span class="cart-minus"><i class="far fa-minus"></i></span>
@@ -84,45 +87,17 @@
                          <span class="cart-plus"><i class="far fa-plus"></i></span>
                       </div>
                       <div class="tpproduct-details__cart ml-20">
-                         <button><i class="fal fa-shopping-cart"></i> Add To Cart</button>
+                         <button><i class="fal fa-shopping-cart"></i>Mua Ngay</button>
                       </div>
                       <div class="tpproduct-details__wishlist ml-20">
                          <a href="#"><i class="fal fa-heart"></i></a>
                       </div>
                    </div>
-                   <div class="tpproductdot mb-30">
-                      <a class="tpproductdot__variationitem" href="#">
-                         <div class="tpproductdot__termshape">
-                            <span class="tpproductdot__termshape-bg"></span>
-                            <span class="tpproductdot__termshape-border"></span>
-                         </div>
-                      </a>
-                      <a class="tpproductdot__variationitem" href="#">
-                         <div class="tpproductdot__termshape">
-                            <span class="tpproductdot__termshape-bg red-product-bg"></span>
-                            <span class="tpproductdot__termshape-border red-product-border"></span>
-                         </div>
-                      </a>
-                      <a class="tpproductdot__variationitem" href="#">
-                         <div class="tpproductdot__termshape">
-                            <span class="tpproductdot__termshape-bg orange-product-bg"></span>
-                            <span class="tpproductdot__termshape-border orange-product-border"></span>
-                         </div>
-                      </a>
-                      <a class="tpproductdot__variationitem" href="#">
-                         <div class="tpproductdot__termshape">
-                            <span class="tpproductdot__termshape-bg purple-product-bg"></span>
-                            <span class="tpproductdot__termshape-border purple-product-border"></span>
-                         </div>
-                      </a>
-                   </div>
+            
                    <div class="tpproduct-details__information tpproduct-details__code">
-                      <p>SKU:</p><span>BO1D0MX8SJ</span>
+                      <p>Tác giả:</p><span>{{$product->author}}</span>
                    </div>
-                   <div class="tpproduct-details__information tpproduct-details__categories">
-                      <p>Categories:</p>
-                      
-                   </div>
+                 
                   
                    <div class="tpproduct-details__information tpproduct-details__social">
                       <p>Share:</p>
@@ -143,7 +118,8 @@
                                <img src="assets/img/icon/product-det-1.png" alt="" class="tpproduct-details__img-hover">
                             </div>
                             <div class="tpproduct-details__condation-text">
-                               <p>Free Shipping apply to all<br>orders over $100</p>
+                               <p>Miễn phí vận chuyển áp dụng cho tất cả
+                                 đơn hàng trên 500k</p>
                             </div>
                          </div>
                       </li>
@@ -153,7 +129,8 @@
                                <img src="assets/img/icon/product-det-2.png" alt="" class="tpproduct-details__img-hover">
                             </div>
                             <div class="tpproduct-details__condation-text">
-                               <p>Guranteed 100% Organic<br>from natural farmas</p>
+                               <p>
+                                 Đảm bảo 100% sản phẩm như ảnh</p>
                             </div>
                          </div>
                       </li>
@@ -163,20 +140,11 @@
                                <img src="assets/img/icon/product-det-3.png" alt="" class="tpproduct-details__img-hover">
                             </div>
                             <div class="tpproduct-details__condation-text">
-                               <p>1 Day Returns if you change<br>your mind</p>
+                               <p>Hoàn trả 1 ngày nếu bạn thay đổi tâm trí của bạn</p>
                             </div>
                          </div>
                       </li>
-                      <li>
-                         <div class="tpproduct-details__condation-item d-flex align-items-center">
-                            <div class="tpproduct-details__condation-thumb">
-                               <img src="assets/img/icon/product-det-4.png" alt="" class="tpproduct-details__img-hover">
-                            </div>
-                            <div class="tpproduct-details__condation-text">
-                               <p>Covid-19 Info: We keep<br>delivering.</p>
-                            </div>
-                         </div>
-                      </li>
+                    
                    </ul>
                 </div>
              </div>
@@ -194,14 +162,14 @@
                    <div class="tpproduct-details__nav mb-30">
                       <ul class="nav nav-tabs pro-details-nav-btn" id="myTabs" role="tablist">
                          <li class="nav-item" role="presentation">
-                            <button class="nav-links active" id="home-tab-1" data-bs-toggle="tab" data-bs-target="#home-1" type="button" role="tab" aria-controls="home-1" aria-selected="true">Description</button>
+                            <button class="nav-links active" id="home-tab-1" data-bs-toggle="tab" data-bs-target="#home-1" type="button" role="tab" aria-controls="home-1" aria-selected="true">Mô tả</button>
                          </li>
-                         <li class="nav-item" role="presentation">
+                         {{-- <li class="nav-item" role="presentation">
                             <button class="nav-links" id="information-tab" data-bs-toggle="tab" data-bs-target="#additional-information" type="button" role="tab" aria-controls="additional-information" aria-selected="false">Additional information</button>
                          </li>
                          <li class="nav-item" role="presentation">
                             <button class="nav-links" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews" type="button" role="tab" aria-controls="reviews" aria-selected="false">Reviews (2)</button>
-                         </li>
+                         </li> --}}
                       </ul>
                    </div>
                    <div class="tab-content tp-content-tab" id="myTabContent-2">
