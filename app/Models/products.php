@@ -1,30 +1,25 @@
 <?php
 
 namespace App\Models;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class products extends Model
 {
     use HasFactory;
-    protected $products =[
-        
-    ];
+    protected $products = [];
     // public function category()
     // {
     //     return $this->belongsTo(Categories::class);
     // }
-    protected $fillable = ['name', 'price', 'img','category_id', 'description'];
-    // public function products(){
-        
-    // }
+    protected $guarded = [];
     public function category()
     {
         return $this->belongsTo(Categories::class);
     }
     public function getDiscountedPriceAttribute()
-{
-    return $this->price * (1 - $this->sale / 100);
-}
-
+    {
+        return $this->price * (1 - $this->sale / 100);
+    }
 }

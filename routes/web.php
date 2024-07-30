@@ -21,8 +21,9 @@ use App\Models\Favorites;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/',[HomeController::class,'index'])->name('home');
-Route::get('/allproduct',[HomeController::class,'allproduct'])->name('allproduct');
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/allproduct', [HomeController::class, 'allproduct'])->name('allproduct');
 Route::get('/category/{category_id}', [HomeController::class, 'get_products_by_idcategory'])->name('products.by.category');
 Route::get('/detail/{id}', [HomeController::class, 'get_product_detail'])->name('product.detail');
 Route::get('/search', [HomeController::class, 'search'])->name('products.search');
@@ -31,24 +32,31 @@ Route::prefix('/')->group(function () {
     Route::post('/addToFavorites', [FavouriteController::class, 'addToFavorites']);
     Route::get('/cart', [CartController::class, 'index'])->name('cart');
     Route::post('/addtocart', [CartController::class, 'addToCart']);
-    Route::post('/removecart', [CartController::class, 'removeCart'])->name('remove.cart');//xóa
-    Route::post('/removecart/header', [CartController::class, 'removeCartheader'])->name('remove.cart.header');//xóa
-    Route::post('/removefavorites', [FavouriteController::class, 'removeFavarites'])->name('removefavorites');//xóa
+    Route::post('/removecart', [CartController::class, 'removeCart'])->name('remove.cart'); //xóa
+    Route::post('/removecart/header', [CartController::class, 'removeCartheader'])->name('remove.cart.header'); //xóa
+    Route::post('/removefavorites', [FavouriteController::class, 'removeFavarites'])->name('removefavorites'); //xóa
     Route::post('/remove-all-cart', [CartController::class, 'removeAllCart'])->name('remove.all.cart');
     Route::post('/remove-all-favorites', [FavouriteController::class, 'removeAllFavarites'])->name('remove.all.favorites');
-
 });
 
 
 ////----------------------------------------------------------------Admin------------------------------------------------------------
-Route::get('dashboard',[DashboardController::class,'dashboard'])->name('dashboard')->middleware('admin');;
-Route::get('admin/users',[UserController::class,'users'])->name('admin/users');
-Route::get('admin/categories',[ProductController::class,'categories'])->name('admin/categories');
-Route::get('admin/products',[ProductController::class,'products'])->name('admin/products');
+Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('dashboard')->middleware('admin');;
+Route::get('admin/users', [UserController::class, 'users'])->name('admin/users');
+Route::get('admin/categories', [ProductController::class, 'categories'])->name('admin/categories');
+Route::get('admin/products', [ProductController::class, 'products'])->name('admin/products');
+// manager product
+Route::get('admin/formaddproduct', [ProductController::class, 'formAddpro'])->name('admin/formaddproduct');
+Route::post('admin/addproduct', [ProductController::class, 'create'])->name('admin/addproduct');
+Route::get('admin/formeditproduct', [ProductController::class, 'formedit'])->name('admin/formeditproduct');
+Route::put('admin/editproduct', [ProductController::class, 'edit'])->name('admin/editproduct');
+Route::delete('remove/{id}', [ProductController::class, 'remove'])->name('remove');
+
+
 ////----------------------------------------------------------------Auth  ------------------------------------------------------------
-Route::get('register',[AuthController::class,'register'])->name('register');
+Route::get('register', [AuthController::class, 'register'])->name('register');
 Route::post('register-post', [AuthController::class, 'register_post'])->name('register-post');
-Route::get('login',[AuthController::class,'login'])->name('login');
+Route::get('login', [AuthController::class, 'login'])->name('login');
 Route::post('login-post', [AuthController::class, 'login_post'])->name('login-post');
 Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
@@ -74,6 +82,6 @@ Route::post('/verify-otp', [AuthController::class, 'verifyOtp'])->name('verify.o
 
 ////----------------------------------------------------------------Kho hàng ------------------------------------------------------------
 
-Route::get('/inventory',[InventoryController::class,'getInventory'])->name('inventory');
-Route::get('/import_pro/{id}',[InventoryController::class,'importInventory'])->name('import_pro');
-Route::put('/import_pro/import/{id}',[InventoryController::class,'import_Inventory'])->name('import.product');
+Route::get('/inventory', [InventoryController::class, 'getInventory'])->name('inventory');
+Route::get('/import_pro/{id}', [InventoryController::class, 'importInventory'])->name('import_pro');
+Route::put('/import_pro/import/{id}', [InventoryController::class, 'import_Inventory'])->name('import.product');
