@@ -6,9 +6,9 @@
     <title>OTP Email</title>
 </head>
 <body>
-    <h2>Your OTP</h2>
-    <p>Here is your OTP: <strong>{{ $otp }}</strong></p>
-    <p>Please use this OTP to verify your email.</p>
-    <p>Thank you!</p>
+    <h2>OTP của bạn</h2>
+    <p>Đây là OTP của bạn: <strong>{{ $otp }}</strong></p>
+    <p>Vui lòng sử dụng OTP này để xác minh email của bạn.</p>
+    <p>Cảm ơn bạn!</p>
 </body>
 </html>

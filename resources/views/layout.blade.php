@@ -22,9 +22,9 @@
        <link rel="stylesheet" href="{{asset('assets/css/main.css')}}">
 </head>
 <body>
-    {{-- <header>
-        @include('compoments.header')
-    </header> --}}
+    <header>
+        @include('components.header')
+    </header>
     <main>
         @yield('content')
     </main>

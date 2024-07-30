@@ -1,10 +1,10 @@
 @component('mail::message')
-# Product Out of Stock Notification
+# Thông báo sản phẩm hết hàng
 
-Hello,
+Xin chào,
 
-The product '{{ $product->name }}' is out of stock. Please replenish your stock.
+Sản phẩm '{{ $product->name }}' đã hết hàng. Vui lòng bổ sung hàng.
 
-Thanks,<br>
+Cảm ơn,<br>
 {{ config('app.name') }}
 @endcomponent

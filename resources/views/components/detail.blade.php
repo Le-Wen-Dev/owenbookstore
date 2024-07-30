@@ -1,7 +1,6 @@
 @extends('layout')
 @section('content')
-@include('components.header1')
-    
+
    <!-- main-area-start -->
    <main>
 

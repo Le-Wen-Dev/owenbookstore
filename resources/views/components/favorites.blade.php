@@ -1,21 +1,22 @@
 @extends('layout')
 @section('content')
-@include('components.header1')
+
     
    <!-- main-area-start -->
    <main>
 
     <!-- breadcrumb-area -->
-    <section class="breadcrumb__area pt-60 pb-60 tp-breadcrumb__bg" data-background="assets/img/banner/breadcrumb-01.jpg">
+    <section class="breadcrumb__area pt-60 pb-60 tp-breadcrumb__bg" >
+      {{-- data-background="assets/img/banner/breadcrumb-01.jpg" --}}
        <div class="container">
           <div class="row align-items-center">
              <div class="col-xl-7 col-lg-12 col-md-12 col-12">
                 <div class="tp-breadcrumb">
                    <div class="tp-breadcrumb__link mb-10">
-                      <span class="breadcrumb-item-active"><a href="index.html">Home</a></span>
-                      <span>Wishlist</span>
+                      <span class="breadcrumb-item-active"><a href="index.html">Trang chủ</a></span>
+                      <span>Yêu thích</span>
                    </div>
-                   <h2 class="tp-breadcrumb__title">Product Wishlist</h2>
+                   <h3 class="tp-breadcrumb__title">Sản phẩm yêu thích</h3>
                 </div>
              </div>
           </div>
@@ -33,11 +34,11 @@
                       <table class="table">
                             <thead>
                                <tr>
-                                  <th class="product-thumbnail">Images</th>
-                                  <th class="cart-product-name">Courses</th>
-                                  <th class="product-price">Unit Price</th>
-                                  <th class="product-add-to-cart">Add To Cart</th>
-                                  <th class="product-remove">Remove</th>
+                                  <th class="product-thumbnail">Ảnh</th>
+                                  <th class="cart-product-name">Tên sản phẩm</th>
+                                  <th class="product-price">Giá</th>
+                                  <th class="product-add-to-cart">Thêm</th>
+                                  <th class="product-remove">Hành động</th>
                                </tr>
                             </thead>
                             <tbody>
@@ -58,7 +59,7 @@
                                      <span class="amount">{{ $item->price }}</span>
                                   </td>
                                   <td class="product-add-to-cart">
-                                     <button class="tp-btn tp-color-btn  tp-wish-cart banner-animation">Add To Cart</button>
+                                     <button class="tp-btn tp-color-btn  tp-wish-cart banner-animation">Thêm vào sản phẩm</button>
                                   </td>
                                   <td class="product-remove">
                                     <form action="{{asset('removefavorites')}}" method="POST">

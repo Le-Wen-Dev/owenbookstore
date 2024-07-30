@@ -1,6 +1,19 @@
 @extends('layout')
 @section('content')
-@include('components.header')
+<style>
+    @media (max-width: 1024px) {
+     .tp-slide-item__img img{
+         background-size: cover;
+         background-position: center;
+         height:200px;
+     }
+     .tpslider-banner__img img{
+       background-size: cover;
+       background-position: center;
+       height:200px;
+       }
+ }
+ </style>
 <main>
 
 

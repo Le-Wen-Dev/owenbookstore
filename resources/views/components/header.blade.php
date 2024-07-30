@@ -98,7 +98,7 @@ $total += $item->total;
                                     <span class="tp-product-count">{{$count}}</span>
                                 </button>
 
-                                <a href="wishlist.html"><i class="fal fa-heart"></i></a>
+                                <a href="{{asset('favorites')}}"><i class="fal fa-heart"></i></a>
                             </div>
                         </div>
                     </div>
@@ -123,13 +123,7 @@ $total += $item->total;
                                     @endforeach
                                     @endif
                                 </ul>
-                                <div class="daily-offer">
-                                    <ul>
-                                        <li><a href="shop.html">Value of the Day</a></li>
-                                        <li><a href="shop.html">Top 100 Offers</a></li>
-                                        <li><a href="shop.html">New Arrivals</a></li>
-                                    </ul>
-                                </div>
+                               
                             </div>
                         </div>
                     </div>
@@ -273,7 +267,7 @@ $total += $item->total;
                             <i class="fal fa-shopping-cart"></i>
                             <span class="tp-product-count">{{$count}}</span>
                         </button>
-                        <a href="wishlist.html"><i class="fal fa-heart"></i></a>
+                        <a href="{{asset('favorites')}}"><i class="fal fa-heart"></i></a>
                     </div>?
                     <div class="header-meta__search-5 ml-25">
                         <div class="header-search-bar-5">
@@ -305,7 +299,7 @@ $total += $item->total;
                     <button class="tp-menu-toggle"><i class="far fa-bars"></i></button>
                 </div>
                 <div class="logo">
-                    <a href="index.html"><img src="{{asset('img/owenbook.jpg')}}" width="150px" alt="logo"></a>
+                    <a href="{{route('home')}}"><img src="{{asset('img/owenbook.jpg')}}" width="150px" alt="logo"></a>
                 </div>
             </div>
             <div class="col-lg-9 col-md-8">
@@ -327,7 +321,7 @@ $total += $item->total;
                             <span>2</span>
                         </button>
                         <a href="{{route('login')}}"><i class="fal fa-user"></i></a>
-                        <a href="wishlist.html"><i class="fal fa-heart"></i></a>
+                        <a href="{{asset('favorites')}}"><i class="fal fa-heart"></i></a>
                     </div>
                 </div>
             </div>
@@ -344,7 +338,7 @@ $total += $item->total;
             </div>
             <div class="col-6">
                 <div class="logo text-center">
-                    <a href="index.html"><img src="{{asset('img/owenbook.jpg')}}" width="150px" alt="logo"></a>
+                    <a href="{{route('home')}}"><img src="{{asset('img/owenbook.jpg')}}" width="150px" alt="logo"></a>
                 </div>
             </div>
             <div class="col-3">
@@ -355,7 +349,7 @@ $total += $item->total;
                                 <i class="fal fa-shopping-cart"></i>
                                 <span></span>
                             </button>
-                            <a href="sign-in.html"><i class="fal fa-user"></i></a>
+                            <a href="{{route('login')}}"><i class="fal fa-user"></i></a>
                         </div>
                     </div>
                 </div>
@@ -388,8 +382,14 @@ $total += $item->total;
         </ul>
         <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab"
-                tabindex="0">
-                <div class="mobile-menu"></div>
+                tabindex="10">
+                <div class="mobile-menu">
+                     <li><a href="shop.html">Furniture</a></li>
+                        <li><a href="shop.html">Wooden</a></li>
+                        <li><a href="shop.html">Lifestyle</a></li>
+                        <li><a href="shop-2.html">Shopping</a></li>
+                        <li><a href="track.html">Track Product</a></li>
+                </div>
             </div>
             <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"
                 tabindex="0">
@@ -409,7 +409,7 @@ $total += $item->total;
         <a href="{{route('login')}}"><i class="fal fa-user"></i> Đăng Nhập / Đăng Ký</a>
     </div>
     <div class="tpsideinfo__wishlist-link">
-        <a href="wishlist.html" target="_parent"><i class="fal fa-heart"></i> Wishlist</a>
+        <a href="{{asset('favorites')}}" target="_parent"><i class="fal fa-heart"></i> Yêu thích</a>
     </div>
 </div>
 <div class="body-overlay"></div>

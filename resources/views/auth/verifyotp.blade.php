@@ -1,7 +1,7 @@
 
 @extends('layout')
 @section('content')
-@include('compoments.header1')
+
 <div class="container">
   <div class="row justify-content-center">
      <div class="col-lg-6 col-sm-12">
