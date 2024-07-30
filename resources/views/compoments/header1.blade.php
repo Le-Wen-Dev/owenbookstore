@@ -68,10 +68,10 @@ foreach ($cart as $item) {
              <div class="col-lg-9">
                 <div class="mainmenu d-flex align-items-center">
                    <div class="mainmenu__search">
-                      <form action="#">
+                      <form method="GET" action="{{ route('products.search') }}">
                          <div class="mainmenu__search-bar p-relative">
-                            <button class="mainmenu__search-icon"><i class="fal fa-search"></i></button>
-                            <input type="text" placeholder="Search products...">
+                            <button type="submit" class="mainmenu__search-icon"><i class="fal fa-search"></i></button>
+                            <input type="text" name="search" placeholder="Search products...">
                          </div>
                       </form>
                    </div>

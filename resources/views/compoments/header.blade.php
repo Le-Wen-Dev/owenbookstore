@@ -41,10 +41,10 @@ foreach ($cart as $item) {
                  <div class="col-xl-10 col-lg-9">
                     <div class="header-meta-info d-flex align-items-center justify-content-between">
                        <div class="header-search-bar">
-                          <form action="#">
+                          <form method="GET" action="{{ route('products.search') }}">
                              <div class="search-info p-relative">
-                                <button class="header-search-icon"><i class="fal fa-search"></i></button>
-                                <input type="text" placeholder="Search products...">
+                                <button type="submit" class="header-search-icon"><i class="fal fa-search"></i></button>
+                                <input type="text" name="search" placeholder="Search products...">
                              </div>
                           </form>
                        </div>
@@ -380,10 +380,10 @@ foreach ($cart as $item) {
                     </div>
                     <div class="header-meta__search-5 ml-25">
                        <div class="header-search-bar-5">
-                          <form action="#">
+                          <form method="GET" action="{{ route('products.search') }}">
                              <div class="search-info-5 p-relative">
-                                <button class="header-search-icon-5"><i class="fal fa-search"></i></button>
-                                <input type="text" placeholder="Search products...">
+                                <button class="header-search-icon-5" type="submit"><i class="fal fa-search"></i></button>
+                                <input type="text" name="search" placeholder="Search products...">
                              </div>
                           </form>
                        </div>

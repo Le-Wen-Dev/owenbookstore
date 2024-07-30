@@ -71,6 +71,15 @@ class HomeController extends Controller
               $products = Products::orderBy('id', 'desc')->paginate(15);
               return view('compoments.allproduct',compact('products'));
               }
-      
+
+              public function search(Request $request)
+              {
+                  $search = $request->input('search');
+                  $results = Products::where('name', 'LIKE', "%{$search}%")->paginate(10);
+                  $results->appends(['search' => $search]);
+                  
+               
+                  return view('compoments.search', ['results' => $results]);
+              }
 }
 

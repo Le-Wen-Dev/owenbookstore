@@ -25,6 +25,7 @@ Route::get('/',[HomeController::class,'index'])->name('home');
 Route::get('/allproduct',[HomeController::class,'allproduct'])->name('allproduct');
 Route::get('/category/{category_id}', [HomeController::class, 'get_products_by_idcategory'])->name('products.by.category');
 Route::get('/detail/{id}', [HomeController::class, 'get_product_detail'])->name('product.detail');
+Route::get('/search', [HomeController::class, 'search'])->name('products.search');
 Route::prefix('/')->group(function () {
     Route::get('/favorites', [FavouriteController::class, 'index'])->name('favorites');
     Route::post('/addToFavorites', [FavouriteController::class, 'addToFavorites']);
