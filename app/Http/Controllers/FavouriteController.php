@@ -24,7 +24,7 @@ class FavouriteController extends Controller
 
 
     // Return the cart view with cart items and categories
-    return view('compoments.favorites', compact('favorites'));
+    return view('components.favorites', compact('favorites'));
 }
 
     public function addToFavorites(Request $request)

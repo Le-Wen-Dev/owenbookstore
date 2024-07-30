@@ -20,6 +20,6 @@ class products extends Model
     }
     public function getDiscountedPriceAttribute()
     {
-        return $this->price * (1 - $this->sale / 100);
+        return $this->price * (1 - $this->sale / 100 );
     }
 }

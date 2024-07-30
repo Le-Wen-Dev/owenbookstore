@@ -1,6 +1,6 @@
 @extends('layout')
 @section('content')
-@include('compoments.header1')
+@include('components.header1')
 @php
 $totalPrice = 0; // Khởi tạo biến tổng giá trị đơn hàng
 $discount = 0; // Khởi tạo biến giảm giá

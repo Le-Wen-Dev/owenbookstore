@@ -14,13 +14,12 @@
      @endif
           <form action="{{ route('verify.otp') }}" method="post">
             @csrf
-           <div class="tptrack__thumb">
-              <img src="assets/img/banner/login-bg.jpg" alt="">
-           </div>
+        
            <div class="tptrack__content grey-bg-3">
               <div class="tptrack__item d-flex mb-20">
                  <div class="tptrack__item-icon">
-                    <img src="assets/img/icon/lock.png" alt="">
+                  <img src="{{asset('img/logo.png')}}" alt="" width="50px" height="40px">
+
                  </div>
                  <div class="tptrack__item-content">
                     <h4 class="tptrack__item-title">Nhập OTP </h4>
