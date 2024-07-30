@@ -32,7 +32,7 @@ class HomeController extends Controller
                ->orderBy('sale', 'desc')
                ->paginate(10);
               $saleProducts->transform(function($product) {
-                     $product->sale = $product->price * ( $product->sale /100);
+                     $product->sale = $product->sale * ( $product->sale /10);
                      return $product;
               });
               return view('components.home',compact('products','category','categories','product_popular','saleProducts',));
