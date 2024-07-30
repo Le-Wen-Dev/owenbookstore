@@ -42,7 +42,13 @@ Route::prefix('/')->group(function () {
 
 ////----------------------------------------------------------------Admin------------------------------------------------------------
 Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('dashboard')->middleware('admin');;
+// user 
 Route::get('admin/users', [UserController::class, 'users'])->name('admin/users');
+Route::post('admin/adduser', [UserController::class, 'add'])->name('admin/adduser');
+Route::get('admin/edituser/{id}', [UserController::class, 'formedit'])->name('admin/edituser');
+Route::post('admin/edituser/{id}', [UserController::class, 'edit'])->name('admin/edituser');
+Route::get('admin/removeuser/{id}', [UserController::class, 'remove'])->name('admin/removeuser');
+// category
 Route::get('admin/categories', [ProductController::class, 'categories'])->name('admin/categories');
 Route::get('admin/products', [ProductController::class, 'products'])->name('admin/products');
 // manager product
