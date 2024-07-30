@@ -35,7 +35,7 @@ class HomeController extends Controller
                      $product->sale = $product->price * ( $product->sale /100);
                      return $product;
               });
-              return view('compoments.home',compact('products','category','categories','product_popular','saleProducts',));
+              return view('components.home',compact('products','category','categories','product_popular','saleProducts',));
               }
        public function get_products_by_idcategory($category_id)
               {
@@ -58,18 +58,18 @@ class HomeController extends Controller
                                  }
                                  $count = count($cart);
 
-              return view('compoments.products_by_category', compact('categories', 'products', 'categoryProduct','cart','total'));
+              return view('components.products_by_category', compact('categories', 'products', 'categoryProduct','cart','total'));
               }
               public function get_product_detail($id)
               {
               $product = Products::findOrFail($id);
               // Lấy danh mục của sản phẩm
               $related_products = Products::where('categories_id', $product->categories_id)->where('id', '!=', $id)->get();
-              return view('compoments.detail', compact('product', 'related_products'));
+              return view('components.detail', compact('product', 'related_products'));
               }
        public function allproduct(){
               $products = Products::orderBy('id', 'desc')->paginate(15);
-              return view('compoments.allproduct',compact('products'));
+              return view('components.allproduct',compact('products'));
               }
 
               public function search(Request $request)
@@ -79,7 +79,7 @@ class HomeController extends Controller
                   $results->appends(['search' => $search]);
                   
                
-                  return view('compoments.search', ['results' => $results]);
+                  return view('components.search', ['results' => $results]);
               }
 }
 

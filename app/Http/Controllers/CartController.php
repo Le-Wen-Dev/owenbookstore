@@ -40,7 +40,7 @@ class CartController extends Controller
     $count = count($cart);
 
     // Return the cart view with cart items and categories
-    return view('compoments.cart', compact('cart', 'categories','count','total'));
+    return view('components.cart', compact('cart', 'categories','count','total'));
 }
 public function index_header()
 {
@@ -60,7 +60,7 @@ public function index_header()
     $categories = $this->cat->queryCat();
 
     // Return the cart view with cart items and categories
-    return view('compoments.header', compact('cart', 'categories'));
+    return view('components.header', compact('cart', 'categories'));
 }
 
     
