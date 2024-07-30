@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Carts;
+
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -48,12 +50,17 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         if ($user) {
+            // Xóa các bản ghi liên quan trong bảng `carts`
+            Carts::where('id_user', $id)->delete();
+
+            // Xóa người dùng
             $user->delete();
+
+            // Chuyển hướng về danh sách người dùng
+            return redirect()->route('admin/users')->with('success', 'Người dùng đã được xóa thành công!');
         } else {
-            echo "Không tìm thấy bản ghi!";
-            return;
+            // Nếu không tìm thấy người dùng, hiển thị thông báo lỗi
+            return redirect()->route('admin/users')->with('error', 'Không tìm thấy người dùng!');
         }
-        // Lấy danh sách sản phẩm và phân trang để trả về view
-        return redirect()->route('admin/users');
     }
 }

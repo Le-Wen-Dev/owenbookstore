@@ -182,10 +182,18 @@
                                             <p class="text-xs text-secondary mb-0">{{$value->phone}}</p>
                                         </td>
                                         <td class="align-middle text-center text-sm">
-                                            <span class="badge badge-sm bg-gradient-success">{{$value->status}}</span>
+                                            @if($value->status == 0)
+                                            <span class="badge badge-sm bg-gradient-success">Đang hoạt động</span>
+                                            @elseif($value->status == 1)
+                                            <span class="badge badge-sm bg-gradient-danger">Bị khóa</span>
+                                            @endif
                                         </td>
                                         <td class="align-middle text-center">
-                                            <span class="badge badge-sm bg-gradient-success">{{$value->role}}</span>
+                                            @if($value->role == 0)
+                                            <span class="badge badge-sm bg-gradient-info">Khách hàng</span>
+                                            @elseif($value->role == 1)
+                                            <span class="badge badge-sm bg-gradient-warning">Quản trị viên</span>
+                                            @endif
                                         </td>
                                         <td class="align-middle">
                                             <a class="btn btn-link text-danger text-gradient px-3 mb-0"
@@ -200,6 +208,9 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            <div class="mt-3 container d-flex justify-content-center align-items-center">
+                                {{$alluser->links('pagination::bootstrap-4')}}
+                            </div>
                         </div>
                     </div>
                 </div>

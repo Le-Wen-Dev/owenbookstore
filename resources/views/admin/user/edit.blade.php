@@ -173,19 +173,33 @@
                                         value="{{$user->phone}}" placeholder="Nhập số điện thoại" required>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6 mb-3">
+                                    <div class="col-md-4 mb-3">
                                         <label for="img" class="form-label">Hình ảnh</label>
                                         <input type="file" class="form-control" id="img" name="img"
                                             value="{{$user->img}}" placeholder="Nhập mật khẩu">
                                         <img src="{{asset('uploads/'.$user->img)}}" width="70px">
                                     </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="role" class="form-label">Vai Trò</label>
-                                        <select class="form-control" name="role" id="role" value="{{$user->role}}">
-                                            <option value="0">Khách hàng</option>
-                                            <option value="1">Quản trị viên</option>
-
-                                        </select>
+                                    <div class="col-md-4 mb-3">
+                                        <div class="form-group">
+                                            <label for="role">Trạng thái:</label>
+                                            <select class="form-control" name="status" id="role">
+                                                <option value="0" {{ $user->status == 0 ? 'selected' : '' }}>Hoạt Động
+                                                </option>
+                                                <option value="1" {{ $user->status== 1 ? 'selected' : '' }}>Bị Khóa
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <div class="form-group">
+                                            <label for="role">Vai trò:</label>
+                                            <select class="form-control" name="role" id="role">
+                                                <option value="0" {{ $user->role == 0 ? 'selected' : '' }}>Khách hàng
+                                                </option>
+                                                <option value="1" {{ $user->role == 1 ? 'selected' : '' }}>Quản trị viên
+                                                </option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
 

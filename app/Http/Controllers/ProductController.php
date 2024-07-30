@@ -17,11 +17,7 @@ class ProductController extends Controller
         $optioncat = categories::select('id', 'name')->get();
         return view('admin.products.products', compact('allitem', 'optioncat'));
     }
-    public function categories()
-    {
 
-        return view('admin.category.categories', compact('count', 'total'));
-    }
     public function formAddpro()
     {
         return view('admin.products.add');
