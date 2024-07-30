@@ -281,7 +281,7 @@ $total += $item->total;
                                 <form method="GET" action="{{ route('products.search') }}">
                                     <div class="search-info-5 p-relative">
                                         <button class="header-search-icon-5"><i class="fal fa-search"></i></button>
-                                        <input type="text" placeholder="Search products...">
+
                                         <button class="header-search-icon-5" type="submit"><i
                                                 class="fal fa-search"></i></button>
                                         <input type="text" name="search" placeholder="Search products...">
@@ -315,7 +315,7 @@ $total += $item->total;
                         <form method="GET" action="{{ route('products.search') }}">
                             <div class="search-info p-relative">
                                 <button class="header-search-icon"><i class="fal fa-search"></i></button>
-                                <input type="text" placeholder="Search products...">
+
                                 <button type="submit" class="header-search-icon"><i class="fal fa-search"></i></button>
                                 <input type="text" name="search" placeholder="Search products...">
                             </div>
