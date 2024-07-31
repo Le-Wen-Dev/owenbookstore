@@ -59,12 +59,8 @@ $total += $item->total;
                                 <div class="search-info p-relative">
                                     <button class="header-search-icon"><i class="fal fa-search"></i></button>
 
-                                    <<<<<<< HEAD <button type="submit" class="header-search-icon"><i class="fal fa-search"></i></button>
-                                        <input type="text" name="search" placeholder="Search products...">
-                                        =======
-                                        <button type="submit" class="header-search-icon"><i class="fal fa-search"></i></button>
-                                        <input type="text" name="search" placeholder="Tìm kiếm sản phẩm. ">
-                                        >>>>>>> 9aaf1581690bda282c0c27709fb0fbf63e2eb60f
+                                    <button type="submit" class="header-search-icon"><i class="fal fa-search"></i></button>
+                                    <input type="text" name="search" placeholder="Tìm kiếm sản phẩm. ">
                                 </div>
                             </form>
                         </div>
@@ -84,50 +80,26 @@ $total += $item->total;
                                 @if(Auth::check())
                                 {{-- <p>{{ Auth::user()->name }}</p> --}}
                                 <div class="main-menu mt-3">
-                                    <<<<<<< HEAD <nav id="mobile-menu">
-                                        <ul>
-                                            <li class="has-dropdown">
-                                                <a href="index.html">
-                                                    <img src="asset/shop/reviewer-01.png" alt="" width="40px" height="40px" style="border-radius: 50%">
-                                                </a>
-                                                <ul class="submenu">
-                                                    <li><a href="index.html">Xin chào : {{ Auth::user()->name }}</a>
-                                                    </li>
-                                                    <li><a href="index-2.html">Thông tin tài khoản</a></li>
-                                                    <li><a href="index-3.html">Đổi mật khẩu</a></li>
-                                                    {{-- <li><a href="index-4.html">Cosmetics Home</a></li>
-                                          <li><a href="index-5.html">Food Grocery</a></li> --}}
-                                                    <li><a href="#" onclick="event.preventDefault();
-                                           document.getElementById('logout-form').submit();">Đăng xuất </a></li>
-                                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                                        @csrf
-                                                    </form>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                        </nav>
-                                        =======
-                                        <ul>
-                                            <img src="{{ asset('uploads/'.Auth::user()->img) }}" alt="" class="d-block d-sm-none" width="50px" height="50px">
-                                            <li class="has-dropdown cvx">
-                                                <a>
-                                                    <img src="{{ asset('uploads/'.Auth::user()->img) }}" alt="" class="img-fluid  d-none d-sm-block desktop-img">
-                                                </a>
-                                                <ul class="submenu">
-                                                    <li><a href="index.html">Xin chào : {{ Auth::user()->name }}</a>
-                                                    </li>
-                                                    <li><a href="index-2.html">Thông tin tài khoản c</a></li>
-                                                    <li><a href="index-3.html">Đổi mật khẩu</a></li>
-                                                    <li><a href="#" onclick="event.preventDefault();
+                                    <ul>
+                                        <img src="{{ asset('uploads/'.Auth::user()->img) }}" alt="" class="d-block d-sm-none" width="50px" height="50px">
+                                        <li class="has-dropdown cvx">
+                                            <a>
+                                                <img src="{{ asset('uploads/'.Auth::user()->img) }}" alt="" class="img-fluid  d-none d-sm-block desktop-img">
+                                            </a>
+                                            <ul class="submenu">
+                                                <li><a href="index.html">Xin chào : {{ Auth::user()->name }}</a>
+                                                </li>
+                                                <li><a href="index-2.html">Thông tin tài khoản c</a></li>
+                                                <li><a href="index-3.html">Đổi mật khẩu</a></li>
+                                                <li><a href="#" onclick="event.preventDefault();
                                        document.getElementById('logout-form').submit();">Đăng xuất </a></li>
-                                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                                        @csrf
-                                                    </form>
-                                                </ul>
-                                            </li>
-                                        </ul>
+                                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                    @csrf
+                                                </form>
+                                            </ul>
+                                        </li>
+                                    </ul>
 
-                                        >>>>>>> 9aaf1581690bda282c0c27709fb0fbf63e2eb60f
                                 </div>
                                 @else
                                 <a href="{{route('login')}}"><i class="fal fa-user p-3"></i></a>
@@ -263,10 +235,7 @@ $total += $item->total;
                             <ul>
                                 <li class="has-dropdown">
                                     <a href="index.html">
-                                        <<<<<<< HEAD <img src="asset/shop/reviewer-01.png" alt="" width="40px" height="40px" style="border-radius: 50%">
-                                            =======
-                                            <img src="uploads/{{ Auth::user()->img }}" alt="" width="40px" height="40px" style="border-radius: 50%">
-                                            >>>>>>> 9aaf1581690bda282c0c27709fb0fbf63e2eb60f
+                                        <img src="uploads/{{ Auth::user()->img }}" alt="" width="40px" height="40px" style="border-radius: 50%">
                                     </a>
                                     <ul class="submenu">
                                         <li><a href="index.html">Xin chào : {{ Auth::user()->name }}</a></li>

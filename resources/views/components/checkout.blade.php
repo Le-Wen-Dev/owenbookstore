@@ -1,6 +1,5 @@
 @extends('layout')
 @section('content')
-@include('components.header1')
 <section class="checkout-area pb-50 wow fadeInUp" data-wow-duration=".8s" data-wow-delay=".2s">
     <div class="container">
         <form action="{{route('checkout.placeOrder')}}" method="POST">
