@@ -466,7 +466,7 @@ $total += $item->total;
                 </div>
                 <div class="tpcart__checkout-btn">
                     <a class="tpcart-btn mb-10" href="{{route('cart')}}">Xem giỏ hàng</a>
-                    <a class="tpcheck-btn" href="checkout.html">Thanh Toán</a>
+                    <a class="tpcheck-btn" href="{{route('checkout')}}">Thanh Toán</a>
                 </div>
             </div>
         </div>

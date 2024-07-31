@@ -1,6 +1,5 @@
 @extends('layout')
 @section('content')
-@include('components.header')
 <div class="container success-page">
     <div class="text-center">
         <div class="icon">
