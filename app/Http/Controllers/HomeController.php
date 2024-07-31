@@ -17,26 +17,45 @@ class HomeController extends Controller
        //     $this->cat = new categories();
        // }
        public function index(){
-              //sản phẩm mới nhất
+              // Sản phẩm mới nhất
               $products = Products::orderBy('created_at', 'desc')->paginate(10);
-              //sản phẩm nhiều lượt xem
-              $product_popular = Products::orderBy('view', 'desc')->paginate(10);
-              //category
-              $category= categories::orderBy('id', 'desc')->paginate(7);
-              //danh mục nhiều sản phẩm nhất
-              $categories = Categories::withCount('products')
-              ->orderBy('products_count', 'desc')
-              ->paginate(6);
-               // Lấy sản phẩm theo phần trăm giảm giá, sắp xếp theo phần trăm giảm giá giảm dần và phân trang
-               $saleProducts = Products::where('sale', '>', 0)
-               ->orderBy('sale', 'desc')
-               ->paginate(10);
-              $saleProducts->transform(function($product) {
-                     $product->sale = $product->sale * ( $product->sale /10);
-                     return $product;
+          
+              // Tính giá sale nếu sản phẩm có sale > 0
+              $products->transform(function($product) {
+                  if ($product->sale > 0) {
+                      $product->sale_price = $product->price - ($product->price * ($product->sale / 100));
+                  } else {
+                      $product->sale_price = $product->price;
+                  }
+                  return $product;
               });
-              return view('components.home',compact('products','category','categories','product_popular','saleProducts',));
-              }
+          
+              // Sản phẩm nhiều lượt xem
+              $product_popular = Products::orderBy('view', 'desc')->paginate(10);
+          
+              // Category
+              $category = categories::orderBy('id', 'desc')->paginate(7);
+          
+              // Danh mục nhiều sản phẩm nhất
+              $categories = Categories::withCount('products')
+                  ->orderBy('products_count', 'desc')
+                  ->paginate(6);
+          
+              // Lấy sản phẩm theo phần trăm giảm giá, sắp xếp theo phần trăm giảm giá giảm dần và phân trang
+              $saleProducts = Products::where('sale', '>', 0)
+                  ->orderBy('sale', 'desc')
+                  ->paginate(10);
+          
+              // Tính giá sale cho các sản phẩm giảm giá
+              $saleProducts->transform(function($product) {
+                  $product->sale_price = $product->price - ($product->price * ($product->sale / 100));
+                  return $product;
+              });
+          
+              return view('components.home', compact('products', 'category', 'categories', 'product_popular', 'saleProducts'));
+          }
+          
+          
        public function get_products_by_idcategory($category_id)
               {
               // Lấy tất cả các category

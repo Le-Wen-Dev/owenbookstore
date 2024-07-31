@@ -81,7 +81,7 @@ $discount = 0; // Khởi tạo biến giảm giá
                         </div>
                     </td>
                     <td>
-                        <del>{{ number_format($item->price, 0, ',', '.') . ' đ' }}</del>
+                        
                         <p class="text-danger">{{ number_format($item->price, 0, ',', '.') . ' đ' }}</p>
                     </td>
                     <td>
