@@ -14,6 +14,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\VoucherController;
 use App\Models\Favorites;
 use App\Http\Controllers\BankController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OrderControllerr;
 
 Route::get('/laylsgd', [BankController::class, 'laylsgd']);
 Route::post('/store-bank-data', [BankController::class, 'storeBankData']);
@@ -62,6 +64,11 @@ Route::post('admin/addvoucher', [VoucherController::class, 'add'])->name('admin/
 Route::get('admin/editvoucher/{id}', [VoucherController::class, 'formedit'])->name('admin/editvouchers');
 Route::post('admin/editvoucher/{id}', [VoucherController::class, 'edit'])->name('admin/editvouchers');
 Route::get('admin/removevoucher/{id}', [VoucherController::class, 'remove'])->name('admin/removevoucher');
+// manager orders
+Route::get('admin/orders', [OrderController::class, 'orders'])->name('admin/orders');
+Route::patch('admin/order/update-status/{id}', [OrderController::class, 'updateStatus'])->name('admin.order.updateStatus');
+Route::get('admin/removeorder/{id}', [OrderController::class, 'remove'])->name('admin.order.removeOrder');
+Route::get('admin/detailoder/{id}', [OrderController::class, 'detail'])->name('admin.order.detail');
 
 
 
@@ -99,7 +106,7 @@ Route::get('/import_pro/{id}', [InventoryController::class, 'importInventory'])-
 Route::put('/import_pro/import/{id}', [InventoryController::class, 'import_Inventory'])->name('import.product');
 
 
-
+//---------------------------checkout--------------------------------
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
 Route::get('/districts', [CheckoutController::class, 'getDistrictsByProvince'])->name('districts.byProvince');
 Route::get('/wards', [CheckoutController::class, 'getWardsByDistrict'])->name('wards.byDistrict');
