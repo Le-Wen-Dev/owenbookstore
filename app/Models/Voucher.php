@@ -5,9 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Bills extends Model
+class Voucher extends Model
 {
     use HasFactory;
-    protected $table = 'bills';
-    protected $guarded = [];
+    protected $fillable = ['name', 'discount', 'status'];
 }

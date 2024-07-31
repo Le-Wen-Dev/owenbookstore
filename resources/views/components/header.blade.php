@@ -32,8 +32,7 @@ $total += $item->total;
             <div class="row align-items-center">
                 <div class="col-xl-2 col-lg-3">
                     <div class="logo">
-                        <a href="{{route('home')}}"><img src="{{asset('img/owenbook.jpg')}}" width="150px"
-                                alt="logo"></a>
+                        <a href="{{route('home')}}"><img src="{{asset('img/owenbook.jpg')}}" width="150px" alt="logo"></a>
                     </div>
                 </div>
                 <div class="col-xl-10 col-lg-9">
@@ -43,8 +42,7 @@ $total += $item->total;
                                 <div class="search-info p-relative">
                                     <button class="header-search-icon"><i class="fal fa-search"></i></button>
 
-                                    <button type="submit" class="header-search-icon"><i
-                                            class="fal fa-search"></i></button>
+                                    <button type="submit" class="header-search-icon"><i class="fal fa-search"></i></button>
                                     <input type="text" name="search" placeholder="Search products...">
                                 </div>
                             </form>
@@ -69,8 +67,7 @@ $total += $item->total;
                                         <ul>
                                             <li class="has-dropdown">
                                                 <a href="index.html">
-                                                    <img src="asset/shop/reviewer-01.png" alt="" width="40px"
-                                                        height="40px" style="border-radius: 50%">
+                                                    <img src="asset/shop/reviewer-01.png" alt="" width="40px" height="40px" style="border-radius: 50%">
                                                 </a>
                                                 <ul class="submenu">
                                                     <li><a href="index.html">Xin chào : {{ Auth::user()->name }}</a>
@@ -81,8 +78,7 @@ $total += $item->total;
                                           <li><a href="index-5.html">Food Grocery</a></li> --}}
                                                     <li><a href="#" onclick="event.preventDefault();
                                            document.getElementById('logout-form').submit();">Đăng xuất </a></li>
-                                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                                        style="display: none;">
+                                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                                         @csrf
                                                     </form>
                                                 </ul>
@@ -118,8 +114,7 @@ $total += $item->total;
                                 <ul class="cat-menu__list">
                                     @if(isset($category) && is_object($category))
                                     @foreach($category as $category)
-                                    <li><a href="{{ route('products.by.category', $category->id) }}"><i
-                                                class="fal fa-smile"></i>{{ $category->name }}</a></li>
+                                    <li><a href="{{ route('products.by.category', $category->id) }}"><i class="fal fa-smile"></i>{{ $category->name }}</a></li>
                                     @endforeach
                                     @endif
                                 </ul>
@@ -245,8 +240,7 @@ $total += $item->total;
                                 <ul>
                                     <li class="has-dropdown">
                                         <a href="index.html">
-                                            <img src="asset/shop/reviewer-01.png" alt="" width="40px" height="40px"
-                                                style="border-radius: 50%">
+                                            <img src="asset/shop/reviewer-01.png" alt="" width="40px" height="40px" style="border-radius: 50%">
                                         </a>
                                         <ul class="submenu">
                                             <li><a href="index.html">Xin chào : {{ Auth::user()->name }}</a></li>
@@ -256,8 +250,7 @@ $total += $item->total;
                                           <li><a href="index-5.html">Food Grocery</a></li> --}}
                                             <li><a href="#" onclick="event.preventDefault();
                                            document.getElementById('logout-form').submit();">Đăng xuất </a></li>
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                                style="display: none;">
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                                 @csrf
                                             </form>
                                         </ul>
@@ -282,8 +275,7 @@ $total += $item->total;
                                     <div class="search-info-5 p-relative">
                                         <button class="header-search-icon-5"><i class="fal fa-search"></i></button>
 
-                                        <button class="header-search-icon-5" type="submit"><i
-                                                class="fal fa-search"></i></button>
+                                        <button class="header-search-icon-5" type="submit"><i class="fal fa-search"></i></button>
                                         <input type="text" name="search" placeholder="Search products...">
                                     </div>
                                 </form>
@@ -378,21 +370,17 @@ $total += $item->total;
     <div class="tpsideinfo__nabtab">
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
             <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"
-                    type="button" role="tab" aria-controls="pills-home" aria-selected="true">Menu</button>
+                <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Menu</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile"
-                    type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Categories</button>
+                <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Categories</button>
             </li>
         </ul>
         <div class="tab-content" id="pills-tabContent">
-            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab"
-                tabindex="0">
+            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
                 <div class="mobile-menu"></div>
             </div>
-            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"
-                tabindex="0">
+            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
                 <div class="tpsidebar-categories">
                     <ul>
                         <li><a href="shop.html">Furniture</a></li>
@@ -424,34 +412,32 @@ $total += $item->total;
             <div class="tpcart__product-list">
                 <ul>
                     @foreach($cart as $item)
-                    <li>
-                        <div class="tpcart__item">
-                            <div class="tpcart__img">
-                                <img src="assets/img/product/home-one/product-1.jpg" alt="">
-                                <div class="tpcart__del">
-                                    <a href="#" onclick="event.preventDefault();
+
+                    <div class="tpcart__item">
+                        <div class="tpcart__img">
+                            <img src="assets/img/product/home-one/product-1.jpg" alt="">
+                            <div class="tpcart__del">
+                                <a href="#" onclick="event.preventDefault();
                                document.getElementById('remove_{{ $item->id }}').submit();">
-                                        <i class="far fa-times-circle"></i>
-                                    </a>
-                                    <form id="remove_{{ $item->id }}" action="{{ route('remove.cart.header') }}"
-                                        method="POST" style="display: none;">
-                                        @csrf
-                                        <input type="hidden" name="id" value="{{ $item->id }}">
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="tpcart__content">
-                                <span class="tpcart__content-title"><a
-                                        href="shop-details.html">{{$item->name_product}}</a>
-                                </span>
-                                <div class="tpcart__cart-price">
-                                    <span class="quantity">{{$item->quantity}}x</span>
-                                    <span class="new-price">{{$item->price}}</span>
-                                </div>
+                                    <i class="far fa-times-circle"></i>
+                                </a>
+                                <form id="remove_{{ $item->id }}" action="{{ route('remove.cart.header') }}" method="POST" style="display: none;">
+                                    @csrf
+                                    <input type="hidden" name="id" value="{{ $item->id }}">
+                                </form>
                             </div>
                         </div>
-                        @endforeach
-                    </li>
+                        <div class="tpcart__content">
+                            <span class="tpcart__content-title"><a href="shop-details.html">{{$item->name_product}}</a>
+                            </span>
+                            <div class="tpcart__cart-price">
+                                <span class="quantity">{{$item->quantity}}x</span>
+                                <span class="new-price">{{$item->price}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                    </>
                 </ul>
             </div>
             <div class="tpcart__checkout">
