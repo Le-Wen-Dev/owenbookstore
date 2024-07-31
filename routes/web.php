@@ -18,6 +18,7 @@ use App\Http\Controllers\BankController;
 Route::get('/laylsgd', [BankController::class, 'laylsgd']);
 Route::post('/store-bank-data', [BankController::class, 'storeBankData']);
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/allproduct', [HomeController::class, 'allproduct'])->name('allproduct');
 Route::get('/category/{category_id}', [HomeController::class, 'get_products_by_idcategory'])->name('products.by.category');
 Route::get('/detail/{id}', [HomeController::class, 'get_product_detail'])->name('product.detail');

@@ -100,5 +100,8 @@ class HomeController extends Controller
                
                   return view('components.search', ['results' => $results]);
               }
+              public function contact(){
+                return view('components.contact');
+              }
 }
 

@@ -13,7 +13,7 @@
              <div class="col-xl-7 col-lg-12 col-md-12 col-12">
                 <div class="tp-breadcrumb">
                    <div class="tp-breadcrumb__link mb-10">
-                      <span class="breadcrumb-item-active"><a href="index.html">Trang chủ</a></span>
+                      <span class="breadcrumb-item-active"><a href="{{route('home')}}">Trang chủ</a></span>
                       <span>Yêu thích</span>
                    </div>
                    <h3 class="tp-breadcrumb__title">Sản phẩm yêu thích</h3>
