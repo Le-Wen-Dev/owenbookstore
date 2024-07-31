@@ -137,9 +137,9 @@
                                 <button class="nav-link" id="nav-sale-tab" data-bs-toggle="tab"
                                     data-bs-target="#nav-sale" type="button" role="tab" aria-controls="nav-sale"
                                     aria-selected="false">Đang giảm giá</button>
-                                <button class="nav-link" id="nav-rate-tab" data-bs-toggle="tab"
+                                {{-- <button class="nav-link" id="nav-rate-tab" data-bs-toggle="tab"
                                     data-bs-target="#nav-rate" type="button" role="tab" aria-controls="nav-rate"
-                                    aria-selected="false">Được đánh giá tốt nhất</button>
+                                    aria-selected="false">Được đánh giá tốt nhất</button> --}}
                             </div>
                         </nav>
                     </div>
@@ -152,14 +152,14 @@
                         @foreach($products as $pro)
                         <div class="col">
                             <div class="tpproduct pb-15 mb-30" data-name="{{ $pro->name }}" data-img="{{ $pro->img }}"
-                                data-price="{{ $pro->price }}" data-description="{{ $pro->description }}">
+                                data-price="{{ $pro->discounted_price }}" data-description="{{ $pro->description }}">
                                 <div class="tpproduct__thumb p-relative">
                                     <a href="detail/{{$pro->id}}">
                                         <img src="{{ asset('uploads/'.$pro->img) }}" alt="product-thumb">
                                         <img class="product-thumb-secondary" src="{{ asset('uploads/'.$pro->img) }}" alt="">
                                     </a>
                                     <div class="tpproduct__thumb-action">
-                                        <a class="comphare" href="#"><i class="fal fa-exchange"></i></a>
+                                        {{-- <a class="comphare" href="#"><i class="fal fa-exchange"></i></a> --}}
                                         <a class="quckview" href="detail/{{$pro->id}}"><i class="fal fa-eye"></i></a>
                                         <a class="wishlist" href="">
                                             <form action="/addToFavorites" method="POST">
@@ -173,7 +173,7 @@
                                                 <input type="hidden" name="id" value="{{ $pro->id }}">
                                                 <input type="hidden" name="name" value="{{ $pro->name }}">
                                                 <input type="hidden" name="img" value="{{ $pro->img }}">
-                                                <input type="hidden" name="price" value="{{ $pro->price }}">
+                                                <input type="hidden" name="price" value="{{ $pro->discounted_price }}">
                                                 <input type="hidden" name="description" value="{{ $pro->description }}">
                                                 <button type="submit">
                                                     <i class="fal fa-heart"></i>
@@ -186,7 +186,7 @@
                                     <h3 class="tpproduct__title"><a href="detail/{{$pro->id}}">{{ $pro->name }}</a></h3>
                                     <div class="tpproduct__priceinfo p-relative">
                                         <div class="tpproduct__priceinfo-list">
-                                            <span>{{ $pro->price }}</span>
+                                            <span>{{ $pro->discounted_price  }}</span>
                                         </div>
                                         <div class="tpproduct__cart">
                                             <form action="{{asset('addtocart')}}" method="POST">
@@ -201,7 +201,7 @@
                                                 <input type="hidden" name="id" value="{{ $pro->id }}">
                                                 <input type="hidden" name="name" value="{{ $pro->name }}">
                                                 <input type="hidden" name="img" value="{{ $pro->img }}">
-                                                <input type="hidden" name="price" value="{{ $pro->price }}">
+                                                <input type="hidden" name="price" value="{{ $pro->discounted_price }}">
                                                 <input type="hidden" name="description" value="{{ $pro->description }}">
                                                 <button class="add-to-cart-btn" type="submit">
                                                     <i class="fal fa-shopping-cart"></i>
@@ -232,16 +232,34 @@
                                         src="{{ asset('uploads/'.$pro->img) }}" alt="">
                                     </a>
                                     <div class="tpproduct__thumb-action">
-                                        <a class="comphare" href="#"><i class="fal fa-exchange"></i></a>
+                                        {{-- <a class="comphare" href="#"><i class="fal fa-exchange"></i></a> --}}
                                         <a class="quckview" href="detail/{{$pro->id}}">><i class="fal fa-eye"></i></a>
-                                        <a class="wishlist" href="wishlist.html"><i class="fal fa-heart"></i></a>
+                                        <a class="wishlist" href="">
+                                            <form action="/addToFavorites" method="POST">
+                                                @csrf
+                                                @if(Session::has('users'))
+                                                @php
+                                                $users = Session::get('users');
+                                                @endphp
+                                                <input type="hidden" name="id_user" value="{{ $users->id }}">
+                                                @endif
+                                                <input type="hidden" name="id" value="{{ $pro->id }}">
+                                                <input type="hidden" name="name" value="{{ $pro->name }}">
+                                                <input type="hidden" name="img" value="{{ $pro->img }}">
+                                                <input type="hidden" name="price" value="{{ $pro->discounted_price }}">
+                                                <input type="hidden" name="description" value="{{ $pro->description }}">
+                                                <button type="submit">
+                                                    <i class="fal fa-heart"></i>
+                                                </button>
+                                            </form>
+                                        </a>
                                     </div>
                                 </div>
                                 <div class="tpproduct__content">
                                     <h3 class="tpproduct__title"><a href="detail/{{$pro->id}}">{{ $pro->name }}</a></h3>
                                     <div class="tpproduct__priceinfo p-relative">
                                         <div class="tpproduct__priceinfo-list">
-                                            <span>{{ $pro->price }}</span>
+                                            <span>{{ $pro->discounted_price  }}</span>
                                         </div>
                                         <div class="tpproduct__cart">
                                             <form action="{{asset('addtocart')}}" method="POST">
@@ -256,7 +274,7 @@
                                                 <input type="hidden" name="id" value="{{ $pro->id }}">
                                                 <input type="hidden" name="name" value="{{ $pro->name }}">
                                                 <input type="hidden" name="img" value="{{ $pro->img }}">
-                                                <input type="hidden" name="price" value="{{ $pro->price }}">
+                                                <input type="hidden" name="price" value="{{ $pro->discounted_price }}">
                                                 <input type="hidden" name="description" value="{{ $pro->description }}">
                                                 <button class="add-to-cart-btn" type="submit">
                                                     <i class="fal fa-shopping-cart"></i>
@@ -288,7 +306,25 @@
                                         <a class="comphare" href="#"><i class="fal fa-exchange"></i></a>
                                         <a class="quckview" href="detail/{{$product->id}}"><i
                                                 class="fal fa-eye"></i></a>
-                                        <a class="wishlist" href="wishlist.html"><i class="fal fa-heart"></i></a>
+                                                <a class="wishlist" href="">
+                                                    <form action="/addToFavorites" method="POST">
+                                                        @csrf
+                                                        @if(Session::has('users'))
+                                                        @php
+                                                        $users = Session::get('users');
+                                                        @endphp
+                                                        <input type="hidden" name="id_user" value="{{ $users->id }}">
+                                                        @endif
+                                                        <input type="hidden" name="id" value="{{ $product->id }}">
+                                                        <input type="hidden" name="name" value="{{ $product->name }}">
+                                                        <input type="hidden" name="img" value="{{ $product->img }}">
+                                                        <input type="hidden" name="price" value="{{$product->discounted_price }}">
+                                                        <input type="hidden" name="description" value="{{ $product->description }}">
+                                                        <button type="submit">
+                                                            <i class="fal fa-heart"></i>
+                                                        </button>
+                                                    </form>
+                                                </a>
                                     </div>
                                 </div>
                                 <div class="tpproduct__content">
@@ -311,7 +347,7 @@
                                                 <input type="hidden" name="id" value="{{ $product->id }}">
                                                 <input type="hidden" name="name" value="{{ $product->name }}">
                                                 <input type="hidden" name="img" value="{{ $product->img }}">
-                                                <input type="hidden" name="price" value="{{ $product->price }}">
+                                                <input type="hidden" name="price" value="{{ $product->discounted_price }}">
                                                 <input type="hidden" name="description" value="{{ $product->description }}">
                                                 <button class="add-to-cart-btn" type="submit">
                                                     <i class="fal fa-shopping-cart"></i>

@@ -74,7 +74,7 @@
                    </div>
                    <div class="tpproduct-details__price mb-30">
                       {{-- <del>$9.35</del> --}}
-                      <span>{{$product->price}}</span>
+                      <span>{{$product->discounted_price }}</span>
                    </div>
                    {{-- <div class="tpproduct-details__pera">
                       <p>Priyoshop has brought to you the Hijab 3 Pieces Combo Pack PS23. It is a <br>completely modern design and you feel comfortable to put on this hijab. <br>Buy it at the best price.</p>
@@ -86,7 +86,24 @@
                          <span class="cart-plus"><i class="far fa-plus"></i></span>
                       </div>
                       <div class="tpproduct-details__cart ml-20">
-                         <button><i class="fal fa-shopping-cart"></i>Mua Ngay</button>
+                        <form action="{{asset('addtocart')}}" method="POST">
+                           @csrf
+
+                           @if(Session::has('users'))
+                           @php
+                           $users = Session::get('users');
+                           @endphp
+                           <input type="hidden" name="id_user" value="{{ $users->id }}">
+                           @endif
+                           <input type="hidden" name="id" value="{{ $product->id }}">
+                           <input type="hidden" name="name" value="{{ $product->name }}">
+                           <input type="hidden" name="img" value="{{ $product->img }}">
+                           <input type="hidden" name="price" value="{{ $product->discounted_price }}">
+                           <input type="hidden" name="description" value="{{ $product->description }}">
+                           
+                              <button type="submit"><i class="fal fa-shopping-cart"></i>Mua Ngay</button>
+                           
+                        </form>
                       </div>
                       <div class="tpproduct-details__wishlist ml-20">
                          <a href="#"><i class="fal fa-heart"></i></a>
