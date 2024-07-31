@@ -153,7 +153,7 @@ $total += $item->total;
                                         <a href="https://blog.owenbook.store/">Bài Viết</a>
 
                                     </li>
-                                    <li><a href="contact.html">Liên Hệ</a></li>
+                                    <li><a href="{{route('contact')}}">Liên Hệ</a></li>
 
                                 </ul>
 
