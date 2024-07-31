@@ -10,22 +10,21 @@ $total += $item->total;
 }
 @endphp
 <style>
+    /* CSS cho hình ảnh trên màn hình lớn (desktop) */
+    .desktop-img {
+        width: 100px;
+        /* Hoặc kích thước bạn muốn */
+        height: 100px;
+        /* Hoặc kích thước bạn muốn */
+        border-radius: 100%;
+    }
 
-
-/* CSS cho hình ảnh trên màn hình lớn (desktop) */
-.desktop-img {
-    width: 100px; /* Hoặc kích thước bạn muốn */
-    height: 100px; /* Hoặc kích thước bạn muốn */
-    border-radius: 100%;
-}
-
-/* Tùy chỉnh để đảm bảo hình ảnh hiển thị đúng */
-.img-fluid {
-    max-width: 100%;
-    height: auto;
-}
-
- </style>
+    /* Tùy chỉnh để đảm bảo hình ảnh hiển thị đúng */
+    .img-fluid {
+        max-width: 100%;
+        height: auto;
+    }
+</style>
 <div id="preloader">
     <div class="preloader">
         <span></span>
@@ -50,8 +49,7 @@ $total += $item->total;
             <div class="row align-items-center">
                 <div class="col-xl-2 col-lg-3">
                     <div class="logo">
-                        <a href="{{route('home')}}"><img src="{{asset('img/owenbook.jpg')}}" width="150px"
-                                alt="logo"></a>
+                        <a href="{{route('home')}}"><img src="{{asset('img/owenbook.jpg')}}" width="150px" alt="logo"></a>
                     </div>
                 </div>
                 <div class="col-xl-10 col-lg-9">
@@ -61,8 +59,7 @@ $total += $item->total;
                                 <div class="search-info p-relative">
                                     <button class="header-search-icon"><i class="fal fa-search"></i></button>
 
-                                    <button type="submit" class="header-search-icon"><i
-                                            class="fal fa-search"></i></button>
+                                    <button type="submit" class="header-search-icon"><i class="fal fa-search"></i></button>
                                     <input type="text" name="search" placeholder="Tìm kiếm sản phẩm. ">
                                 </div>
                             </form>
@@ -84,12 +81,10 @@ $total += $item->total;
                                 {{-- <p>{{ Auth::user()->name }}</p> --}}
                                 <div class="main-menu mt-3">
                                     <ul>
-                                        <img src="{{ asset('uploads/'.Auth::user()->img) }}" alt=""
-                                        class="d-block d-sm-none" width="50px" height="50px">
+                                        <img src="{{ asset('uploads/'.Auth::user()->img) }}" alt="" class="d-block d-sm-none" width="50px" height="50px">
                                         <li class="has-dropdown cvx">
                                             <a>
-                                            <img src="{{ asset('uploads/'.Auth::user()->img) }}" alt=""
-                                                class="img-fluid  d-none d-sm-block desktop-img">
+                                                <img src="{{ asset('uploads/'.Auth::user()->img) }}" alt="" class="img-fluid  d-none d-sm-block desktop-img">
                                             </a>
                                             <ul class="submenu">
                                                 <li><a href="index.html">Xin chào : {{ Auth::user()->name }}</a>
@@ -98,14 +93,13 @@ $total += $item->total;
                                                 <li><a href="index-3.html">Đổi mật khẩu</a></li>
                                                 <li><a href="#" onclick="event.preventDefault();
                                        document.getElementById('logout-form').submit();">Đăng xuất </a></li>
-                                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                                    style="display: none;">
+                                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                                     @csrf
                                                 </form>
                                             </ul>
                                         </li>
                                     </ul>
-                               
+
                                 </div>
                                 @else
                                 <a href="{{route('login')}}"><i class="fal fa-user p-3"></i></a>
@@ -135,12 +129,11 @@ $total += $item->total;
                                 <ul class="cat-menu__list">
                                     @if(isset($category) && is_object($category))
                                     @foreach($category as $category)
-                                    <li><a href="{{ route('products.by.category', $category->id) }}"><i
-                                                class="fal fa-smile"></i>{{ $category->name }}</a></li>
+                                    <li><a href="{{ route('products.by.category', $category->id) }}"><i class="fal fa-smile"></i>{{ $category->name }}</a></li>
                                     @endforeach
                                     @endif
                                 </ul>
-                               
+
                             </div>
                         </div>
                     </div>
@@ -161,9 +154,9 @@ $total += $item->total;
 
                                     </li>
                                     <li><a href="contact.html">Liên Hệ</a></li>
-                                    
+
                                 </ul>
-                                
+
                             </nav>
                         </div>
                     </div>
@@ -239,27 +232,25 @@ $total += $item->total;
                         @if(Auth::check())
                         {{-- <p>{{ Auth::user()->name }}</p> --}}
                         <div class="main-menu mt-3">
-                                <ul>
-                                    <li class="has-dropdown">
-                                        <a href="index.html">
-                                            <img src="uploads/{{ Auth::user()->img }}" alt="" width="40px"
-                                            height="40px" style="border-radius: 50%">
-                                        </a>
-                                        <ul class="submenu">
-                                            <li><a href="index.html">Xin chào : {{ Auth::user()->name }}</a></li>
-                                            <li><a href="index-2.html">Thông tin tài khoản</a></li>
-                                            <li><a href="index-3.html">Đổi mật khẩu</a></li>
-                                            {{-- <li><a href="index-4.html">Cosmetics Home</a></li>
+                            <ul>
+                                <li class="has-dropdown">
+                                    <a href="index.html">
+                                        <img src="uploads/{{ Auth::user()->img }}" alt="" width="40px" height="40px" style="border-radius: 50%">
+                                    </a>
+                                    <ul class="submenu">
+                                        <li><a href="index.html">Xin chào : {{ Auth::user()->name }}</a></li>
+                                        <li><a href="index-2.html">Thông tin tài khoản</a></li>
+                                        <li><a href="index-3.html">Đổi mật khẩu</a></li>
+                                        {{-- <li><a href="index-4.html">Cosmetics Home</a></li>
                                           <li><a href="index-5.html">Food Grocery</a></li> --}}
-                                            <li><a href="#" onclick="event.preventDefault();
+                                        <li><a href="#" onclick="event.preventDefault();
                                            document.getElementById('logout-form').submit();">Đăng xuất </a></li>
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                                style="display: none;">
-                                                @csrf
-                                            </form>
-                                        </ul>
-                                    </li>
-                                </ul>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+                                    </ul>
+                                </li>
+                            </ul>
                         </div>
                         @else
                         <a href="{{route('login')}}"><i class="fal fa-user p-3"></i></a>
@@ -278,8 +269,7 @@ $total += $item->total;
                                     <div class="search-info-5 p-relative">
                                         <button class="header-search-icon-5"><i class="fal fa-search"></i></button>
 
-                                        <button class="header-search-icon-5" type="submit"><i
-                                                class="fal fa-search"></i></button>
+                                        <button class="header-search-icon-5" type="submit"><i class="fal fa-search"></i></button>
                                         <input type="text" name="search" placeholder="Search products...">
                                     </div>
                                 </form>
@@ -371,60 +361,54 @@ $total += $item->total;
             <button><i class="fal fa-search"></i></button>
         </form>
     </div>
- <div class="tpsideinfo__nabtab">
-    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-        <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"
-                type="button" role="tab" aria-controls="pills-home" aria-selected="true">Menu</button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile"
-                type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Danh mục</button>
-        </li>
-    </ul>
-    <div class="tab-content" id="pills-tabContent">
-        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab"
-            tabindex="10">
-            <div class="mobile-menu">
-                <nav id="mobile-menu">        
-                </nav>
-            
+    <div class="tpsideinfo__nabtab">
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Menu</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Danh mục</button>
+            </li>
+        </ul>
+        <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="10">
+                <div class="mobile-menu">
+                    <nav id="mobile-menu">
+                    </nav>
+
+                </div>
             </div>
-        </div>
-        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"
-            tabindex="0">
-            <div class="tpsidebar-categories">
-                <ul>
-                    @foreach($categories as $categoryc)
-                    <li><a href="{{ route('products.by.category', $categoryc->id) }}">{{ $categoryc->name }}</a></li>
-                    @endforeach
-                </ul>
+            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
+                <div class="tpsidebar-categories">
+                    <ul>
+                        @foreach($categories as $categoryc)
+                        <li><a href="{{ route('products.by.category', $categoryc->id) }}">{{ $categoryc->name }}</a></li>
+                        @endforeach
+                    </ul>
+                </div>
+
             </div>
-            
         </div>
     </div>
-</div>
 
     @if(Auth::check())
     <br>
     <div class="mt-3 p-2">
-  <a href="profile"><img src="uploads/{{ Auth::user()->img }}" alt="" width="40px"
-   height="40px" style="border-radius: 50%">  </a> 
-   <div class="tpsideinfo__account-link text-light">
-   Xin Chào :{{ Auth::user()->name }}
-   <br>
-   <div class="tpsideinfo__wishlist-link">
-    <a href="{{asset('favorites')}}" target="_parent"><i class="fal fa-heart"></i> Yêu thích</a>
-</div>
-<br>
-  <a href="#" onclick="event.preventDefault();
+        <a href="profile"><img src="uploads/{{ Auth::user()->img }}" alt="" width="40px" height="40px" style="border-radius: 50%"> </a>
+        <div class="tpsideinfo__account-link text-light">
+            Xin Chào :{{ Auth::user()->name }}
+            <br>
+            <div class="tpsideinfo__wishlist-link">
+                <a href="{{asset('favorites')}}" target="_parent"><i class="fal fa-heart"></i> Yêu thích</a>
+            </div>
+            <br>
+            <a href="#" onclick="event.preventDefault();
     document.getElementById('logout-form').submit();">Đăng xuất </a>
-     <form id="logout-form" action="{{ route('logout') }}" method="POST"
-         style="display: none;">
-         @csrf
-     </form>
-</div>
-</div>  
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+        </div>
+    </div>
     @else
     <div class="tpsideinfo__account-link">
         <a href="{{route('login')}}"><i class="fal fa-user"></i> Đăng Nhập / Đăng Ký</a>
@@ -433,7 +417,7 @@ $total += $item->total;
         <a href="{{asset('favorites')}}" target="_parent"><i class="fal fa-heart"></i> Yêu thích</a>
     </div>
     @endif
-  
+
 </div>
 <div class="body-overlay"></div>
 <!-- sidebar-menu-area-end -->
@@ -447,34 +431,32 @@ $total += $item->total;
             <div class="tpcart__product-list">
                 <ul>
                     @foreach($cart as $item)
-                    <li>
-                        <div class="tpcart__item">
-                            <div class="tpcart__img">
-                                <img src="assets/img/product/home-one/product-1.jpg" alt="">
-                                <div class="tpcart__del">
-                                    <a href="#" onclick="event.preventDefault();
+
+                    <div class="tpcart__item">
+                        <div class="tpcart__img">
+                            <img src="assets/img/product/home-one/product-1.jpg" alt="">
+                            <div class="tpcart__del">
+                                <a href="#" onclick="event.preventDefault();
                                document.getElementById('remove_{{ $item->id }}').submit();">
-                                        <i class="far fa-times-circle"></i>
-                                    </a>
-                                    <form id="remove_{{ $item->id }}" action="{{ route('remove.cart.header') }}"
-                                        method="POST" style="display: none;">
-                                        @csrf
-                                        <input type="hidden" name="id" value="{{ $item->id }}">
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="tpcart__content">
-                                <span class="tpcart__content-title"><a
-                                        href="shop-details.html">{{$item->name_product}}</a>
-                                </span>
-                                <div class="tpcart__cart-price">
-                                    <span class="quantity">{{$item->quantity}}x</span>
-                                    <span class="new-price">{{$item->price}}</span>
-                                </div>
+                                    <i class="far fa-times-circle"></i>
+                                </a>
+                                <form id="remove_{{ $item->id }}" action="{{ route('remove.cart.header') }}" method="POST" style="display: none;">
+                                    @csrf
+                                    <input type="hidden" name="id" value="{{ $item->id }}">
+                                </form>
                             </div>
                         </div>
-                        @endforeach
-                    </li>
+                        <div class="tpcart__content">
+                            <span class="tpcart__content-title"><a href="shop-details.html">{{$item->name_product}}</a>
+                            </span>
+                            <div class="tpcart__cart-price">
+                                <span class="quantity">{{$item->quantity}}x</span>
+                                <span class="new-price">{{$item->price}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                    </>
                 </ul>
             </div>
             <div class="tpcart__checkout">
@@ -484,7 +466,7 @@ $total += $item->total;
                 </div>
                 <div class="tpcart__checkout-btn">
                     <a class="tpcart-btn mb-10" href="{{route('cart')}}">Xem giỏ hàng</a>
-                    <a class="tpcheck-btn" href="checkout.html">Thanh Toán</a>
+                    <a class="tpcheck-btn" href="{{route('checkout')}}">Thanh Toán</a>
                 </div>
             </div>
         </div>

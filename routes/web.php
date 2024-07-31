@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\FavouriteController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\VoucherController;
@@ -96,3 +97,13 @@ Route::post('/verify-otp', [AuthController::class, 'verifyOtp'])->name('verify.o
 Route::get('/inventory', [InventoryController::class, 'getInventory'])->name('inventory');
 Route::get('/import_pro/{id}', [InventoryController::class, 'importInventory'])->name('import_pro');
 Route::put('/import_pro/import/{id}', [InventoryController::class, 'import_Inventory'])->name('import.product');
+
+
+
+Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
+Route::get('/districts', [CheckoutController::class, 'getDistrictsByProvince'])->name('districts.byProvince');
+Route::get('/wards', [CheckoutController::class, 'getWardsByDistrict'])->name('wards.byDistrict');
+Route::post('/calculate-shipping-fee', [CheckoutController::class, 'calculateShipping'])->name('calculate.shipping.fee');
+Route::post('/apply-voucher', [CheckoutController::class, 'applyVoucher']);
+Route::post('/place-order', [CheckoutController::class, 'placeOrder'])->name('checkout.placeOrder');
+Route::get('/checkout-success', [CheckoutController::class, 'checkout_success'])->name('checkout.orderSuccess');
