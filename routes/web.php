@@ -10,19 +10,13 @@ use App\Http\Controllers\FavouriteController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\InventoryController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\VoucherController;
 use App\Models\Favorites;
+use App\Http\Controllers\BankController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
+Route::get('/laylsgd', [BankController::class, 'laylsgd']);
+Route::post('/store-bank-data', [BankController::class, 'storeBankData']);
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/allproduct', [HomeController::class, 'allproduct'])->name('allproduct');
 Route::get('/category/{category_id}', [HomeController::class, 'get_products_by_idcategory'])->name('products.by.category');
@@ -43,15 +37,32 @@ Route::prefix('/')->group(function () {
 
 ////----------------------------------------------------------------Admin------------------------------------------------------------
 Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('dashboard')->middleware('admin');;
+// manager user 
 Route::get('admin/users', [UserController::class, 'users'])->name('admin/users');
-Route::get('admin/categories', [ProductController::class, 'categories'])->name('admin/categories');
-Route::get('admin/products', [ProductController::class, 'products'])->name('admin/products');
+Route::post('admin/adduser', [UserController::class, 'add'])->name('admin/adduser');
+Route::get('admin/edituser/{id}', [UserController::class, 'formedit'])->name('admin/edituser');
+Route::post('admin/edituser/{id}', [UserController::class, 'edit'])->name('admin/edituser');
+Route::get('admin/removeuser/{id}', [UserController::class, 'remove'])->name('admin/removeuser');
+//manager category
+Route::get('admin/categories', [CategoryController::class, 'categories'])->name('admin/categories');
+Route::post('admin/addcategory', [CategoryController::class, 'add'])->name('admin/addcategory');
+Route::get('admin/editcategory/{id}', [CategoryController::class, 'formedit'])->name('admin/editcategory');
+Route::post('admin/editcategory/{id}', [CategoryController::class, 'edit'])->name('admin/editcategory');
+Route::get('admin/removecategory/{id}', [CategoryController::class, 'remove'])->name('admin/removecategory');
 // manager product
+Route::get('admin/products', [ProductController::class, 'products'])->name('admin/products');
 Route::get('admin/formaddproduct', [ProductController::class, 'formAddpro'])->name('admin/formaddproduct');
 Route::post('admin/addproduct', [ProductController::class, 'create'])->name('admin/addproduct');
 Route::get('admin/formeditproduct/{id}', [ProductController::class, 'formedit']);
 Route::post('admin/editproduct/{id}', [ProductController::class, 'edit'])->name('admin/editproduct');
 Route::get('admin/remove/{id}', [ProductController::class, 'remove'])->name('remove');
+// manager voucher
+Route::get('admin/vouchers', [VoucherController::class, 'vouchers'])->name('admin/vouchers');
+Route::post('admin/addvoucher', [VoucherController::class, 'add'])->name('admin/addvouchers');
+Route::get('admin/editvoucher/{id}', [VoucherController::class, 'formedit'])->name('admin/editvouchers');
+Route::post('admin/editvoucher/{id}', [VoucherController::class, 'edit'])->name('admin/editvouchers');
+Route::get('admin/removevoucher/{id}', [VoucherController::class, 'remove'])->name('admin/removevoucher');
+
 
 
 ////----------------------------------------------------------------Auth  ------------------------------------------------------------

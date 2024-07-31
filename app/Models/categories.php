@@ -12,7 +12,7 @@ class categories extends Model
     {
         return Categories::whereNull('category_id');
     }
-    protected $fillable = ['name'];
+    protected $guarded = [];
     public function products()
     {
         return $this->hasMany(Products::class);

@@ -241,7 +241,7 @@
                                         placeholder="Viết mô tả" required>{{$product->description}}</textarea>
                                 </div>
 
-                                <button type="submit" class="btn btn-primary">Thêm</button>
+                                <button type="submit" class="btn btn-primary">Lưu</button>
                             </form>
                         </div>
                     </div>
