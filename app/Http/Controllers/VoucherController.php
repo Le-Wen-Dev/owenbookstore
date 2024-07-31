@@ -10,7 +10,7 @@ class VoucherController extends Controller
     //
     public function vouchers()
     {
-        $vouchers = Voucher::select('id', 'name', 'time_start', 'time_end', 'value', 'created_at')->orderBy('id', 'desc')->paginate(5);
+        $vouchers = Voucher::select('id', 'code', 'time_start', 'time_end', 'discount', 'created_at')->orderBy('id', 'desc')->paginate(5);
         return view('admin.voucher.vouchers', compact('vouchers'));
     }
     public function add(Request $request)
@@ -39,7 +39,7 @@ class VoucherController extends Controller
         $voucher = Voucher::findOrFail($id);
         if ($voucher) {
             $voucher->delete();
-            return redirect()->route('admin/vouchervoucherxs')->with('success', 'Voucher đã được xóa thành công!');
+            return redirect()->route('admin/vouchers')->with('success', 'Voucher đã được xóa thành công!');
         } else {
             // Nếu không tìm thấy người dùng, hiển thị thông báo lỗi
             return redirect()->route('admin/vouchers')->with('error', 'Không tìm thấy voucher!');
