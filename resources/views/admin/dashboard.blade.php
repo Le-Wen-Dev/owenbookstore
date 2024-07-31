@@ -449,7 +449,7 @@
                       <td>
                         <div class="d-flex px-2 py-1">
                           <div>
-                            <img src="{{$need->img}}" class="avatar avatar-sm me-3" alt="user1">
+                            <img src="{{asset('uploads/'.$need->img)}}" class="avatar avatar-sm me-3" alt="user1">
                           </div>
                           <div class="d-flex flex-column justify-content-center">
                             <h6 class="mb-0 text-sm">{{$need->name}}</h6>

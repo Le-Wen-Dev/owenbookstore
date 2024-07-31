@@ -11,7 +11,7 @@
              <div class="col-xl-7 col-lg-12 col-md-12 col-12">
                 <div class="tp-breadcrumb">
                    <div class="tp-breadcrumb__link mb-10">
-                      <span class="breadcrumb-item-active"><a href="index.html">Trang chủ</a></span>
+                      <span class="breadcrumb-item-active"><a href="{{route('home')}}">Trang chủ</a></span>
                       <span>Chi tiết sản phẩm</span>
                    </div>
                    <h2 class="tp-breadcrumb__title">{{$product->name}}</h2>
@@ -31,25 +31,25 @@
                    <div class="d-flex align-items-start">
                       <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                         <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">
-                            {{-- <img src="{{asset($product->img)}}" alt=""> --}}
+                            <img src="{{asset('uploads/'.$product->img)}}" alt="">
                          </button>
                          @if($product->gallery)
                          @foreach(json_decode($product->gallery) as $index => $image)
                              <button class="nav-link" id="v-pills-tab-{{$index}}" data-bs-toggle="pill" data-bs-target="#v-pills-pane-{{$index}}" type="button" role="tab" aria-controls="v-pills-pane-{{$index}}" aria-selected="false">
-                                 <img src="{{asset($image)}}" alt="">
+                                 <img src="{{asset('img/'.$image)}}" alt="">
                              </button>
                          @endforeach
                      @endif
                       </div>
                       <div class="tab-content" id="v-pills-tabContent">
                         <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                           <img src="{{asset($product->img)}}" alt="">
+                           <img src="{{asset('uploads/'.$product->img)}}" alt="">
                         </div>
                       
                         @if($product->gallery)
                         @foreach(json_decode($product->gallery) as $index => $image)
                            <div class="tab-pane fade" id="v-pills-pane-{{$index}}" role="tabpanel" aria-labelledby="v-pills-tab-{{$index}}">
-                                 <img src="{{asset($image)}}" alt="">
+                              <img src="{{asset('img/'.$image)}}" alt="">
                            </div>
                         @endforeach
                      @endif
@@ -99,7 +99,7 @@
                  
                   
                    <div class="tpproduct-details__information tpproduct-details__social">
-                      <p>Share:</p>
+                      <p>Chia sẽ:</p>
                       <a href="#"><i class="fab fa-facebook-f"></i></a>
                       <a href="#"><i class="fab fa-twitter"></i></a>
                       <a href="#"><i class="fab fa-behance"></i></a>
@@ -367,7 +367,7 @@
           <div class="row align-items-center">
              <div class="col-sm-6">
                 <div class="tpsection mb-40">
-                   <h4 class="tpsection__title">Related Products</h4>
+                   <h4 class="tpsection__title">Sản phẩm tương tự</h4>
                 </div>
              </div>
              <div class="col-sm-6">

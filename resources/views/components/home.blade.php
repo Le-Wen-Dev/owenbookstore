@@ -27,16 +27,6 @@
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
                                     <div class="tp-slide-item">
-                                        {{-- <div class="tp-slide-item__content ">
-                                <h4 class="tp-slide-item__sub-title text-light">Accessories</h4>
-                                <h3 class="tp-slide-item__title mb-25 text-light ">Up To 
-                                   <i>40% Off 
-                                      <img src="{{asset('uploads/banner1.png')}}" alt="">
-                                        </i>
-                                        latest Creations</h3>
-                                        <a class="tp-slide-item__slide-btn tp-btn" href="shop.html">Shop Now <i
-                                                class="fal fa-long-arrow-right"></i></a>
-                                    </div> --}}
                                     <div class="tp-slide-item__img">
                                         <img src="{{asset('uploads/banner1.png')}}" alt="" height="400px" width="100%">
                                     </div>
@@ -44,13 +34,6 @@
                             </div>
                             <div class="swiper-slide">
                                 <div class="tp-slide-item">
-                                    {{-- <div class="tp-slide-item__content text-light">
-                                <h4 class="tp-slide-item__sub-title text-light" >Accessories</h4>
-                                <h3 class="tp-slide-item__title mb-25 text-light">Up To <i>35% Off 
-                           
-                              </i> latest Creations</h3>
-                                <a class="tp-slide-item__slide-btn tp-btn" href="shop.html">Shop Now <i class="fal fa-long-arrow-right"></i></a>
-                             </div> --}}
                                     <div class="tp-slide-item__img">
                                         <img src="{{asset('uploads/banner2.png')}}" alt="" height="400px" width="100%">
                                     </div>
@@ -58,11 +41,6 @@
                             </div>
                             <div class="swiper-slide">
                                 <div class="tp-slide-item">
-                                    {{-- <div class="tp-slide-item__content text-light" >
-                                <h4 class="tp-slide-item__sub-title text-light">Accessories</h4>
-                                <h3 class="tp-slide-item__title mb-25 text-light">Up To <i>45% Off <img src="" alt=""></i> latest Creations</h3>
-                                <a class="tp-slide-item__slide-btn tp-btn" href="shop.html">Shop Now <i class="fal fa-long-arrow-right"></i></a>
-                             </div> --}}
                                     <div class="tp-slide-item__img">
                                         <img src="{{asset('uploads/banner3.png')}}" alt="" height="400px" width="100%">
                                     </div>
@@ -80,10 +58,6 @@
                             <a href="shop-details.html">
                                 <div class="tpslider-banner__img">
                                     <img src="{{asset('uploads/banner4.png')}}" alt="">
-                                    {{-- <div class="tpslider-banner__content">
-                                <span class="tpslider-banner__sub-title">Hand made</span>
-                                <h4 class="tpslider-banner__title">New Modern & Stylist <br> Crafts</h4>
-                             </div> --}}
                                 </div>
                             </a>
                         </div>
@@ -93,10 +67,6 @@
                             <a href="shop-details.html">
                                 <div class="tpslider-banner__img">
                                     <img src="{{asset('uploads/banner5.png')}}" alt="" width="100%" height="170px">
-                                    {{-- <div class="tpslider-banner__content">
-                                <span class="tpslider-banner__sub-title">Popular</span>
-                                <h4 class="tpslider-banner__title">Energy with our <br> newest collection</h4>
-                             </div> --}}
                                 </div>
                             </a>
                         </div>
@@ -114,8 +84,8 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="tpsection mb-40">
-                        <h4 class="tpsection__title">Top <span> Categories <img src="assets/img/icon/title-shape-01.jpg"
-                                    alt=""></span></h4>
+                        <h4 class="tpsection__title"> Danh mục <span> hàng đầu 
+                                  </span></h4>
                     </div>
                 </div>
             </div>
@@ -151,8 +121,7 @@
             <div class="row">
                 <div class="col-md-6 col-12">
                     <div class="tpsection mb-40">
-                        <h4 class="tpsection__title">Popular <span> Products <img
-                                    src="assets/img/icon/title-shape-01.jpg" alt=""></span></h4>
+                        <h4 class="tpsection__title">Sản phẩm <span> Phổ biến </span></h4>
                     </div>
                 </div>
                 <div class="col-md-6 col-12">
@@ -161,16 +130,16 @@
                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                 <button class="nav-link active" id="nav-all-tab" data-bs-toggle="tab"
                                     data-bs-target="#nav-all" type="button" role="tab" aria-controls="nav-all"
-                                    aria-selected="true">All</button>
+                                    aria-selected="true">Tất cả sản phẩm</button>
                                 <button class="nav-link" id="nav-popular-tab" data-bs-toggle="tab"
                                     data-bs-target="#nav-popular" type="button" role="tab" aria-controls="nav-popular"
-                                    aria-selected="false">Popular</button>
+                                    aria-selected="false">Phổ biến</button>
                                 <button class="nav-link" id="nav-sale-tab" data-bs-toggle="tab"
                                     data-bs-target="#nav-sale" type="button" role="tab" aria-controls="nav-sale"
-                                    aria-selected="false">On Sale</button>
+                                    aria-selected="false">Đang giảm giá</button>
                                 <button class="nav-link" id="nav-rate-tab" data-bs-toggle="tab"
                                     data-bs-target="#nav-rate" type="button" role="tab" aria-controls="nav-rate"
-                                    aria-selected="false">Best Rated</button>
+                                    aria-selected="false">Được đánh giá tốt nhất</button>
                             </div>
                         </nav>
                     </div>
@@ -185,9 +154,9 @@
                             <div class="tpproduct pb-15 mb-30" data-name="{{ $pro->name }}" data-img="{{ $pro->img }}"
                                 data-price="{{ $pro->price }}" data-description="{{ $pro->description }}">
                                 <div class="tpproduct__thumb p-relative">
-                                    <a href="shop-details-2.html">
-                                        <img src="{{ asset('$pro->img') }}" alt="product-thumb">
-                                        <img class="product-thumb-secondary" src="{{ asset('$pro->img') }}" alt="">
+                                    <a href="detail/{{$pro->id}}">
+                                        <img src="{{ asset('uploads/'.$pro->img) }}" alt="product-thumb">
+                                        <img class="product-thumb-secondary" src="{{ asset('uploads/'.$pro->img) }}" alt="">
                                     </a>
                                     <div class="tpproduct__thumb-action">
                                         <a class="comphare" href="#"><i class="fal fa-exchange"></i></a>
@@ -214,7 +183,7 @@
                                     </div>
                                 </div>
                                 <div class="tpproduct__content">
-                                    <h3 class="tpproduct__title"><a href="shop-details.html">{{ $pro->name }}</a></h3>
+                                    <h3 class="tpproduct__title"><a href="detail/{{$pro->id}}">{{ $pro->name }}</a></h3>
                                     <div class="tpproduct__priceinfo p-relative">
                                         <div class="tpproduct__priceinfo-list">
                                             <span>{{ $pro->price }}</span>
@@ -236,7 +205,7 @@
                                                 <input type="hidden" name="description" value="{{ $pro->description }}">
                                                 <button class="add-to-cart-btn" type="submit">
                                                     <i class="fal fa-shopping-cart"></i>
-                                                    Add To Cart
+                                                    Thêm vào giỏ hàng
                                                 </button>
                                             </form>
                                         </div>
@@ -257,19 +226,19 @@
                             <div class="tpproduct pb-15 mb-30">
                                 <div class="tpproduct__thumb p-relative">
                                     <span class="tpproduct__thumb-volt"><i class="fas fa-bolt"></i></span>
-                                    <a href="shop-details-2.html">
-                                        <img src="assets/img/product/home-one/product-11.jpg" alt="product-thumb">
+                                    <a href="detail/{{$pro->id}}">
+                                        <img src="{{ asset('uploads/'.$pro->img) }}" alt="product-thumb">
                                         <img class="product-thumb-secondary"
-                                            src="assets/img/product/home-one/product-12.jpg" alt="">
+                                        src="{{ asset('uploads/'.$pro->img) }}" alt="">
                                     </a>
                                     <div class="tpproduct__thumb-action">
                                         <a class="comphare" href="#"><i class="fal fa-exchange"></i></a>
-                                        <a class="quckview" href="#"><i class="fal fa-eye"></i></a>
+                                        <a class="quckview" href="detail/{{$pro->id}}">><i class="fal fa-eye"></i></a>
                                         <a class="wishlist" href="wishlist.html"><i class="fal fa-heart"></i></a>
                                     </div>
                                 </div>
                                 <div class="tpproduct__content">
-                                    <h3 class="tpproduct__title"><a href="shop-details.html">{{ $pro->name }}</a></h3>
+                                    <h3 class="tpproduct__title"><a href="detail/{{$pro->id}}">{{ $pro->name }}</a></h3>
                                     <div class="tpproduct__priceinfo p-relative">
                                         <div class="tpproduct__priceinfo-list">
                                             <span>{{ $pro->price }}</span>
@@ -291,7 +260,7 @@
                                                 <input type="hidden" name="description" value="{{ $pro->description }}">
                                                 <button class="add-to-cart-btn" type="submit">
                                                     <i class="fal fa-shopping-cart"></i>
-                                                    Add To Cart
+                                                   Thêm vào giỏ hàng
                                                 </button>
                                             </form>
                                         </div>
@@ -309,11 +278,11 @@
                         <div class="col">
                             <div class="tpproduct pb-15 mb-30">
                                 <div class="tpproduct__thumb p-relative">
-                                    <span class="tpproduct__thumb-topsall">On Sale {{ $product->sale }}%</span>
-                                    <a href="shop-details-2.html">
-                                        <img src="assets/img/product/home-one/product-7.jpg" alt="product-thumb">
+                                    <span class="tpproduct__thumb-topsall">Giảm  {{ $product->sale }}%</span>
+                                    <a href="detail/{{$product->id}}">
+                                        <img src="{{ asset('uploads/'.$product->img) }}" alt="product-thumb">
                                         <img class="product-thumb-secondary"
-                                            src="assets/img/product/home-one/product-8.jpg" alt="">
+                                        src="{{ asset('uploads/'.$product->img) }}" alt="">
                                     </a>
                                     <div class="tpproduct__thumb-action">
                                         <a class="comphare" href="#"><i class="fal fa-exchange"></i></a>
@@ -323,14 +292,32 @@
                                     </div>
                                 </div>
                                 <div class="tpproduct__content">
-                                    <h3 class="tpproduct__title"><a href="shop-details-2.html">{{ $product->name }}</a>
+                                    <h3 class="tpproduct__title"><a href="detail/{{$product->id}}">{{ $product->name }}</a>
                                     </h3>
                                     <div class="tpproduct__priceinfo p-relative">
                                         <div class="tpproduct__priceinfo-list">
                                             <span>{{ $product->discounted_price }}</span>
                                         </div>
                                         <div class="tpproduct__cart">
-                                            <a href="cart.html"><i class="fal fa-shopping-cart"></i>Add To Cart</a>
+                                            <form action="{{asset('addtocart')}}" method="POST">
+                                                @csrf
+
+                                                @if(Session::has('users'))
+                                                @php
+                                                $users = Session::get('users');
+                                                @endphp
+                                                <input type="hidden" name="id_user" value="{{ $users->id }}">
+                                                @endif
+                                                <input type="hidden" name="id" value="{{ $product->id }}">
+                                                <input type="hidden" name="name" value="{{ $product->name }}">
+                                                <input type="hidden" name="img" value="{{ $product->img }}">
+                                                <input type="hidden" name="price" value="{{ $product->price }}">
+                                                <input type="hidden" name="description" value="{{ $product->description }}">
+                                                <button class="add-to-cart-btn" type="submit">
+                                                    <i class="fal fa-shopping-cart"></i>
+                                                   Thêm vào giỏ hàng
+                                                </button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -341,299 +328,14 @@
                 </div>
                 <div class="tab-pane fade" id="nav-rate" role="tabpanel" aria-labelledby="nav-rate-tab">
                     <div class="row row-cols-xxl-5 row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-2 row-cols-1">
-                        {{-- <div class="col">
-                <div class="tpproduct pb-15 mb-30">
-                   <div class="tpproduct__thumb p-relative">
-                      <a href="shop-details-2.html"><img src="assets/img/product/home-one/product-5.jpg" alt="product-thumb"></a>
-                      <a class="product-thumb-secondary" href="shop-details.html"><img src="assets/img/product/home-one/product-6.jpg" alt=""></a>
-                      <div class="tpproduct__thumb-action">
-                         <a class="comphare" href="#"><i class="fal fa-exchange"></i></a>
-                         <a class="quckview" href="#"><i class="fal fa-eye"></i></a>
-                         <a class="wishlist" href="wishlist.html"><i class="fal fa-heart"></i></a>
-                      </div>
-                   </div>
-                   <div class="tpproduct__content">
-                      <h3 class="tpproduct__title"><a href="shop-details.html">Pinkol Enormous Granite Bottle</a></h3>
-                      <div class="tpproduct__priceinfo p-relative">
-                         <div class="tpproduct__priceinfo-list">
-                            <span>$31.00</span>
-                         </div>
-                         <div class="tpproduct__cart">
-                            <a href="cart.html"><i class="fal fa-shopping-cart"></i>Add To Cart</a>
-                         </div>
-                      </div>
-                   </div>
-                </div>
-             </div>
-             <div class="col">
-                <div class="tpproduct pb-15 mb-30">
-                   <div class="tpproduct__thumb p-relative">
-                      <a href="shop-details-2.html">
-                         <img src="assets/img/product/home-one/product-1.jpg" alt="product-thumb">
-                      </a>
-                      <a class="product-thumb-secondary" href="shop-details-2.html"><img src="assets/img/product/home-one/product-2.jpg" alt=""></a>
-                      
-                      <div class="tpproduct__thumb-action">
-                         <a class="comphare" href="#"><i class="fal fa-exchange"></i></a>
-                         <a class="quckview" href="#"><i class="fal fa-eye"></i></a>
-                         <a class="wishlist" href="wishlist.html"><i class="fal fa-heart"></i></a>
-                      </div>
-                   </div>
-                   <div class="tpproduct__content">
-                      <h3 class="tpproduct__title"><a href="shop-details.html">Miko Wooden Bluetooth Speaker</a></h3>
-                      <div class="tpproduct__priceinfo p-relative">
-                         <div class="tpproduct__priceinfo-list">
-                            <span>$31.00</span>
-                         </div>
-                         <div class="tpproduct__cart">
-                            <a href="cart.html"><i class="fal fa-shopping-cart"></i>Add To Cart</a>
-                         </div>
-                      </div>
-                   </div>
-                </div>
-             </div>
-             <div class="col">
-                <div class="tpproduct pb-15 mb-30">
-                   <div class="tpproduct__thumb p-relative">
-                      <a href="shop-details.html">
-                         <img src="assets/img/product/home-one/product-3.jpg" alt="product-thumb">
-                      </a>
-                      <a class="product-thumb-secondary" href="shop-details-2.html"><img src="assets/img/product/home-one/product-4.jpg" alt=""></a>
-                      
-                      <div class="tpproduct__thumb-action">
-                         <a class="comphare" href="#"><i class="fal fa-exchange"></i></a>
-                         <a class="quckview" href="#"><i class="fal fa-eye"></i></a>
-                         <a class="wishlist" href="wishlist.html"><i class="fal fa-heart"></i></a>
-                      </div>
-                   </div>
-                   <div class="tpproduct__content">
-                      <h3 class="tpproduct__title"><a href="shop-details-2.html">Gorgeous Wooden Gloves</a></h3>
-                      <div class="tpproduct__priceinfo p-relative">
-                         <div class="tpproduct__priceinfo-list">
-                            <span>$31.00</span>
-                         </div>
-                         <div class="tpproduct__cart">
-                            <a href="cart.html"><i class="fal fa-shopping-cart"></i>Add To Cart</a>
-                         </div>
-                      </div>
-                   </div>
-                </div>
-             </div>
-             <div class="col">
-                <div class="tpproduct pb-15 mb-30">
-                   <div class="tpproduct__thumb p-relative">
-                      <a href="shop-details-2.html"><img src="assets/img/product/home-one/product-19.jpg" alt="product-thumb"></a>
-                      <a class="product-thumb-secondary" href="#"><img src="assets/img/product/home-one/product-20.jpg" alt=""></a>
-                      
-                      <div class="tpproduct__thumb-action">
-                         <a class="comphare" href="#"><i class="fal fa-exchange"></i></a>
-                         <a class="quckview" href="#"><i class="fal fa-eye"></i></a>
-                         <a class="wishlist" href="wishlist.html"><i class="fal fa-heart"></i></a>
-                      </div>
-                   </div>
-                   <div class="tpproduct__content">
-                      <h3 class="tpproduct__title"><a href="shop-details.html">Weddonix Mediocre Silk Hat</a></h3>
-                      <div class="tpproduct__priceinfo p-relative">
-                         <div class="tpproduct__priceinfo-list">
-                            <span>$31.00</span>
-                            <span class="tpproduct__priceinfo-list-oldprice">$39.00</span>
-                         </div>
-                         <div class="tpproduct__cart">
-                            <a href="cart.html"><i class="fal fa-shopping-cart"></i>Add To Cart</a>
-                         </div>
-                      </div>
-                   </div>
-                </div>
-             </div>
-             <div class="col">
-                <div class="tpproduct pb-15 mb-30">
-                   <div class="tpproduct__thumb p-relative">
-                      <span class="tpproduct__thumb-topsall">On Sale</span>
-                      <a href="shop-details.html">
-                         <img src="assets/img/product/home-one/product-7.jpg" alt="product-thumb">
-                      </a>
-                      <a class="product-thumb-secondary" href="shop-details-2.html"><img src="assets/img/product/home-one/product-8.jpg" alt=""></a>
-                      
-                      <div class="tpproduct__thumb-action">
-                         <a class="comphare" href="#"><i class="fal fa-exchange"></i></a>
-                         <a class="quckview" href="#"><i class="fal fa-eye"></i></a>
-                         <a class="wishlist" href="wishlist.html"><i class="fal fa-heart"></i></a>
-                      </div>
-                   </div>
-                   <div class="tpproduct__content">
-                      <h3 class="tpproduct__title"><a href="shop-details-2.html">Gorgeous Aluminum Table</a></h3>
-                      <div class="tpproduct__priceinfo p-relative">
-                         <div class="tpproduct__priceinfo-list">
-                            <span>$31.00</span>
-                         </div>
-                         <div class="tpproduct__cart">
-                            <a href="cart.html"><i class="fal fa-shopping-cart"></i>Add To Cart</a>
-                         </div>
-                      </div>
-                   </div>
-                </div>
-             </div>
-             <div class="col">
-                <div class="tpproduct pb-15 mb-30">
-                   <div class="tpproduct__thumb p-relative">
-                      <a href="shop-details-2.html"><img src="assets/img/product/home-one/product-9.jpg" alt="product-thumb"></a>
-                      <a class="product-thumb-secondary" href="shop-details-2.html"><img src="assets/img/product/home-one/product-10.jpg" alt=""></a>
-                      <div class="tpproduct__thumb-action">
-                         <a class="comphare" href="#"><i class="fal fa-exchange"></i></a>
-                         <a class="quckview" href="#"><i class="fal fa-eye"></i></a>
-                         <a class="wishlist" href="wishlist.html"><i class="fal fa-heart"></i></a>
-                      </div>
-                   </div>
-                   <div class="tpproduct__content">
-                      <h3 class="tpproduct__title"><a href="shop-details.html">Evo Lightweight Granite Shirt</a></h3>
-                      <div class="tpproduct__priceinfo p-relative">
-                         <div class="tpproduct__priceinfo-list">
-                            <span>$31.00</span>
-                            <span class="tpproduct__priceinfo-list-oldprice">$39.00</span>
-                         </div>
-                         <div class="tpproduct__cart">
-                            <a href="cart.html"><i class="fal fa-shopping-cart"></i>Add To Cart</a>
-                         </div>
-                      </div>
-                   </div>
-                </div>
-             </div>
-             <div class="col">
-                <div class="tpproduct pb-15 mb-30">
-                   <div class="tpproduct__thumb p-relative">
-                      <a href="shop-details-2.html"><img src="assets/img/product/home-one/product-15.jpg" alt="product-thumb"></a>
-                      <a class="product-thumb-secondary" href="shop-details-2.html"><img src="assets/img/product/home-one/product-16.jpg" alt=""></a>
-                      
-                      
-                      <div class="tpproduct__thumb-action">
-                         <a class="comphare" href="#"><i class="fal fa-exchange"></i></a>
-                         <a class="quckview" href="#"><i class="fal fa-eye"></i></a>
-                         <a class="wishlist" href="wishlist.html"><i class="fal fa-heart"></i></a>
-                      </div>
-                      <div class="tpproduct__variation">
-                         <a class="tpproduct__variationitem" href="#">
-                            <div class="tpproduct__termshape">
-                               <span class="tpproduct__termshape-bg"></span>
-                               <span class="tpproduct__termshape-border"></span>
-                            </div>
-                         </a>
-                         <a class="tpproduct__variationitem" href="#">
-                            <div class="tpproduct__termshape">
-                               <span class="tpproduct__termshape-bg red-product-bg"></span>
-                               <span class="tpproduct__termshape-border red-product-border"></span>
-                            </div>
-                         </a>
-                         <a class="tpproduct__variationitem" href="#">
-                            <div class="tpproduct__termshape">
-                               <span class="tpproduct__termshape-bg yellow-product-bg"></span>
-                               <span class="tpproduct__termshape-border yellow-product-border"></span>
-                            </div>
-                         </a>
-                         <a class="tpproduct__variationitem" href="#">
-                            <div class="tpproduct__termshape">
-                               <span class="tpproduct__termshape-bg green-product-bg"></span>
-                               <span class="tpproduct__termshape-border green-product-border"></span>
-                            </div>
-                         </a>
-                      </div>
-                   </div>
-                   <div class="tpproduct__content">
-                      <h3 class="tpproduct__title"><a href="shop-details.html">Purab Enormous Miranda Bottle</a></h3>
-                      <div class="tpproduct__priceinfo p-relative">
-                         <div class="tpproduct__priceinfo-list">
-                            <span>$31.00</span>
-                         </div>
-                         <div class="tpproduct__cart">
-                            <a href="cart.html"><i class="fal fa-shopping-cart"></i>Add To Cart</a>
-                         </div>
-                      </div>
-                   </div>
-                </div>
-             </div>
-             <div class="col">
-                <div class="tpproduct pb-15 mb-30">
-                   <div class="tpproduct__thumb p-relative">
-                      <a href="shop-details-2.html"><img src="assets/img/product/home-one/product-17.jpg" alt="product-thumb"></a>
-                      <a class="product-thumb-secondary" href="shop-details-2.html"><img src="assets/img/product/home-one/product-18.jpg" alt=""></a>
-                      
-                      <div class="tpproduct__thumb-action">
-                         <a class="comphare" href="#"><i class="fal fa-exchange"></i></a>
-                         <a class="quckview" href="#"><i class="fal fa-eye"></i></a>
-                         <a class="wishlist" href="wishlist.html"><i class="fal fa-heart"></i></a>
-                      </div>
-                   </div>
-                   <div class="tpproduct__content">
-                      <h3 class="tpproduct__title"><a href="shop-details-2.html">Miklonda Co. Crafted Candles</a></h3>
-                      <div class="tpproduct__priceinfo p-relative">
-                         <div class="tpproduct__priceinfo-list">
-                            <span>$31.00</span>
-                            <span class="tpproduct__priceinfo-list-oldprice">$39.00</span>
-                         </div>
-                         <div class="tpproduct__cart">
-                            <a href="cart.html"><i class="fal fa-shopping-cart"></i>Add To Cart</a>
-                         </div>
-                      </div>
-                   </div>
-                </div>
-             </div>
-             <div class="col">
-                <div class="tpproduct pb-15 mb-30">
-                   <div class="tpproduct__thumb p-relative">
-                      <span class="tpproduct__thumb-volt"><i class="fas fa-bolt"></i></span>
-                      <a href="shop-details-2.html"><img src="assets/img/product/home-one/product-11.jpg" alt="product-thumb"></a>
-                      <a class="product-thumb-secondary" href="shop-details-2.html"><img src="assets/img/product/home-one/product-12.jpg" alt=""></a>
-                      <div class="tpproduct__thumb-action">
-                         <a class="comphare" href="#"><i class="fal fa-exchange"></i></a>
-                         <a class="quckview" href="#"><i class="fal fa-eye"></i></a>
-                         <a class="wishlist" href="wishlist.html"><i class="fal fa-heart"></i></a>
-                      </div>
-                   </div>
-                   <div class="tpproduct__content">
-                      <h3 class="tpproduct__title"><a href="shop-details.html">CLCo. Incredible Paper Car</a></h3>
-                      <div class="tpproduct__priceinfo p-relative">
-                         <div class="tpproduct__priceinfo-list">
-                            <span>$31.00</span>
-                         </div>
-                         <div class="tpproduct__cart">
-                            <a href="cart.html"><i class="fal fa-shopping-cart"></i>Add To Cart</a>
-                         </div>
-                      </div>
-                   </div>
-                </div>
-             </div>
-             <div class="col">
-                <div class="tpproduct pb-15 mb-30">
-                   <div class="tpproduct__thumb p-relative">
-                      <a href="shop-details-2.html"><img src="assets/img/product/home-one/product-13.jpg" alt="product-thumb"></a>
-                      <a class="product-thumb-secondary" href="shop-details-2.html"><img src="assets/img/product/home-one/product-14.jpg" alt=""></a>
-                      <div class="tpproduct__thumb-action">
-                         <a class="comphare" href="#"><i class="fal fa-exchange"></i></a>
-                         <a class="quckview" href="#"><i class="fal fa-eye"></i></a>
-                         <a class="wishlist" href="wishlist.html"><i class="fal fa-heart"></i></a>
-                      </div>
-                   </div>
-                   <div class="tpproduct__content">
-                      <h3 class="tpproduct__title"><a href="shop-details-2.html">Progash Durable Granite Hat</a></h3>
-                      <div class="tpproduct__priceinfo p-relative">
-                         <div class="tpproduct__priceinfo-list">
-                            <span>$31.00</span>
-                         </div>
-                         <div class="tpproduct__cart">
-                            <a href="cart.html"><i class="fal fa-shopping-cart"></i>Add To Cart</a>
-                         </div>
-                      </div>
-                   </div>
-                </div>
-             </div> --}}
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- product-area-end -->
 
-    <!-- deal-product-area-start -->
-    <section class="dealproduct-area pb-95">
+    {{-- phụ kiện kèm --}}
+    {{-- <section class="dealproduct-area pb-95">
         <div class="container">
             <div class="theme-bg pt-40 pb-40">
                 <div class="row">
@@ -675,7 +377,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!-- deal-product-area-end -->
 
     <!-- shop-area-start -->
@@ -684,8 +386,8 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="tpsectionarea text-center mb-35">
-                        <h5 class="tpsectionarea__subtitle">Follow On</h5>
-                        <h4 class="tpsectionarea__title"><i class="fab fa-instagram"></i> ninico-shop</h4>
+                        <h5 class="tpsectionarea__subtitle">Bài viết chia sẽ kinh nghiệm</h5>
+                        <h4 class="tpsectionarea__title"><i class="fab fa-instagram">Owen Blog</i></h4>
                     </div>
                 </div>
             </div>
