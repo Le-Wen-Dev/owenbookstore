@@ -12,18 +12,10 @@ use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\VoucherController;
 use App\Models\Favorites;
+use App\Http\Controllers\BankController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
+Route::get('/laylsgd', [BankController::class, 'laylsgd']);
+Route::post('/store-bank-data', [BankController::class, 'storeBankData']);
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/allproduct', [HomeController::class, 'allproduct'])->name('allproduct');
 Route::get('/category/{category_id}', [HomeController::class, 'get_products_by_idcategory'])->name('products.by.category');
