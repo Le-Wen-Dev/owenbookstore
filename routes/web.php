@@ -8,15 +8,19 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\FavouriteController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\VoucherController;
 use App\Models\Favorites;
 use App\Http\Controllers\BankController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OrderControllerr;
 
 Route::get('/laylsgd', [BankController::class, 'laylsgd']);
 Route::post('/store-bank-data', [BankController::class, 'storeBankData']);
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/allproduct', [HomeController::class, 'allproduct'])->name('allproduct');
 Route::get('/category/{category_id}', [HomeController::class, 'get_products_by_idcategory'])->name('products.by.category');
 Route::get('/detail/{id}', [HomeController::class, 'get_product_detail'])->name('product.detail');
@@ -61,6 +65,11 @@ Route::post('admin/addvoucher', [VoucherController::class, 'add'])->name('admin/
 Route::get('admin/editvoucher/{id}', [VoucherController::class, 'formedit'])->name('admin/editvouchers');
 Route::post('admin/editvoucher/{id}', [VoucherController::class, 'edit'])->name('admin/editvouchers');
 Route::get('admin/removevoucher/{id}', [VoucherController::class, 'remove'])->name('admin/removevoucher');
+// manager orders
+Route::get('admin/orders', [OrderController::class, 'orders'])->name('admin/orders');
+Route::patch('admin/order/update-status/{id}', [OrderController::class, 'updateStatus'])->name('admin.order.updateStatus');
+Route::get('admin/removeorder/{id}', [OrderController::class, 'remove'])->name('admin.order.removeOrder');
+Route::get('admin/detailoder/{id}', [OrderController::class, 'detail'])->name('admin.order.detail');
 
 
 
@@ -96,3 +105,13 @@ Route::post('/verify-otp', [AuthController::class, 'verifyOtp'])->name('verify.o
 Route::get('/inventory', [InventoryController::class, 'getInventory'])->name('inventory');
 Route::get('/import_pro/{id}', [InventoryController::class, 'importInventory'])->name('import_pro');
 Route::put('/import_pro/import/{id}', [InventoryController::class, 'import_Inventory'])->name('import.product');
+
+
+//---------------------------checkout--------------------------------
+Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
+Route::get('/districts', [CheckoutController::class, 'getDistrictsByProvince'])->name('districts.byProvince');
+Route::get('/wards', [CheckoutController::class, 'getWardsByDistrict'])->name('wards.byDistrict');
+Route::post('/calculate-shipping-fee', [CheckoutController::class, 'calculateShipping'])->name('calculate.shipping.fee');
+Route::post('/apply-voucher', [CheckoutController::class, 'applyVoucher']);
+Route::post('/place-order', [CheckoutController::class, 'placeOrder'])->name('checkout.placeOrder');
+Route::get('/checkout-success', [CheckoutController::class, 'checkout_success'])->name('checkout.orderSuccess');

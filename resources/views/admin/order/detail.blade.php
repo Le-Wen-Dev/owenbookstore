@@ -1,5 +1,5 @@
 @extends('admin.LayoutAdmin')
-@section('titlepage','Quản lí mã giảm giá')
+@section('titlepage','Chi tiết đơn hàng')
 @section('content')
 
 <main class="main-content position-relative border-radius-lg ">
@@ -126,109 +126,151 @@
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header pb-0">
-                        <h6>@yield('titlepage')</h6>
+                        <h6>{{$order->id_bill}}</h6>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
                             <table class="table align-items-center mb-0">
-                                <thead>
-                                    <tr>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-10">
-                                            Mã giảm giá</th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-10 ps-2">
-                                            Thời gian bắt đầu</th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-10">
-                                            Thười gian kết thúc</th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-10">
-                                            Giá trị (%)</th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-10">
-                                            Thao tác</th>
-                                    </tr>
-                                </thead>
                                 <tbody>
-                                    @foreach ($vouchers as $value)
+
                                     <tr>
-
-                                        <td>
-                                            <p class="text-xs font-weight-bold mb-0">{{($vouchers->currentPage() - 1) *
-                                                $vouchers->perPage() + $loop->index + 1 }}</p>
-                                            <div class="d-flex px-2 py-1">
-
-
-                                                <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">{{$value->code}}</h6>
-
-                                                </div>
-                                            </div>
+                                        <td style="font-weight: bold;">
+                                            Trạng thái:
                                         </td>
                                         <td>
-                                            {{$value->time_start}}
+                                            @if ($order->status == 1)
+                                            <form action="{{ route('admin.order.updateStatus', $order->id_bill) }}" method="POST">
+                                                @csrf
+                                                @method('PATCH')
+                                                <button type="submit" class="btn btn-danger btn-sm">
+                                                    Chờ xác nhận
+                                                </button>
+                                            </form>
+                                            @elseif ($order->status == 2)
+                                            <form action="{{ route('admin.order.updateStatus', $order->id_bill) }}" method="POST">
+                                                @csrf
+                                                @method('PATCH')
+                                                <button type="submit" class="btn btn-warning btn-sm">
+                                                    Đang giao
+                                                </button>
+                                            </form>
+                                            @elseif ($order->status == 3)
+                                            <button class="btn btn-success btn-sm" disabled>
+                                                Đã nhận hàng:
+                                            </button>
+                                            @endif
                                         </td>
-                                        <td class="align-middle text-center text-sm">
-                                            {{$value->time_end}}
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <span class="text-secondary text-xs font-weight-bold">{{$value->discount}}</span>
-                                        </td>
-                                        <td class="align-middle">
-                                            <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="removevoucher/{{$value->id}}"><i class="far fa-trash-alt me-2"></i>Xóa
-                                                sản phẩm</a>
-                                            <a class="btn btn-link text-dark px-3 mb-0" href="editvoucher/{{$value->id}}"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Chỉnh sửa</a>
-                                        </td>
-
                                     </tr>
-                                    @endforeach
-
+                                    <tr>
+                                        <td style="font-weight: bold;">
+                                            Danh sách sản phẩm:
+                                        </td>
+                                        <td>
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Tên sản phẩm</th>
+                                                        <th>Giá</th>
+                                                        <th>Số lượng</th>
+                                                        <th>Tổng</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($products as $product)
+                                                    <tr>
+                                                        <td>{{ $product['name_product'] }}</td>
+                                                        <td>{{ number_format($product['price'], 0, ',', '.') }} VND</td>
+                                                        <td>{{ $product['quantity'] }}</td>
+                                                        <td>{{ number_format($product['total'], 0, ',', '.') }} VND</td>
+                                                    </tr>
+                                                    @endforeach
+                                                    <tr>
+                                                        <td colspan="4" class="text-end">
+                                                            Tổng: {{ number_format($order->totalfinal, 0, ',', '.') }} VND
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight: bold;">
+                                            Tên người đặt:
+                                        </td>
+                                        <td>
+                                            {{$order->name}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight: bold;">
+                                            Email người đặt:
+                                        </td>
+                                        <td>
+                                            {{$order->email}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight: bold;">
+                                            Số điện thoại người đặt:
+                                        </td>
+                                        <td>
+                                            {{$order->phone}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight: bold;">
+                                            Địa chỉ người đặt:
+                                        </td>
+                                        <td>
+                                            {{$order->address}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight: bold;">
+                                            Loại hình vận chuyển:
+                                        </td>
+                                        <td>
+                                            {{$order->shipping_units}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight: bold;">
+                                            Phương thức thanh toán:
+                                        </td>
+                                        <td>
+                                            @if ($order->payment_methods == 'cash')
+                                            Thanh toán khi nhận hàng
+                                            @else
+                                            Thanh toán online
+                                            @endif
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight: bold;">
+                                            Phương thức thanh toán:
+                                        </td>
+                                        <td>
+                                            {{$order->note_order}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight: bold;">
+                                            Ngày đặt:
+                                        </td>
+                                        <td>
+                                            {{$order->created_at}}
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
-                            <div class="mt-3 container d-flex justify-content-center align-items-center">
-                                {{$vouchers->links('pagination::bootstrap-4')}}
-                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="card mb-4">
-                    <div class="card-header pb-0">
-                        <h6>Thêm Sản Phẩm</h6>
-                    </div>
-                    <div class="card-body px-0 pt-0 pb-2">
-                        <div class="table-responsive p-2">
-                            <form class="align-items-center mb-0" action="addvoucher" method="POST" enctype="multipart/form-data">
-                                @csrf
-                                <div class="row">
-                                    <div class=" mb-3  ">
-                                        <label for="name" class="form-label">Mã voucher</label>
-                                        <input type="text" class="form-control " id="name" name="code" placeholder="Nhập tên voucher" required>
-                                    </div>
-                                    <div class=" mb-3  ">
-                                        <label for="name" class="form-label">Giá trị (%)</label>
-                                        <input type="text" class="form-control " id="name" name="discount" placeholder="Nhập % giảm giá" required>
-                                    </div>
-
-                                </div>
-                                <div class="mb-3">
-                                    <label for="start_date" class="form-label">Thời gian bắt đầu</label>
-                                    <input type="date" class="form-control" id="time_start" name="time_start" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="end_date" class="form-label">Thời gian kết thúc</label>
-                                    <input type="date" class="form-control" id="time_end" name="time_end" required>
-                                </div>
-
-
-
-                                <button type="submit" class="btn btn-primary">Lưu</button>
-                            </form>
-                        </div>
-                    </div>
+                    <a href="{{url()->previous()}}" class="mx-6 btn btn-primary">Trở về</a>
                 </div>
             </div>
         </div>
     </div>
+
     <footer class="footer pt-3  ">
         <div class="container-fluid">
             <div class="row align-items-center justify-content-lg-between">

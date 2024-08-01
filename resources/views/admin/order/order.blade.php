@@ -1,5 +1,5 @@
 @extends('admin.LayoutAdmin')
-@section('titlepage','Quản lí mã giảm giá')
+@section('titlepage','Quản lí đơn hàng')
 @section('content')
 
 <main class="main-content position-relative border-radius-lg ">
@@ -134,46 +134,54 @@
                                 <thead>
                                     <tr>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-10">
-                                            Mã giảm giá</th>
+                                            Mã đơn hàng</th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-10 ps-2">
-                                            Thời gian bắt đầu</th>
+                                            Tên người mua</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-10">
-                                            Thười gian kết thúc</th>
+                                            Trạng thái</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-10">
-                                            Giá trị (%)</th>
+                                            Ngày đặt hàng</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-10">
                                             Thao tác</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($vouchers as $value)
+                                    @foreach ($allitem as $value)
                                     <tr>
-
-                                        <td>
-                                            <p class="text-xs font-weight-bold mb-0">{{($vouchers->currentPage() - 1) *
-                                                $vouchers->perPage() + $loop->index + 1 }}</p>
-                                            <div class="d-flex px-2 py-1">
-
-
-                                                <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">{{$value->code}}</h6>
-
-                                                </div>
-                                            </div>
+                                        <td style="font-weight: bold;">
+                                            <a href="{{route('admin.order.detail', $value->id)}}">{{$value->id_bill}}</a>
                                         </td>
                                         <td>
-                                            {{$value->time_start}}
+                                            {{$value->name}}
                                         </td>
                                         <td class="align-middle text-center text-sm">
-                                            {{$value->time_end}}
+                                            @if ($value->status == 1)
+                                            <form action="{{ route('admin.order.updateStatus', $value->id_bill) }}" method="POST">
+                                                @csrf
+                                                @method('PATCH')
+                                                <button type="submit" class="btn btn-danger btn-sm">
+                                                    Chờ xác nhận
+                                                </button>
+                                            </form>
+                                            @elseif ($value->status == 2)
+                                            <form action="{{ route('admin.order.updateStatus', $value->id_bill) }}" method="POST">
+                                                @csrf
+                                                @method('PATCH')
+                                                <button type="submit" class="btn btn-warning btn-sm">
+                                                    Đang giao
+                                                </button>
+                                            </form>
+                                            @elseif ($value->status == 3)
+                                            <button class="btn btn-success btn-sm" disabled>
+                                                Đã nhận hàng
+                                            </button>
+                                            @endif
                                         </td>
                                         <td class="align-middle text-center">
-                                            <span class="text-secondary text-xs font-weight-bold">{{$value->discount}}</span>
+                                            <span class="text-secondary text-xs font-weight-bold"> {{$value->created_at}}</span>
                                         </td>
                                         <td class="align-middle">
-                                            <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="removevoucher/{{$value->id}}"><i class="far fa-trash-alt me-2"></i>Xóa
-                                                sản phẩm</a>
-                                            <a class="btn btn-link text-dark px-3 mb-0" href="editvoucher/{{$value->id}}"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Chỉnh sửa</a>
+                                            <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="{{route('admin.order.removeOrder', $value->id)}}"><i class="far fa-trash-alt me-2"></i>Xoá đơn hàng</a>
                                         </td>
 
                                     </tr>
@@ -182,47 +190,8 @@
                                 </tbody>
                             </table>
                             <div class="mt-3 container d-flex justify-content-center align-items-center">
-                                {{$vouchers->links('pagination::bootstrap-4')}}
+                                {{$allitem->links('pagination::bootstrap-4')}}
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="card mb-4">
-                    <div class="card-header pb-0">
-                        <h6>Thêm Sản Phẩm</h6>
-                    </div>
-                    <div class="card-body px-0 pt-0 pb-2">
-                        <div class="table-responsive p-2">
-                            <form class="align-items-center mb-0" action="addvoucher" method="POST" enctype="multipart/form-data">
-                                @csrf
-                                <div class="row">
-                                    <div class=" mb-3  ">
-                                        <label for="name" class="form-label">Mã voucher</label>
-                                        <input type="text" class="form-control " id="name" name="code" placeholder="Nhập tên voucher" required>
-                                    </div>
-                                    <div class=" mb-3  ">
-                                        <label for="name" class="form-label">Giá trị (%)</label>
-                                        <input type="text" class="form-control " id="name" name="discount" placeholder="Nhập % giảm giá" required>
-                                    </div>
-
-                                </div>
-                                <div class="mb-3">
-                                    <label for="start_date" class="form-label">Thời gian bắt đầu</label>
-                                    <input type="date" class="form-control" id="time_start" name="time_start" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="end_date" class="form-label">Thời gian kết thúc</label>
-                                    <input type="date" class="form-control" id="time_end" name="time_end" required>
-                                </div>
-
-
-
-                                <button type="submit" class="btn btn-primary">Lưu</button>
-                            </form>
                         </div>
                     </div>
                 </div>
