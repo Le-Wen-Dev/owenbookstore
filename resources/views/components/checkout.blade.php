@@ -1,6 +1,6 @@
 @extends('layout')
 @section('content')
-<section class="checkout-area pb-50 wow fadeInUp" data-wow-duration=".8s" data-wow-delay=".2s">
+<section class="checkout-area pb-50 wow fadeInUp mt-50" data-wow-duration=".8s" data-wow-delay=".2s">
     <div class="container">
         <form action="{{route('checkout.placeOrder')}}" method="POST">
             @csrf

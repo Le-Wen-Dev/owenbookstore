@@ -17,12 +17,14 @@
     <link rel="stylesheet" href="{{asset('assets/css/swiper-bundle.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/slick.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/nice-select.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/selectric.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/fontawesome.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/magnific-popup.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/meanmenu.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/spacing.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/main.css')}}">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
 
 </head>
 
@@ -43,6 +45,7 @@
     <script src="{{asset('assets/js/slick.js')}}"></script>
     <script src="{{asset('assets/js/magnific-popup.js')}}"></script>
     <script src="{{asset('assets/js/nice-select.js')}}"></script>
+    <script src="{{asset('assets/js/jquery.selectric.min.js')}}"></script>
     <script src="{{asset('assets/js/counterup.js')}}"></script>
     <script src="{{asset('assets/js/wow.js')}}"></script>
     <script src="{{asset('assets/js/isotope-pkgd.js')}}"></script>
@@ -56,9 +59,17 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 
+
+
     <script>
         $(document).ready(function() {
             $('.js-select-basic-single').select2();
+
+            var indicesToHide = [1, 3, 5];
+
+            indicesToHide.forEach(function(index) {
+                $('.select2-container').eq(index).css('display', 'none');
+            });
         });
     </script>
     <script>

@@ -15,8 +15,8 @@
             <li class="list-group-item">Ngày Thanh Toán: <strong>{{session('payment_date') }}</strong></li>
         </ul>
         <hr class="my-4">
-        <a href="{{route('home')}}" class="btn btn-primary">Quay lại trang chủ</a>
-        <a href="/orders/{{ session('order_id') }}" class="btn btn-secondary">Xem Chi Tiết Đơn Hàng</a>
+        <a href="{{route('home')}}" class="btn btn-link border border-1 text-black" style="border-color: #d51243!important;">Quay lại trang chủ</a>
+        <a href="{{route('profile.order')}}" class="btn btn-secondary">Xem đơn hàng đã đặt</a>
     </div>
 </div>
 @endsection
