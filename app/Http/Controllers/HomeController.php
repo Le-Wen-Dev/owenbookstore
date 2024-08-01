@@ -6,19 +6,14 @@ use App\Models\Products;
 use App\Models\categories;
 use App\Models\Carts;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Http;
 
 class HomeController extends Controller
 {
-       // protected $cat;
-
-       // public function __construct()
-       // {
-       //     $this->cat = new categories();
-       // }
        public function index(){
               //sản phẩm mới nhất
               $products = Products::orderBy('created_at', 'desc')->paginate(10);
+              $bannersale = Products::orderBy('sale', 'desc')->limit(1)->first();
               //sản phẩm nhiều lượt xem
               $product_popular = Products::orderBy('view', 'desc')->paginate(10);
               //category
@@ -35,8 +30,26 @@ class HomeController extends Controller
                      $product->sale = $product->sale * ( $product->sale /10);
                      return $product;
               });
-              return view('components.home',compact('products','category','categories','product_popular','saleProducts',));
+              $response = Http::get('https://blog.owenbook.store/api/news'); // Thay đổi URL theo API của bạn
+              if ($response->successful()) {
+                  $apiData = $response->json(); 
+                  $apiProducts = array_slice($apiData, 0, 4);
+                  // Giải mã JSON từ API
+              } else {
+                  $apiProducts = [];
               }
+              return view('components.home', [
+                  'products' => $products,
+                  'category' => $category,
+                  'categories' => $categories,
+                  'product_popular' => $product_popular,
+                  'saleProducts' => $saleProducts,
+                  'apiProducts' => $apiProducts,
+                  'bannersale'=>$bannersale,
+              ]);
+
+       }
+
        public function get_products_by_idcategory($category_id)
               {
               // Lấy tất cả các category

@@ -1,5 +1,9 @@
 @extends('layout')
 @section('content')
+@php
+    use Illuminate\Support\Str;
+@endphp
+
 <style>
     @media (max-width: 1024px) {
      .tp-slide-item__img img{
@@ -335,16 +339,16 @@
     </section>
 
     {{-- phụ kiện kèm --}}
-    {{-- <section class="dealproduct-area pb-95">
+    <section class="dealproduct-area pb-95">
         <div class="container">
             <div class="theme-bg pt-40 pb-40">
                 <div class="row">
                     <div class="col-lg-6 col-md-12">
                         <div class="tpdealproduct">
                             <div class="tpdealproduct__thumb p-relative text-center">
-                                <img src="assets/img/floded/floded-01.png" alt="dealproduct-thumb">
+                                <img src="{{ asset('uploads/'.$bannersale->img) }}" alt="dealproduct-thumb" width="430px" height="410px">
                                 <div class="tpdealproductd__offer">
-                                    <h5 class="tpdealproduct__offer-price"><span>From</span>$49</h5>
+                                    <h5 class="tpdealproduct__offer-price"><span>Giảm</span>{{$bannersale->sale}}%</h5>
                                 </div>
                             </div>
                         </div>
@@ -352,15 +356,17 @@
                     <div class="col-lg-6 col-md-12">
                         <div class="tpdealcontact pt-30">
                             <div class="tpdealcontact__price mb-5">
-                                <span>$49.00</span>
-                                <del>$59.00</del>
+                                <del>Giá gốc: {{ number_format($bannersale->price, 0, ',', '.') }} VNĐ </del><br>
+                                <span>Giảm còn: {{ number_format($bannersale->price - $bannersale->sale, 0, ',', '.') }} VNĐ</span><br>
+                                @php
+                                    $originalPrice = $bannersale->price;
+                                    $discountAmount = $bannersale->sale;
+                                    $discountPercentage = $originalPrice > 0 ? ($discountAmount / $originalPrice) * 100 : 0;
+                                @endphp
                             </div>
                             <div class="tpdealcontact__text mb-30">
-                                <h4 class="tpdealcontact__title mb-10"><a href="shop-details.html">Pro2 Abstract Folded
-                                        Pots</a></h4>
-                                <p>Elegant pink origami design three-dimensional view and decoration co-exist. Great for
-                                    adding a decorative touch to any room’s decor. Wonderful accent piece for coffee
-                                    tables or side tables.</p>
+                                <h4 class="tpdealcontact__title mb-10"><a href="shop-details.html">{{$bannersale->name}}</a></h4>
+                                <p>{{ Str::limit($bannersale->description, 250, '...') }}</p>
                             </div>
                             <div class="tpdealcontact__progress mb-30">
                                 <div class="progress">
@@ -369,66 +375,41 @@
                                 </div>
                             </div>
                             <div class="tpdealcontact__count">
-                                <div class="tpdealcontact__countdown" data-countdown="2022/12/29"></div>
-                                <i>Remains until the <br> end of the offer</i>
+                                <a href="detail/{{$bannersale->id}}" class="btn tpcheck-btn">Xem ngay</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section> --}}
-    <!-- deal-product-area-end -->
-
-    <!-- shop-area-start -->
-    <section class="shop-area pb-100">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="tpsectionarea text-center mb-35">
-                        <h5 class="tpsectionarea__subtitle">Bài viết chia sẽ kinh nghiệm</h5>
-                        <h4 class="tpsectionarea__title"><i class="fab fa-instagram">Owen Blog</i></h4>
-                    </div>
-                </div>
-            </div>
-            <div class="shopareaitem">
-                <div class="shopslider-active swiper-container">
-                    <div class="swiper-wrapper">
-                        <div class="tpshopitem swiper-slide">
-                            <a class="popup-image" href="assets/img/instagram/instagram-01.jpg">
-                                <img src="assets/img/instagram/instagram-01.jpg" alt="shop-thumb">
-                            </a>
-                        </div>
-                        <div class="tpshopitem swiper-slide">
-                            <a class="popup-image" href="assets/img/instagram/instagram-02.jpg">
-                                <img src="assets/img/instagram/instagram-02.jpg" alt="shop-thumb">
-                            </a>
-                        </div>
-                        <div class="tpshopitem swiper-slide">
-                            <a class="popup-image" href="assets/img/instagram/instagram-03.jpg">
-                                <img src="assets/img/instagram/instagram-03.jpg" alt="shop-thumb">
-                            </a>
-                        </div>
-                        <div class="tpshopitem swiper-slide">
-                            <a class="popup-image" href="assets/img/instagram/instagram-04.jpg">
-                                <img src="assets/img/instagram/instagram-04.jpg" alt="shop-thumb">
-                            </a>
-                        </div>
-                        <div class="tpshopitem swiper-slide">
-                            <a class="popup-image" href="assets/img/instagram/instagram-05.jpg">
-                                <img src="assets/img/instagram/instagram-05.jpg" alt="shop-thumb">
-                            </a>
-                        </div>
-                        <div class="tpshopitem swiper-slide">
-                            <a class="popup-image" href="assets/img/instagram/instagram-06.jpg">
-                                <img src="assets/img/instagram/instagram-06.jpg" alt="shop-thumb">
-                            </a>
-                        </div>
-                    </div>
+    </section>
+    <div class="container mb-5 ">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="tpsectionarea text-center mb-35">
+                    <h5 class="tpsectionarea__subtitle">Bài viết chia sẽ kinh nghiệm</h5>
+                    <h4 class="tpsectionarea__title"><i class="fab fa-instagram">Owen Blog</i></h4>
                 </div>
             </div>
         </div>
-    </section>
+        <div class="row mb-5">
+         
+  
+        @foreach($apiProducts as $item)
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+                <div class="card shadow-lg">
+                    <img src="https://blog.owenbook.store/{{ $item['image'] }}"class="card-img-top" height="250px">
+                    <div class="card-body">
+                      <h5 class="card-title">{{ $item['title'] }}</h5>
+                      <p class="card-text text-body-secondary"> {{ Str::limit($item['meta_description'], 50, '...') }}</p>
+                      <a href="https://blog.owenbook.store" class="btn tpcheck-btn">Đọc thêm</a>
+                    </div>
+                  </div>
+            </div>
+            @endforeach
+        </div>
+
+    </div>
     <!-- shop-area-end -->
 
 </main>

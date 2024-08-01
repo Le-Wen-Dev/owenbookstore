@@ -15,7 +15,7 @@ $total += $item->total;
 /* CSS cho hình ảnh trên màn hình lớn (desktop) */
 .desktop-img {
     width: 100px; /* Hoặc kích thước bạn muốn */
-    height: 100px; /* Hoặc kích thước bạn muốn */
+    height: 70px; /* Hoặc kích thước bạn muốn */
     border-radius: 100%;
 }
 
@@ -148,15 +148,15 @@ $total += $item->total;
                         <div class="main-menu">
                             <nav id="mobile-menu">
                                 <ul>
-                                    <li class="has-dropdown">
+                                    <li>
                                         <a href="{{route('home')}}">Trang Chủ</a>
 
                                     </li>
-                                    <li class="has-dropdown">
+                                    <li>
                                         <a href="{{route('allproduct')}}">Sản phẩm</a>
                                     </li>
 
-                                    <li class="has-dropdown">
+                                    <li>
                                         <a href="https://blog.owenbook.store/">Bài Viết</a>
 
                                     </li>
@@ -211,19 +211,19 @@ $total += $item->total;
                 <div class="main-menu">
                     <nav>
                         <ul>
-                            <li class="has-dropdown">
+                            <li>
                                 <a href="{{route('home')}}">Trang Chủ</a>
 
                             </li>
-                            <li class="has-dropdown">
+                            <li>
                                 <a href="shop.html">Cửa hàng</a>
 
                             </li>
-                            <li class="has-dropdown has-megamenu">
+                            <li >
                                 <a href="about.html">Giới Thiệu</a>
 
                             </li>
-                            <li class="has-dropdown">
+                            <li >
                                 <a href="blog.owenbook.store">Bài Viết</a>
 
                             </li>
@@ -450,7 +450,7 @@ $total += $item->total;
                     <li>
                         <div class="tpcart__item">
                             <div class="tpcart__img">
-                                <img src="assets/img/product/home-one/product-1.jpg" alt="">
+                                <img src="{{ asset('uploads/'.$item->img) }}" alt="">
                                 <div class="tpcart__del">
                                     <a href="#" onclick="event.preventDefault();
                                document.getElementById('remove_{{ $item->id }}').submit();">
