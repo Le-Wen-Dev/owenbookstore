@@ -39,6 +39,7 @@ Route::prefix('/')->group(function () {
 Route::get('/profile', [UserController::class, 'profile'])->name('profile');
 Route::post('/profile/update', [UserController::class, 'update_profile'])->name('profile.update');
 Route::get('/profile/order', [UserController::class, 'profile_order'])->name('profile.order');
+Route::get('/profile/detail_order/{id}', [UserController::class, 'detail_order'])->name('profile.detail_order');
 
 
 ////----------------------------------------------------------------Admin------------------------------------------------------------

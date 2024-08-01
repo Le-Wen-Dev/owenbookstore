@@ -100,4 +100,10 @@ class UserController extends Controller
             ->get();
         return view('components.profile_order', compact('orders'));
     }
+    public function detail_order(Request $request, $id)
+    {
+        $order = Bills::where('id_bill', $id)->first();
+        $products = json_decode($order->product, true);
+        return view('components.profile_detail_order', compact('order', 'products'));
+    }
 }

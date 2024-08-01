@@ -122,36 +122,34 @@
     </nav>
     <hr class="mt-0 mb-4">
     <div class="card mb-4">
-        <div class="card-header">Lịch sử đơn hàng</div>
+        <div class="card-header">Đơn hàng: {{$order->id_bill}}</div>
         <div class="card-body p-0">
             <!-- Billing history table-->
             <div class="table-responsive table-billing-history">
-                <table class="table mb-0">
+                <table class="table">
                     <thead>
                         <tr>
-                            <th class="border-gray-200" scope="col">Mã đơn hàng</th>
-                            <th class="border-gray-200" scope="col">Ngày đặt</th>
-                            <th class="border-gray-200" scope="col">Tổng tiền</th>
-                            <th class="border-gray-200" scope="col">Trạng thái</th>
-                            <th class="border-gray-200" scope="col">Xem chi tiết đơn</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Giá</th>
+                            <th>Số lượng</th>
+                            <th>Tổng</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($orders as $order)
+                        @foreach ($products as $product)
                         <tr>
-                            <td>#{{$order->id_bill}}</td>
-                            <td>{{ $order->created_at->format('d-m-Y') }}</td>
-                            <td>{{ number_format($order->totalfinal, 0, ',', '.') }} VNĐ</td>
-                            @if ($order->status == 1)
-                            <td><span class="badge bg-light text-danger">Chờ xác nhận</span></td>
-                            @elseif($order->status == 2)
-                            <td><span class="badge bg-light text-warning">Đang giao</span></td>
-                            @else
-                            <td><span class="badge bg-light text-success">Đã nhận hàng</span></td>
-                            @endif
-                            <td><a class="btn border border-danger text-decoration-none shadow-none" href="{{route('profile.detail_order', $order->id_bill)}}">Xem</a></td>
+                            <td>{{ $product['name_product'] }}</td>
+                            <td>{{ number_format($product['price'], 0, ',', '.') }} VND</td>
+                            <td>{{ $product['quantity'] }}</td>
+                            <td>{{ number_format($product['total'], 0, ',', '.') }} VND</td>
                         </tr>
                         @endforeach
+                        <tr>
+                            <td><a class="btn-link" style="color: #e10f44;" href="{{route('profile.order')}}">Trở về</a></td>
+                            <td colspan="4" class="text-end">
+                                Tổng (Tổng tiền sản phẩm + Phí ship + Mã giảm giá): {{ number_format($order->totalfinal, 0, ',', '.') }} VND
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
