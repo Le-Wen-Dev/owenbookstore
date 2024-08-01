@@ -1,5 +1,5 @@
 @extends('admin.LayoutAdmin')
-@section('titlepage','Dashboard')
+@section('titlepage','Thống kê')
 @section('content')
 
 <main class="main-content position-relative border-radius-lg ">
@@ -8,7 +8,7 @@
     <div class="container-fluid py-1 px-3">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="javascript:;">Pages</a></li>
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="javascript:;">Trang chủ</a></li>
           <li class="breadcrumb-item text-sm text-white active" aria-current="page">@yield('titlepage')</li>
         </ol>
         <h6 class="font-weight-bolder text-white mb-0">@yield('titlepage')</h6>
@@ -247,8 +247,9 @@
                   <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
                     <i class="ni ni-camera-compact text-dark opacity-10"></i>
                   </div>
-                  <h5 class="text-white mb-1">Get started with Argon</h5>
-                  <p>There’s nothing I really wanted to do in life that I wasn’t able to get good at.</p>
+                 
+<h5 class="text-white mb-1">Bắt đầu với Owen book</h5>
+<p>Không có điều gì tôi thực sự muốn làm trong đời mà tôi không thể làm tốt.</p>
                 </div>
               </div>
               <div class="carousel-item h-100" style="background-image: url('{{asset('argon-dashboard-master/assets/img/carousel-2.jpg')}}');
@@ -257,8 +258,8 @@
                   <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
                     <i class="ni ni-bulb-61 text-dark opacity-10"></i>
                   </div>
-                  <h5 class="text-white mb-1">Faster way to create web pages</h5>
-                  <p>That’s my skill. I’m not really specifically talented at anything except for the ability to learn.</p>
+                  <h5 class="text-white mb-1">Cách tạo trang web nhanh hơn</h5>
+                  <p>Đó là kỹ năng của tôi. Tôi thực sự không có tài năng gì đặc biệt ngoại trừ khả năng học hỏi.</p>
                 </div>
               </div>
               <div class="carousel-item h-100" style="background-image: url('{{asset('argon-dashboard-master/assets/img/carousel-3.jpg')}}');
@@ -267,8 +268,8 @@
                   <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
                     <i class="ni ni-trophy text-dark opacity-10"></i>
                   </div>
-                  <h5 class="text-white mb-1">Share with us your design tips!</h5>
-                  <p>Don’t be afraid to be wrong because you can’t learn anything from a compliment.</p>
+                  <h5 class="text-white mb-1">Chia sẻ với chúng tôi mẹo thiết kế của bạn!</h5>
+                  <p>Đừng sợ sai vì bạn không thể học được gì từ một lời khen.</p>
                 </div>
               </div>
             </div>
@@ -293,132 +294,44 @@
             </div>
           </div>
           <div class="table-responsive">
-            <table class="table align-items-center ">
+            <table class="table align-items-center mb-0">
+              <thead>
+                <tr>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">MDH </th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Tên</th>
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Trạng thái</th>
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Thao tác</th>
+                </tr>
+              </thead>
+
+              @foreach ($billadd as $needs)
               <tbody>
                 <tr>
-                  <td class="w-30">
-                    <div class="d-flex px-2 py-1 align-items-center">
+                  <td>
+                    <div class="d-flex px-2 py-1">
                       <div>
-                        <img src="./assets/img/icons/flags/US.png" alt="Country flag">
+                        <div>{{$needs->id_bill}}</div>
                       </div>
-                      <div class="ms-4">
-                        <p class="text-xs font-weight-bold mb-0">Country:</p>
-                        <h6 class="text-sm mb-0">United States</h6>
+                      <div class="d-flex flex-column justify-content-center">
+                       
                       </div>
                     </div>
                   </td>
                   <td>
-                    <div class="text-center">
-                      <p class="text-xs font-weight-bold mb-0">Sales:</p>
-                      <h6 class="text-sm mb-0">2500</h6>
-                    </div>
+                    <h5 class="mb-0 text-sm">{{$needs->name}}</h5>
                   </td>
-                  <td>
-                    <div class="text-center">
-                      <p class="text-xs font-weight-bold mb-0">Value:</p>
-                      <h6 class="text-sm mb-0">$230,900</h6>
-                    </div>
+                  <td class="align-middle text-center text-sm">
+                    <span class="badge badge-sm bg-gradient-danger">{{$needs->status}}</span>
                   </td>
-                  <td class="align-middle text-sm">
-                    <div class="col text-center">
-                      <p class="text-xs font-weight-bold mb-0">Bounce:</p>
-                      <h6 class="text-sm mb-0">29.9%</h6>
-                    </div>
+                  <td class="align-middle text-center">
+                    <span class="text-secondary text-xs font-weight-bold">{{$needs->created_at}}</span>
+                  </td>
+                  <td class="align-middle">
+                    <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="{{route('admin/orders')}}"><i class="fa-solid fa-plus p-2"></i>Duyệt</a>
                   </td>
                 </tr>
-                <tr>
-                  <td class="w-30">
-                    <div class="d-flex px-2 py-1 align-items-center">
-                      <div>
-                        <img src="./assets/img/icons/flags/DE.png" alt="Country flag">
-                      </div>
-                      <div class="ms-4">
-                        <p class="text-xs font-weight-bold mb-0">Country:</p>
-                        <h6 class="text-sm mb-0">Germany</h6>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="text-center">
-                      <p class="text-xs font-weight-bold mb-0">Sales:</p>
-                      <h6 class="text-sm mb-0">3.900</h6>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="text-center">
-                      <p class="text-xs font-weight-bold mb-0">Value:</p>
-                      <h6 class="text-sm mb-0">$440,000</h6>
-                    </div>
-                  </td>
-                  <td class="align-middle text-sm">
-                    <div class="col text-center">
-                      <p class="text-xs font-weight-bold mb-0">Bounce:</p>
-                      <h6 class="text-sm mb-0">40.22%</h6>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="w-30">
-                    <div class="d-flex px-2 py-1 align-items-center">
-                      <div>
-                        <img src="{{asset('argon-dashboard-master/assets/img/icons/flags/GB.png')}}" alt="Country flag">
-                      </div>
-                      <div class="ms-4">
-                        <p class="text-xs font-weight-bold mb-0">Country:</p>
-                        <h6 class="text-sm mb-0">Great Britain</h6>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="text-center">
-                      <p class="text-xs font-weight-bold mb-0">Sales:</p>
-                      <h6 class="text-sm mb-0">1.400</h6>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="text-center">
-                      <p class="text-xs font-weight-bold mb-0">Value:</p>
-                      <h6 class="text-sm mb-0">$190,700</h6>
-                    </div>
-                  </td>
-                  <td class="align-middle text-sm">
-                    <div class="col text-center">
-                      <p class="text-xs font-weight-bold mb-0">Bounce:</p>
-                      <h6 class="text-sm mb-0">23.44%</h6>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="w-30">
-                    <div class="d-flex px-2 py-1 align-items-center">
-                      <div>
-                        <img src="./assets/img/icons/flags/BR.png" alt="Country flag">
-                      </div>
-                      <div class="ms-4">
-                        <p class="text-xs font-weight-bold mb-0">Country:</p>
-                        <h6 class="text-sm mb-0">Brasil</h6>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="text-center">
-                      <p class="text-xs font-weight-bold mb-0">Sales:</p>
-                      <h6 class="text-sm mb-0">562</h6>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="text-center">
-                      <p class="text-xs font-weight-bold mb-0">Value:</p>
-                      <h6 class="text-sm mb-0">$143,960</h6>
-                    </div>
-                  </td>
-                  <td class="align-middle text-sm">
-                    <div class="col text-center">
-                      <p class="text-xs font-weight-bold mb-0">Bounce:</p>
-                      <h6 class="text-sm mb-0">32.14%</h6>
-                    </div>
-                  </td>
-                </tr>
+              </tbody>
+              @endforeach
               </tbody>
             </table>
           </div>

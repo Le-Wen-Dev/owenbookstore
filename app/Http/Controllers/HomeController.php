@@ -80,7 +80,7 @@ class HomeController extends Controller
         $categoryProduct = categories::findOrFail($category_id);
 
         // Lấy các sản phẩm thuộc category cụ thể
-        $products = Products::where('category_id', $category_id)
+        $products = Products::where('categories_id', $category_id)
             ->orderBy('name', 'asc')
             ->get();
 
@@ -108,7 +108,7 @@ class HomeController extends Controller
 
     public function allproduct()
     {
-        $products = Products::orderBy('id', 'desc')->paginate(15);
+        $products = Products::orderBy('id', 'desc')->paginate(10);
         return view('components.allproduct', compact('products'));
     }
 

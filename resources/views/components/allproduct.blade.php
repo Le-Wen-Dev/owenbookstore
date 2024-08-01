@@ -5,16 +5,15 @@
      <main>
 
         <!-- breadcrumb-area -->
-        <section class="breadcrumb__area pt-60 pb-60 tp-breadcrumb__bg" data-background="assets/img/banner/breadcrumb-01.jpg">
+        <section class="breadcrumb__area pt-60 pb-60 tp-breadcrumb__bg" data-background="{{asset('img/bannerphu.png')}}">
            <div class="container">
               <div class="row align-items-center">
                  <div class="col-xl-7 col-lg-12 col-md-12 col-12">
                     <div class="tp-breadcrumb">
                        <div class="tp-breadcrumb__link mb-10">
-                          <span class="breadcrumb-item-active"><a href="index.html">Home</a></span>
-                          <span>Shop</span>
+                          <span class="breadcrumb-item-active"><a href="{{asset('home')}}">Trang chủ</a></span>
                        </div>
-                       <h2 class="tp-breadcrumb__title">Shop Grid</h2>
+                       <h2 class="tp-breadcrumb__title">Tất cả sản phẩm</h2>
                     </div>
                  </div>
               </div>
@@ -25,47 +24,10 @@
         <!-- product-filter-area-start -->
         <div class="product-filter-area pt-65 pb-80">
            <div class="container">
-              <div class="product-filter-content mb-40">
-                 <div class="row align-items-center">
-                    <div class="col-sm-6">
-                       <div class="product-item-count">
-                          <span><b>112</b> Item On List</span>
-                       </div>
-                    </div>
-                    <div class="col-sm-6">
-                       <div class="product-navtabs d-flex justify-content-end align-items-center">
-                          <div class="tp-shop-selector">
-                             <select>
-                                <option>Show 12</option>
-                                <option>Show 14</option>
-                                <option>Show 08</option>
-                                <option>Show 20</option>
-                             </select>
-                          </div>
-                          <div class="tpproductnav tpnavbar product-filter-nav">
-                             <nav>
-                                <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                   <button class="nav-link" id="nav-all-tab" data-bs-toggle="tab"
-                                      data-bs-target="#nav-all" type="button" role="tab" aria-controls="nav-all"
-                                      aria-selected="true"><i class="fal fa-list-ul"></i></button>
-     
-                                   <button class="nav-link active" id="nav-popular-tab" data-bs-toggle="tab" data-bs-target="#nav-popular" type="button" role="tab" aria-controls="nav-popular"
-                                      aria-selected="false"><i class="fal fa-th"></i></button>
-                                </div>
-                             </nav>
-                          </div>
-                       </div>
-                    </div>
-                 </div>
-              </div>
               <div class="row mb-50">
                  <div class="col-lg-12">
                     <div class="tab-content" id="nav-tabContent">
                        <div class="tab-pane fade" id="nav-all" role="tabpanel" aria-labelledby="nav-all-tab">
-                       
-                          
-                        
-
                        </div>
                        <div class="tab-pane fade show active" id="nav-popular" role="tabpanel" aria-labelledby="nav-popular-tab">
                           <div
@@ -76,15 +38,31 @@
                                    <div class="tpproduct__thumb">
                                       <div class="tpproduct__thumbitem p-relative">
                                          <a href="shop-details-2.html">
-                                            <img src="assets/img/product/home-two/product-31.jpg" alt="product-thumb">
-                                            <img class="thumbitem-secondary" src="assets/img/product/home-two/product-32.jpg" alt="product-thumb">
+                                          <img src="{{ asset('uploads/'.$product->img) }}" alt="product-thumb">
+                                            <img class="thumbitem-secondary" src="{{ asset('uploads/'.$product->img) }}"alt="product-thumb">
                                          </a>
                                          <div class="tpproduct__thumb-bg">
                                             <div class="tpproductactionbg">
-                                               <a href="cart.html"><i class="fal fa-shopping-basket"></i></a>
-                                               <a href="#"><i class="fal fa-exchange"></i></a>
                                                <a href="detail/{{$product->id}}"><i class="fal fa-eye"></i></a>
-                                               <a href="wishlist.html"><i class="fal fa-heart"></i></a>
+                                               <a class="wishlist" href="">
+                                                <form action="/addToFavorites" method="POST">
+                                                    @csrf
+                                                    @if(Session::has('users'))
+                                                    @php
+                                                    $users = Session::get('users');
+                                                    @endphp
+                                                    <input type="hidden" name="id_user" value="{{ $users->id }}">
+                                                    @endif
+                                                    <input type="hidden" name="id" value="{{ $product->id }}">
+                                                    <input type="hidden" name="name" value="{{ $product->name }}">
+                                                    <input type="hidden" name="img" value="{{ $product->img }}">
+                                                    <input type="hidden" name="price" value="{{$product->discounted_price }}">
+                                                    <input type="hidden" name="description" value="{{ $product->description }}">
+                                                    <button type="submit">
+                                                        <i class="fal fa-heart"></i>
+                                                    </button>
+                                                </form>
+                                            </a>
                                             </div>
                                          </div>
                                       </div>
@@ -99,46 +77,28 @@
                                    </div>
                                    <div class="tpproduct__ratingarea">
                                       <div class="d-flex align-items-center justify-content-between">
-                                         <div class="tpproductdot">
-                                            <a class="tpproductdot__variationitem" href="shop-details.html">
-                                               <div class="tpproductdot__termshape">
-                                                  <span class="tpproductdot__termshape-bg"></span>
-                                                  <span class="tpproductdot__termshape-border"></span>
-                                               </div>
-                                            </a>
-                                            <a class="tpproductdot__variationitem" href="shop-details.html">
-                                               <div class="tpproductdot__termshape">
-                                                  <span class="tpproductdot__termshape-bg red-product-bg"></span>
-                                                  <span class="tpproductdot__termshape-border red-product-border"></span>
-                                               </div>
-                                            </a>
-                                            <a class="tpproductdot__variationitem" href="shop-details.html">
-                                               <div class="tpproductdot__termshape">
-                                                  <span class="tpproductdot__termshape-bg orange-product-bg"></span>
-                                                  <span class="tpproductdot__termshape-border orange-product-border"></span>
-                                               </div>
-                                            </a>
-                                            <a class="tpproductdot__variationitem" href="shop-details.html">
-                                               <div class="tpproductdot__termshape">
-                                                  <span class="tpproductdot__termshape-bg purple-product-bg"></span>
-                                                  <span class="tpproductdot__termshape-border purple-product-border"></span>
-                                               </div>
-                                            </a>
-                                         </div>
-                                         <div class="tpproduct__rating">
-                                            <ul>
-                                               <li>
-                                                  <a href="#"><i class="fas fa-star"></i></a>
-                                                  <a href="#"><i class="fas fa-star"></i></a>
-                                                  <a href="#"><i class="fas fa-star"></i></a>
-                                                  <a href="#"><i class="fas fa-star"></i></a>
-                                                  <a href="#"><i class="far fa-star"></i></a>
-                                               </li>
-                                               <li>
-                                                  <span>(81)</span>
-                                               </li>
-                                            </ul>
-                                         </div>
+                                         
+                                       <div class="tpproduct__cart">
+                                          <form action="{{asset('addtocart')}}" method="POST">
+                                              @csrf
+
+                                              @if(Session::has('users'))
+                                              @php
+                                              $users = Session::get('users');
+                                              @endphp
+                                              <input type="hidden" name="id_user" value="{{ $users->id }}">
+                                              @endif
+                                              <input type="hidden" name="id" value="{{ $product->id }}">
+                                              <input type="hidden" name="name" value="{{ $product->name }}">
+                                              <input type="hidden" name="img" value="{{ $product->img }}">
+                                              <input type="hidden" name="price" value="{{ $product->discounted_price }}">
+                                              <input type="hidden" name="description" value="{{ $product->description }}">
+                                              <button class="add-to-cart-btn" type="submit">
+                                                  <i class="fal fa-shopping-cart"></i>
+                                                 Thêm vào giỏ hàng
+                                              </button>
+                                          </form>
+                                      </div>
                                       </div>
                                    </div>
                                 </div>

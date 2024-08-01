@@ -222,6 +222,9 @@
                         @endif
                     </div>
                 </div>
+                <div class="mt-3 container d-flex justify-content-center align-items-center">
+                    {{$products->links('pagination::bootstrap-4')}}
+                </div>
                 <div class="tab-pane fade" id="nav-popular" role="tabpanel" aria-labelledby="nav-popular-tab">
                     <div class="row row-cols-xxl-5 row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-2 row-cols-1">
                         @if(isset($product_popular) && is_object($product_popular))
@@ -363,9 +366,12 @@
                                 </div>
                             </div>
                         </div>
+                      
                         @endforeach
+                    
                     </div>
                 </div>
+            
                 <div class="tab-pane fade" id="nav-rate" role="tabpanel" aria-labelledby="nav-rate-tab">
                     <div class="row row-cols-xxl-5 row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-2 row-cols-1">
                     </div>
@@ -392,14 +398,19 @@
                     <div class="col-lg-6 col-md-12">
                         <div class="tpdealcontact pt-30">
                             <div class="tpdealcontact__price mb-5">
-                                <del>Giá gốc: {{ number_format($bannersale->price, 0, ',', '.') }} VNĐ </del><br>
-                                <span>Giảm còn: {{ number_format($bannersale->price - $bannersale->sale, 0, ',', '.') }} VNĐ</span><br>
                                 @php
-                                    $originalPrice = $bannersale->price;
-                                    $discountAmount = $bannersale->sale;
-                                    $discountPercentage = $originalPrice > 0 ? ($discountAmount / $originalPrice) * 100 : 0;
-                                @endphp
+                                $originalPrice = $bannersale->price;
+                                $discountPercentage = 10; // Fixed 10% discount
+                                $discountAmount = ($discountPercentage / 100) * $originalPrice;
+                                $discountedPrice = $originalPrice - $discountAmount;
+                            @endphp
+                         <div class="tpdealcontact__price mb-5">
+                            <del>Giá gốc: {{ number_format($originalPrice, 0, ',', '.') }} VNĐ</del><br>
+                            <span>Giảm còn: {{ number_format($discountedPrice, 0, ',', '.') }} VNĐ</span><br>
+                        </div>
+                        
                             </div>
+                            
                             <div class="tpdealcontact__text mb-30">
                                 <h4 class="tpdealcontact__title mb-10"><a href="shop-details.html">{{$bannersale->name}}</a></h4>
                                 <p>{{ Str::limit($bannersale->description, 250, '...') }}</p>

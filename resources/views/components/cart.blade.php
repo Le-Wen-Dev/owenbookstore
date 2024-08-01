@@ -4,16 +4,15 @@
 $totalPrice = 0; // Khởi tạo biến tổng giá trị đơn hàng
 $discount = 0; // Khởi tạo biến giảm giá
 @endphp
-<section class="breadcrumb__area pt-60 pb-60 tp-breadcrumb__bg" data-background="assets/img/banner/breadcrumb-01.jpg">
+<section class="breadcrumb__area pt-60 pb-60 tp-breadcrumb__bg" data-background="{{asset('img/bannerphu.png')}}">
     <div class="container">
        <div class="row align-items-center">
           <div class="col-xl-7 col-lg-12 col-md-12 col-12">
              <div class="tp-breadcrumb">
                 <div class="tp-breadcrumb__link mb-10">
-                   <span class="breadcrumb-item-active"><a href="index.html">Home</a></span>
-                   <span>Cart</span>
+                   <span class="breadcrumb-item-active"><a href="{{route('home')}}">Trang chủ</a></span>
                 </div>
-                <h2 class="tp-breadcrumb__title">Product Cart</h2>
+                <h2 class="tp-breadcrumb__title">Giỏ hàng</h2>
              </div>
           </div>
        </div>
@@ -125,7 +124,7 @@ $discount = 0; // Khởi tạo biến giảm giá
         <!-- Cart Items - end -->
         <div class="d-flex justify-content-end">
             <button class="btn bg-danger text-white m-3">
-                <a href="/bill" style="color:white;text-decoration: none">
+                <a  href="{{route('checkout')}}" style="color:white;text-decoration: none">
                     Tiếp Tục Thanh toán
                 </a>
         </div>

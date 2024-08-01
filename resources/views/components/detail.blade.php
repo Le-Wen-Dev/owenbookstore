@@ -5,7 +5,7 @@
    <main>
 
     <!-- breadcrumb-area -->
-    <section class="breadcrumb__area pt-60 pb-60 tp-breadcrumb__bg" data-background="assets/img/banner/breadcrumb-01.jpg">
+    <section class="breadcrumb__area pt-60 pb-60 tp-breadcrumb__bg" data-background="{{asset('img/bannerphu.png')}}">
        <div class="container">
           <div class="row align-items-center">
              <div class="col-xl-7 col-lg-12 col-md-12 col-12">
