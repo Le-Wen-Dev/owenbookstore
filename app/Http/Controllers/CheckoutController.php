@@ -20,12 +20,16 @@ class CheckoutController extends Controller
         if (!auth()->check()) {
             return redirect()->route('login')->with('error', 'Bạn cần đăng nhập để thanh toán');
         }
+
         $provinces = Province::all();
 
         $user = Auth::user();
 
         $id_user = auth()->id();
         $carts = Carts::where('id_user', $id_user)->get();
+        if ($carts->isEmpty()) {
+            return redirect()->route('home')->with('error', 'Giỏ hàng của bạn đang trống, vui lòng thêm sản phẩm trước khi thanh toán.');
+        }
 
         $sub_total = 0;
         foreach ($carts as $prods) {
