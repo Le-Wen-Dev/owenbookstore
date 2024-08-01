@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Products;
-use App\Models\categories; 
+use App\Models\categories;
 use App\Models\Carts;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -14,12 +14,12 @@ class HomeController extends Controller
     {
         // Sản phẩm mới nhất
         $products = Products::orderBy('created_at', 'desc')->paginate(10);
-        
+
         // Sản phẩm bán chạy nhất
         $bannersale = Products::orderBy('sale', 'desc')->limit(1)->first();
 
         // Tính giá sale nếu sản phẩm có sale > 0
-        $products->transform(function($product) {
+        $products->transform(function ($product) {
             if ($product->sale > 0) {
                 $product->sale_price = $product->price - ($product->price * ($product->sale / 100));
             } else {
@@ -45,7 +45,7 @@ class HomeController extends Controller
             ->paginate(10);
 
         // Tính giá sale cho các sản phẩm giảm giá
-        $saleProducts->transform(function($product) {
+        $saleProducts->transform(function ($product) {
             $product->sale_price = $product->price - ($product->price * ($product->sale / 100));
             return $product;
         });
@@ -81,8 +81,8 @@ class HomeController extends Controller
 
         // Lấy các sản phẩm thuộc category cụ thể
         $products = Products::where('category_id', $category_id)
-                             ->orderBy('name', 'asc')
-                             ->get();
+            ->orderBy('name', 'asc')
+            ->get();
 
         $id_user = auth()->id();
         $cart = Carts::where('id_user', $id_user)->get();
@@ -100,9 +100,9 @@ class HomeController extends Controller
     {
         $product = Products::findOrFail($id);
         // Lấy danh mục của sản phẩm
-        $related_products = Products::where('category_id', $product->category_id)
-                                    ->where('id', '!=', $id)
-                                    ->get();
+        $related_products = Products::where('categories_id', $product->category_id)
+            ->where('id', '!=', $id)
+            ->get();
         return view('components.detail', compact('product', 'related_products'));
     }
 

@@ -19,22 +19,22 @@ $total += $item->total;
         border-radius: 100%;
     }
 
-<<<<<<< HEAD
 
-/* CSS cho hình ảnh trên màn hình lớn (desktop) */
-.desktop-img {
-    width: 100px; /* Hoặc kích thước bạn muốn */
-    height: 70px; /* Hoặc kích thước bạn muốn */
-    border-radius: 100%;
-}
+    /* CSS cho hình ảnh trên màn hình lớn (desktop) */
+    .desktop-img {
+        width: 100px;
+        /* Hoặc kích thước bạn muốn */
+        height: 70px;
+        /* Hoặc kích thước bạn muốn */
+        border-radius: 100%;
+    }
 
-/* Tùy chỉnh để đảm bảo hình ảnh hiển thị đúng */
-.img-fluid {
-    max-width: 100%;
-    height: auto;
-}
-
- </style>
+    /* Tùy chỉnh để đảm bảo hình ảnh hiển thị đúng */
+    .img-fluid {
+        max-width: 100%;
+        height: auto;
+    }
+</style>
 
 <div id="preloader">
     <div class="preloader">
@@ -100,7 +100,7 @@ $total += $item->total;
                                             <ul class="submenu">
                                                 <li><a href="index.html">Xin chào : {{ Auth::user()->name }}</a>
                                                 </li>
-                                                <li><a href="index-2.html">Thông tin tài khoản c</a></li>
+                                                <li><a href="{{route('profile')}}">Thông tin tài khoản c</a></li>
                                                 <li><a href="index-3.html">Đổi mật khẩu</a></li>
                                                 <li><a href="#" onclick="event.preventDefault();
                                        document.getElementById('logout-form').submit();">Đăng xuất </a></li>
@@ -223,11 +223,11 @@ $total += $item->total;
                                 <a href="shop.html">Cửa hàng</a>
 
                             </li>
-                            <li >
+                            <li>
                                 <a href="about.html">Giới Thiệu</a>
 
                             </li>
-                            <li >
+                            <li>
                                 <a href="blog.owenbook.store">Bài Viết</a>
 
                             </li>
@@ -450,25 +450,25 @@ $total += $item->total;
                                     <a href="#" onclick="event.preventDefault();
 
                                document.getElementById('remove_{{ $item->id }}').submit();">
-                                    <i class="far fa-times-circle"></i>
-                                </a>
-                                <form id="remove_{{ $item->id }}" action="{{ route('remove.cart.header') }}" method="POST" style="display: none;">
-                                    @csrf
-                                    <input type="hidden" name="id" value="{{ $item->id }}">
-                                </form>
+                                        <i class="far fa-times-circle"></i>
+                                    </a>
+                                    <form id="remove_{{ $item->id }}" action="{{ route('remove.cart.header') }}" method="POST" style="display: none;">
+                                        @csrf
+                                        <input type="hidden" name="id" value="{{ $item->id }}">
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="tpcart__content">
+                                <span class="tpcart__content-title"><a href="shop-details.html">{{$item->name_product}}</a>
+                                </span>
+                                <div class="tpcart__cart-price">
+                                    <span class="quantity">{{$item->quantity}}x</span>
+                                    <span class="new-price">{{$item->price}}</span>
+                                </div>
                             </div>
                         </div>
-                        <div class="tpcart__content">
-                            <span class="tpcart__content-title"><a href="shop-details.html">{{$item->name_product}}</a>
-                            </span>
-                            <div class="tpcart__cart-price">
-                                <span class="quantity">{{$item->quantity}}x</span>
-                                <span class="new-price">{{$item->price}}</span>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
-                    </>
+                        @endforeach
+                        </>
                 </ul>
             </div>
             <div class="tpcart__checkout">

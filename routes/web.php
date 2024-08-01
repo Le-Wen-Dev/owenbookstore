@@ -36,6 +36,9 @@ Route::prefix('/')->group(function () {
     Route::post('/remove-all-cart', [CartController::class, 'removeAllCart'])->name('remove.all.cart');
     Route::post('/remove-all-favorites', [FavouriteController::class, 'removeAllFavarites'])->name('remove.all.favorites');
 });
+Route::get('/profile', [UserController::class, 'profile'])->name('profile');
+Route::post('/profile/update', [UserController::class, 'update_profile'])->name('profile.update');
+Route::get('/profile/order', [UserController::class, 'profile_order'])->name('profile.order');
 
 
 ////----------------------------------------------------------------Admin------------------------------------------------------------

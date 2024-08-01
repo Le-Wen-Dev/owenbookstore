@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bills;
 use App\Models\Carts;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -62,5 +64,40 @@ class UserController extends Controller
             // Nếu không tìm thấy người dùng, hiển thị thông báo lỗi
             return redirect()->route('admin/users')->with('error', 'Không tìm thấy người dùng!');
         }
+    }
+
+    public function profile()
+    {
+        if (!auth()->check()) {
+            return redirect()->route('login')->with('error', 'Bạn cần đăng nhập xem thông tin người dùng.');
+        }
+        $user = Auth::user();
+        return view('components.profile', compact('user'));
+    }
+
+    public function update_profile(Request $request)
+    {
+        $validateData = $request->except('img'); // Exclude image fields from validation
+        // Check if the main image was uploaded
+        if ($request->hasFile('img')) {
+            $imageName = time() . '.' . $request->img->extension();
+            $request->img->move(public_path('uploads'), $imageName);
+            $validateData['img'] = $imageName;
+        }
+        // Update the product
+        $user = User::findOrFail(Auth::id());
+        $user->update($validateData);
+        return redirect()->route('profile')->with('success', 'Sửa thồng tin người dùng thành cồng!');
+    }
+
+    public function profile_order()
+    {
+        if (!auth()->check()) {
+            return redirect()->route('login')->with('error', 'Bạn cần đăng nhập xem lịch sử đơn hàng');
+        }
+        $orders = Bills::where('id_user', Auth::id())
+            ->orderBy('status', 'asc')
+            ->get();
+        return view('components.profile_order', compact('orders'));
     }
 }

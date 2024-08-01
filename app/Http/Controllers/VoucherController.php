@@ -19,11 +19,13 @@ class VoucherController extends Controller
         $voucher = Voucher::create($data);
         return redirect()->route('admin/vouchers');
     }
+
     public function formedit(Request $request, int $id)
     {
         $voucher = Voucher::findOrFail($id);
         return view('admin.voucher.edit', compact('voucher'));
     }
+
     public function edit(Request $request, int $id)
     {
         $data = $request->all();
